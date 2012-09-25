@@ -20,7 +20,6 @@ usePF2PAT(process,runPF2PAT=True, jetAlgo=jetAlgo, runOnMC=isMC)
 # Add electron MVA ID
 process.load('EGamma.EGammaAnalysisTools.electronIdMVAProducer_cfi') 
 process.eidMVASequence = cms.Sequence(  process.mvaTrigV0 + process.mvaNonTrigV0 )
-#Electron ID
 process.patElectrons.electronIDSources.mvaTrigV0    = cms.InputTag("mvaTrigV0")
 process.patElectrons.electronIDSources.mvaNonTrigV0 = cms.InputTag("mvaNonTrigV0") 
 process.patPF2PATSequence.replace( process.patElectrons, process.eidMVASequence * process.patElectrons )
@@ -43,13 +42,29 @@ process.interesting.minJets = cms.untracked.int32(2)    # at least 2 jets (b-jet
 process.interesting.elPt = cms.untracked.double(30)     # minimal pT of electron
 
 # Object selections are defined here
-process.selectedPatElectrons.cut = 'pt > 30 & abs(eta)<2.5 & !(1.4442 < abs(superCluster.eta) < 1.5660) & abs(dB) < 0.02 & passConversionVeto & electronID("mvaTrigV0") > 0.1 & gsfTrack.trackerExpectedHitsInner.numberOfHits <=0'
+goodElectron = 'abs(eta)<2.5'
+
+goodSignalElectron = goodElectron
+goodSignalElectron += 'pt > 30'
+goodSignalElectron += '&& passConversionVeto'
+goodSignalElectron += '&& dB<0.02'
+goodSignalElectron += '&& !(1.4442 < abs(superCluster.eta) < 1.5660)'
+goodSignalElectron += '&& gsfTrack.trackerExpectedHitsInner.numberOfHits <=0'
+goodSignalElectron += '&& electronID("mvaTrigV0") > 0.1'
+
+goodVetoElectron = goodElectron
+goodVetoElectron += '&& pt > 20'
+goodVetoElectron += '&& electronID("mvaTrigV0") > 0.1'
+
+process.selectedPatElectrons.cut = goodElectron
+process.vetoElectrons = process.selectedPatElectrons.clone(cut=goodVetoElectron)
 
 # The path that runs through the analysis
 process.p = cms.Path(
     process.goodOfflinePrimaryVertices+
     process.interesting+
-    getattr(process,"patPF2PATSequence") 
+    getattr(process,"patPF2PATSequence")+
+    process.vetoElectrons
 )
 
 if isMC:
@@ -63,5 +78,6 @@ process.source.fileNames = [
 
 process.maxEvents.input = 10
 process.out.fileName = 'tuple.root'
+process.out.outputCommands += ["keep *_vetoElectrons*_*_*"]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
