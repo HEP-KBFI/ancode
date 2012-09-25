@@ -40,6 +40,10 @@ process.goodOfflinePrimaryVertices = cms.EDFilter("PrimaryVertexObjectFilter",
 process.load("AnalysisCode.InterestingEvents.interestingevents_cfi")
 process.interesting.minLeptons = cms.untracked.int32(1) # at least one electron or muon
 process.interesting.minJets = cms.untracked.int32(2)    # at least 2 jets (b-jet + VBF jet)
+process.interesting.elPt = cms.untracked.double(30)     # minimal pT of electron
+
+# Object selections are defined here
+process.selectedPatElectrons.cut = 'pt > 30 & abs(eta)<2.5 & !(1.4442 < abs(superCluster.eta) < 1.5660) & abs(dB) < 0.02 & passConversionVeto & electronID("mvaTrigV0") > 0.1 & gsfTrack.trackerExpectedHitsInner.numberOfHits <=0'
 
 # The path that runs through the analysis
 process.p = cms.Path(
