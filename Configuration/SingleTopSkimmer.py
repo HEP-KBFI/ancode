@@ -17,6 +17,14 @@ usePF2PAT(process,runPF2PAT=True, jetAlgo=jetAlgo, runOnMC=isMC)
 # We can switch to GsfElectrons, but supposedly the inefficiency was fixed in 5_3_x
 #useGsfElectrons(process,postfix,"03")
 
+# Add electron MVA ID
+process.load('EGamma.EGammaAnalysisTools.electronIdMVAProducer_cfi') 
+process.eidMVASequence = cms.Sequence(  process.mvaTrigV0 + process.mvaNonTrigV0 )
+#Electron ID
+process.patElectrons.electronIDSources.mvaTrigV0    = cms.InputTag("mvaTrigV0")
+process.patElectrons.electronIDSources.mvaNonTrigV0 = cms.InputTag("mvaNonTrigV0") 
+process.patPF2PATSequence.replace( process.patElectrons, process.eidMVASequence * process.patElectrons )
+
 # We should filter for good primary vertices
 process.goodOfflinePrimaryVertices = cms.EDFilter("PrimaryVertexObjectFilter",
     filterParams =  cms.PSet(
@@ -28,9 +36,15 @@ process.goodOfflinePrimaryVertices = cms.EDFilter("PrimaryVertexObjectFilter",
     src         = cms.InputTag( 'offlinePrimaryVertices' )
 )
 
+# Perform a basic interesting events filter to reduce running time
+process.load("AnalysisCode.InterestingEvents.interestingevents_cfi")
+process.interesting.minLeptons = cms.untracked.int32(1) # at least one electron or muon
+process.interesting.minJets = cms.untracked.int32(2)    # at least 2 jets (b-jet + VBF jet)
+
 # The path that runs through the analysis
 process.p = cms.Path(
     process.goodOfflinePrimaryVertices+
+    process.interesting+
     getattr(process,"patPF2PATSequence") 
 )
 
