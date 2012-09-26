@@ -45,25 +45,41 @@ process.interesting.elPt = cms.untracked.double(30)     # minimal pT of electron
 goodElectron = 'abs(eta)<2.5'
 
 goodSignalElectron = goodElectron
-goodSignalElectron += 'pt > 30'
+goodSignalElectron += '&& pt > 30'
 goodSignalElectron += '&& passConversionVeto'
 goodSignalElectron += '&& dB<0.02'
 goodSignalElectron += '&& !(1.4442 < abs(superCluster.eta) < 1.5660)'
 goodSignalElectron += '&& gsfTrack.trackerExpectedHitsInner.numberOfHits <=0'
 goodSignalElectron += '&& electronID("mvaTrigV0") > 0.1'
+goodSignalElectron += '&& userFloat("rhoCorrRelIso") < 0.2'
 
 goodVetoElectron = goodElectron
 goodVetoElectron += '&& pt > 20'
 goodVetoElectron += '&& electronID("mvaTrigV0") > 0.1'
+goodVetoElectron += '&& userFloat("rhoCorrRelIso") < 0.3'
 
-process.selectedPatElectrons.cut = goodElectron
-process.vetoElectrons = process.selectedPatElectrons.clone(cut=goodVetoElectron)
+process.electronsWithIsolation = cms.EDProducer('ElectronIsolationProducer',
+        src=cms.InputTag('selectedPatElectrons'),
+        rho=cms.InputTag("kt6PFJets", "rho"),
+        debug=cms.untracked.bool(True)
+)
+
+process.goodElectrons = process.selectedPatElectrons.clone(
+    src='electronsWithIsolation',
+    cut=goodSignalElectron
+)
+
+process.vetoElectrons = process.goodElectrons.clone(
+    cut=goodVetoElectron
+)
 
 # The path that runs through the analysis
 process.p = cms.Path(
     process.goodOfflinePrimaryVertices+
     process.interesting+
     getattr(process,"patPF2PATSequence")+
+    process.electronsWithIsolation+
+    process.goodElectrons+
     process.vetoElectrons
 )
 
@@ -78,6 +94,9 @@ process.source.fileNames = [
 
 process.maxEvents.input = 10
 process.out.fileName = 'tuple.root'
-process.out.outputCommands += ["keep *_vetoElectrons*_*_*"]
+process.out.outputCommands += [
+    "keep *_vetoElectrons*_*_*",
+    "keep *_goodElectrons*_*_*"
+]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
