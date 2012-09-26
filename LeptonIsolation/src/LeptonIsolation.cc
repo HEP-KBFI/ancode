@@ -71,6 +71,10 @@ class LeptonIsolation : public edm::EDProducer {
 // static data member definitions
 //
 // Effective areas with consequtive |eta| bins with boundaries at: 1, 1.5, 2, 2.2, 2.3, 2.4 and >2.4
+//
+// Electron EA source info: https://twiki.cern.ch/twiki/bin/view/CMS/EgammaEARhoCorrection
+// Muon EA source info: https://indico.cern.ch/getFile.py/access?contribId=1&resId=0&materialId=slides&confId=188494 (slide 9)
+//
 template <typename T>
 const double LeptonIsolation<T>::elEffArea[] = { 0.19, 0.25, 0.12, 0.21, 0.27, 0.44, 0.52};
 
