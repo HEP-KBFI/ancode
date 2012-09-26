@@ -40,6 +40,7 @@ process.load("AnalysisCode.InterestingEvents.interestingevents_cfi")
 process.interesting.minLeptons = cms.untracked.int32(1) # at least one electron or muon
 process.interesting.minJets = cms.untracked.int32(2)    # at least 2 jets (b-jet + VBF jet)
 process.interesting.elPt = cms.untracked.double(30)     # minimal pT of electron
+process.interesting.muPt = cms.untracked.double(20)     # minimal pT of electron
 
 # Object selections are defined here
 goodElectron = 'abs(eta)<2.5'
@@ -73,6 +74,44 @@ process.vetoElectrons = process.goodElectrons.clone(
     cut=goodVetoElectron
 )
 
+# Muon selection
+process.pfIsolatedMuons.isolationCut = cms.double( 0.5 ) # this isn't PU corrected so needs to be looser
+
+goodMuon = 'isPFMuon'
+
+goodVetoMuon = goodMuon
+goodVetoMuon += ' && abs(eta) < 2.4'
+goodVetoMuon += ' && (isGlobalMuon || isTrackerMuon)'
+goodVetoMuon += ' && pt > 10'
+goodVetoMuon += ' && userFloat("rhoCorrRelIso") < 0.2'
+
+goodSignalMuon = goodMuon
+goodSignalMuon += ' && isGlobalMuon'
+goodSignalMuon += ' && pt > 26'
+goodSignalMuon += ' && abs(eta)<2.1'
+goodSignalMuon += ' && normChi2 < 10'
+goodSignalMuon += ' && track.hitPattern.trackerLayersWithMeasurement > 5'
+goodSignalMuon += ' && globalTrack.hitPattern.numberOfValidMuonHits > 0'
+goodSignalMuon += ' && dB < 0.2'
+goodSignalMuon += ' && innerTrack.hitPattern.numberOfValidPixelHits > 0'
+goodSignalMuon += ' && numberOfMatchedStations > 1'
+goodSignalMuon += ' && userFloat("rhoCorrRelIso") < 0.12'
+
+process.muonsWithIsolation = cms.EDProducer('MuonIsolationProducer',
+        src=cms.InputTag('selectedPatMuons'),
+        rho=cms.InputTag("kt6PFJets", "rho"),
+        debug=cms.untracked.bool(True)
+)
+
+process.goodMuons = process.selectedPatMuons.clone(
+    src='muonsWithIsolation',
+    cut=goodSignalMuon
+)
+
+process.vetoMuons = process.goodMuons.clone(
+    cut=goodVetoMuon
+)
+
 # The path that runs through the analysis
 process.p = cms.Path(
     process.goodOfflinePrimaryVertices+
@@ -80,7 +119,10 @@ process.p = cms.Path(
     getattr(process,"patPF2PATSequence")+
     process.electronsWithIsolation+
     process.goodElectrons+
-    process.vetoElectrons
+    process.vetoElectrons+
+    process.muonsWithIsolation+
+    process.goodMuons+
+    process.vetoMuons
 )
 
 if isMC:
@@ -92,11 +134,13 @@ process.source.fileNames = [
     "/store/mc/Summer12_DR53X/VBF_HToZG_M-125_8TeV-powheg-pythia6/AODSIM/PU_S10_START53_V7A-v1/0000/2884E8EB-EE01-E211-AF2D-001E67396897.root"
 ]
 
-process.maxEvents.input = 10
+process.maxEvents.input = 50
 process.out.fileName = 'tuple.root'
 process.out.outputCommands += [
     "keep *_vetoElectrons*_*_*",
-    "keep *_goodElectrons*_*_*"
+    "keep *_goodElectrons*_*_*",
+    "keep *_vetoMuons*_*_*",
+    "keep *_goodMuons*_*_*"
 ]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
