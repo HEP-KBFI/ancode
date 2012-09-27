@@ -157,7 +157,8 @@ process.out.outputCommands += [
     "keep *_vetoMuons*_*_*",
     "keep *_goodMuons*_*_*",
     "keep *_puJetId_*_*",
-    "keep *_puJetMva_*_*"
+    "keep *_puJetMva_*_*",
+    "keep *Particle*_genParticles_*_*"
 ]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
