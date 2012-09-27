@@ -112,6 +112,20 @@ process.vetoMuons = process.goodMuons.clone(
     cut=goodVetoMuon
 )
 
+# Jet quality cuts
+goodJet = 'pt>40'
+goodJet += ' && abs(eta) < 4.7'
+goodJet += ' && numberOfDaughters>1'
+goodJet += ' && neutralHadronEnergyFraction<0.99'
+goodJet += ' && neutralEmEnergyFraction<0.99'
+goodJet += ' && (abs(eta) > 2.4 | (chargedEmEnergyFraction<0.99 && chargedHadronEnergyFraction>0 && chargedMultiplicity>0))'
+
+process.selectedPatJets.cut = goodJet
+
+# load the PU JetID sequence
+process.load("CMGTools.External.pujetidsequence_cff")
+
+
 # The path that runs through the analysis
 process.p = cms.Path(
     process.goodOfflinePrimaryVertices+
@@ -122,7 +136,8 @@ process.p = cms.Path(
     process.vetoElectrons+
     process.muonsWithIsolation+
     process.goodMuons+
-    process.vetoMuons
+    process.vetoMuons+
+    process.puJetIdSqeuence
 )
 
 if isMC:
@@ -140,7 +155,9 @@ process.out.outputCommands += [
     "keep *_vetoElectrons*_*_*",
     "keep *_goodElectrons*_*_*",
     "keep *_vetoMuons*_*_*",
-    "keep *_goodMuons*_*_*"
+    "keep *_goodMuons*_*_*",
+    "keep *_puJetId_*_*",
+    "keep *_puJetMva_*_*"
 ]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
