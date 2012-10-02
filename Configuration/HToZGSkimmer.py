@@ -99,8 +99,16 @@ process.selectedPatJets.cut = goodJet
 # load the PU JetID sequence
 process.load("CMGTools.External.pujetidsequence_cff")
 
+# Photon selector
+process.load("PhysicsTools.PatAlgos.selectionLayer1.photonSelector_cfi")
+
 # Trim down the genParticles collection
 process.load("AnalysisCode.SlimGenParticles.slimgenparticles_cfi")
+
+goodPhoton = 'pt>20'
+goodPhoton += ' & photonID("PhotonCutBasedIDLoose") > 0.5'
+
+process.selectedPatPhotons.cut = goodPhoton
 
 # The path that runs through the analysis
 process.p = cms.Path(
@@ -112,7 +120,8 @@ process.p = cms.Path(
     process.goodMuons+
     process.puJetIdSqeuence+
     process.slimGenParticles+
-    process.makePatPhotons
+    process.makePatPhotons+
+    process.selectedPatPhotons
 )
 
 if isMC:
@@ -132,7 +141,8 @@ process.out.outputCommands += [
     "keep *_puJetId_*_*",
     "keep *_puJetMva_*_*",
     "keep *_slimGenParticles_*_*",
-    "keep *_offlinePrimaryVertices_*_*"
+    "keep *_offlinePrimaryVertices_*_*",
+    "keep *_selectedPatPhotons_*_*"
 ]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
