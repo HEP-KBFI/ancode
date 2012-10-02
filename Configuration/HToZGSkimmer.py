@@ -4,6 +4,12 @@ from PhysicsTools.PatAlgos.patTemplate_cfg import *
 # load the PAT config
 process.load("PhysicsTools.PatAlgos.patSequences_cff") 
 
+# add trigger information to the configuration
+from PhysicsTools.PatAlgos.tools.trigTools import *
+switchOnTrigger( process )
+process.patTriggerEvent.processName = '*'
+process.patTrigger.processName = '*'
+
 # Import the tools
 from PhysicsTools.PatAlgos.tools.pfTools import *
 
@@ -110,6 +116,7 @@ goodPhoton += ' & photonID("PhotonCutBasedIDLoose") > 0.5'
 
 process.selectedPatPhotons.cut = goodPhoton
 
+
 # The path that runs through the analysis
 process.p = cms.Path(
     process.goodOfflinePrimaryVertices+
@@ -142,7 +149,8 @@ process.out.outputCommands += [
     "keep *_puJetMva_*_*",
     "keep *_slimGenParticles_*_*",
     "keep *_offlinePrimaryVertices_*_*",
-    "keep *_selectedPatPhotons_*_*"
+    "keep *_selectedPatPhotons_*_*",
+    "keep *_patTriggerEvent_*_*"
 ]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
