@@ -126,7 +126,7 @@ process.p = cms.Path(
     process.muonsWithIsolation+
     process.goodMuons+
     process.puJetIdSqeuence+
-    process.slimGenParticles+
+    #process.slimGenParticles+
     process.makePatPhotons+
     process.selectedPatPhotons
 )
@@ -140,14 +140,15 @@ process.source.fileNames = [
     "/store/mc/Summer12_DR53X/VBF_HToZG_M-125_8TeV-powheg-pythia6/AODSIM/PU_S10_START53_V7A-v1/0000/2884E8EB-EE01-E211-AF2D-001E67396897.root"
 ]
 
-process.maxEvents.input = 50
+process.maxEvents.input = 500
 process.out.fileName = 'tuple.root'
 process.out.outputCommands += [
     "keep *_goodElectrons*_*_*",
     "keep *_goodMuons*_*_*",
     "keep *_puJetId_*_*",
     "keep *_puJetMva_*_*",
-    "keep *_slimGenParticles_*_*",
+    "keep *_genParticles_*_*",
+    #"keep *_slimGenParticles_*_*",
     "keep *_offlinePrimaryVertices_*_*",
     "keep *_selectedPatPhotons_*_*",
     "keep *_patTriggerEvent_*_*",
