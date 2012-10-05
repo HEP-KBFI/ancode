@@ -4,6 +4,12 @@ from PhysicsTools.PatAlgos.patTemplate_cfg import *
 # load the PAT config
 process.load("PhysicsTools.PatAlgos.patSequences_cff") 
 
+# add trigger information to the configuration
+from PhysicsTools.PatAlgos.tools.trigTools import *
+switchOnTrigger( process )
+process.patTriggerEvent.processName = '*'
+process.patTrigger.processName = '*'
+
 # Import the tools
 from PhysicsTools.PatAlgos.tools.pfTools import *
 
@@ -162,7 +168,9 @@ process.out.outputCommands += [
     "keep *_puJetId_*_*",
     "keep *_puJetMva_*_*",
     "keep *_slimGenParticles_*_*",
-    "keep *_offlinePrimaryVertices_*_*"
+    "keep *_offlinePrimaryVertices_*_*",
+    "keep *_patTriggerEvent_*_*",
+    "keep *_patTrigger_*_*"
 ]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
