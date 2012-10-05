@@ -131,7 +131,7 @@ process.load("AnalysisCode.SlimGenParticles.slimgenparticles_cfi")
 # The path that runs through the analysis
 process.p = cms.Path(
     process.goodOfflinePrimaryVertices+
-    process.interesting+
+    #process.interesting+
     getattr(process,"patPF2PATSequence")+
     process.electronsWithIsolation+
     process.goodElectrons+
@@ -149,10 +149,10 @@ else:
     process.GlobalTag.globaltag =  'FT_53_V6C_AN2::All' # NB! Set this per dataset!!!
 
 process.source.fileNames = [
-    "/store/mc/Summer12_DR53X/VBF_HToZG_M-125_8TeV-powheg-pythia6/AODSIM/PU_S10_START53_V7A-v1/0000/2884E8EB-EE01-E211-AF2D-001E67396897.root"
+    "/store/mc/Summer12_DR53X/T_t-channel_TuneZ2star_8TeV-powheg-tauola/AODSIM/PU_S10_START53_V7A-v1/0000/0077EE51-88DC-E111-88BE-0018F3D09684.root"
 ]
 
-process.maxEvents.input = 50
+process.maxEvents.input = -1
 process.out.fileName = 'tuple.root'
 process.out.outputCommands += [
     "keep *_vetoElectrons*_*_*",
