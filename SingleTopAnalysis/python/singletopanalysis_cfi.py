@@ -7,5 +7,6 @@ stanal = cms.EDAnalyzer('SingleTopAnalysis',
     vetoElectrons   = cms.InputTag('vetoElectrons'),
     jets            = cms.InputTag('selectedPatJets'),
     met             = cms.InputTag('patMETs'),
-    vertex          = cms.InputTag('offlinePrimaryVertices')
+    vertex          = cms.InputTag('offlinePrimaryVertices'),
+    debug           = cms.bool(True)
 )

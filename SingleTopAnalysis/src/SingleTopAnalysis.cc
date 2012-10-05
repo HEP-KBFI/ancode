@@ -71,6 +71,7 @@ class SingleTopAnalysis : public edm::EDAnalyzer {
       edm::InputTag goodMuLab, vetoMuLab, goodElLab, vetoElLab, jetLab, metLab, vertLab;
       TH1D *cflow;
       reco::Vertex PV;
+      bool debug;
 };
 
 //
@@ -95,6 +96,7 @@ SingleTopAnalysis::SingleTopAnalysis(const edm::ParameterSet& iConfig)
    jetLab     = iConfig.getParameter<edm::InputTag>("jets");
    metLab     = iConfig.getParameter<edm::InputTag>("met");
    vertLab    = iConfig.getParameter<edm::InputTag>("vertex");
+   debug      = iConfig.getParameter<bool>("debug");
 }
 
 
@@ -140,9 +142,9 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
 
    PV = *(vertex->begin());
 
-   cout << "Primary vertex location: " << PV.position() << endl;
+   if (debug) cout << "Primary vertex location: " << PV.position() << endl;
 
-   cout << "Event: " << gmu->size() << " good mu, " << vmu->size() << " veto mu, " << gel->size() << " good el, " << vel->size() << " veto el" << endl;
+   if (debug) cout << "Event: " << gmu->size() << " good mu, " << vmu->size() << " veto mu, " << gel->size() << " good el, " << vel->size() << " veto el" << endl;
 }
 
 
