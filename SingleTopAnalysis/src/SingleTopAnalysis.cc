@@ -34,6 +34,7 @@
 #include "DataFormats/PatCandidates/interface/Muon.h"
 #include "DataFormats/PatCandidates/interface/Electron.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
+#include "CMGTools/External/interface/PileupJetIdentifier.h"
 #include "DataFormats/PatCandidates/interface/MET.h"
 
 // Vertices for matching of leptons/jets
@@ -141,10 +142,76 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
    iEvent.getByLabel(vertLab,vertex);
 
    PV = *(vertex->begin());
-
    if (debug) cout << "Primary vertex location: " << PV.position() << endl;
 
-   if (debug) cout << "Event: " << gmu->size() << " good mu, " << vmu->size() << " veto mu, " << gel->size() << " good el, " << vel->size() << " veto el" << endl;
+   // Run through the good muons and apply final few missing criteria and make sure we only get 1 at maximum
+   int nSigMu = 0;
+   for (MuonCollection::const_iterator mu = gmu->begin(); mu != gmu->end(); mu++) {
+     if (debug) cout << "Mu: pT=" << mu->pt() << " eta=" << mu->eta() << " status=" << mu->status() << endl;
+     if (fabs(mu->vertex().z() - PV.position().z()) < 0.5) nSigMu++;
+   }
+
+   // If already at this step we have too many muons, give up
+   if (nSigMu != 1) return;
+   cflow->Fill(1);
+   
+   // Quick check, if there are more than 2 veto muons we're already in trouble because it will contain the signal muon as well
+   if (vmu->size() > 1) return;
+   cflow->Fill(2);
+
+   // We shouldn't have electrons in the veto collection, let's check that
+   if (vel->size()) return;
+   cflow->Fill(3);
+
+   // Check the jet collection and make sure we have the right amount of jets passing criteria. We apply the Loose PU veto here
+
+   Handle<View<Jet> > jets;
+   iEvent.getByLabel(jetLab, jets);
+
+   Handle<ValueMap<float> > puJetIdMVA;
+   iEvent.getByLabel("puJetMva","fullDiscriminant", puJetIdMVA);
+
+   Handle<ValueMap<int> > puJetIdFlag;
+   iEvent.getByLabel("puJetMva","fullId", puJetIdFlag);
+
+   int nJet = 0;
+   int nBjet = 0;
+   for (unsigned int ij = 0; ij < jets->size(); ij++) {
+     const Jet & it = jets->at(ij);
+     float mva = (*puJetIdMVA)[jets->refAt(ij)];
+     int idflag = (*puJetIdFlag)[jets->refAt(ij)];
+     if ( PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) ) {
+       // We have an adequate jet that isn't PU jet likely, let's count them
+       nJet++;
+       // B-tag point from: https://twiki.cern.ch/twiki/bin/viewauth/CMS/BTagPerformanceOP we use CSV Medium
+       if (it.bDiscriminator("combinedSecondaryVertexMVABJetTags") > 0.679) nBjet++;
+     }
+   }
+
+   // Next step is we need exactly two jets
+   if (nJet != 2) return;
+   cflow->Fill(4);
+
+   // Here we should check the W mass
+   Handle<METCollection> mets;
+   iEvent.getByLabel(metLab,mets);
+
+   double mt = 0;
+   double mx = mets->begin()->px();
+   double my = mets->begin()->py();
+   double met = mets->begin()->pt();
+
+   double mux = gmu->begin()->px();
+   double muy = gmu->begin()->py();
+   double mupt = gmu->begin()->pt();
+
+   mt = sqrt( pow(mupt+met,2) - pow(mux+mx,2) - pow(muy+my,2) );
+
+   if (mt < 40) return;
+   cflow->Fill(5);
+
+   if (nBjet != 1) return;
+   cflow->Fill(6);
 }
 
 
