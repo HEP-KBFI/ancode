@@ -8,5 +8,8 @@ stanal = cms.EDAnalyzer('SingleTopAnalysis',
     jets            = cms.InputTag('selectedPatJets'),
     met             = cms.InputTag('patMETs'),
     vertex          = cms.InputTag('offlinePrimaryVertices'),
-    debug           = cms.bool(True)
+    bTagger         = cms.string("combinedSecondaryVertexMVABJetTags"),
+    bTagCut         = cms.double(0.679),
+    debug           = cms.bool(True),
+    PUveto          = cms.bool(True)
 )

@@ -72,7 +72,9 @@ class SingleTopAnalysis : public edm::EDAnalyzer {
       edm::InputTag goodMuLab, vetoMuLab, goodElLab, vetoElLab, jetLab, metLab, vertLab;
       TH1D *cflow;
       reco::Vertex PV;
-      bool debug;
+      bool debug,PUveto;
+      double bTagCut;
+      std::string bTagger;
 };
 
 //
@@ -97,7 +99,10 @@ SingleTopAnalysis::SingleTopAnalysis(const edm::ParameterSet& iConfig)
    jetLab     = iConfig.getParameter<edm::InputTag>("jets");
    metLab     = iConfig.getParameter<edm::InputTag>("met");
    vertLab    = iConfig.getParameter<edm::InputTag>("vertex");
+   bTagger    = iConfig.getParameter<std::string>("bTagger");
+   bTagCut    = iConfig.getParameter<double>("bTagCut");
    debug      = iConfig.getParameter<bool>("debug");
+   PUveto     = iConfig.getParameter<bool>("PUveto");
 }
 
 
@@ -180,11 +185,11 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
      const Jet & it = jets->at(ij);
      float mva = (*puJetIdMVA)[jets->refAt(ij)];
      int idflag = (*puJetIdFlag)[jets->refAt(ij)];
-     if ( PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) ) {
+     if ( !PUveto || PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) ) {
        // We have an adequate jet that isn't PU jet likely, let's count them
        nJet++;
        // B-tag point from: https://twiki.cern.ch/twiki/bin/viewauth/CMS/BTagPerformanceOP we use CSV Medium
-       if (it.bDiscriminator("combinedSecondaryVertexMVABJetTags") > 0.679) nBjet++;
+       if (it.bDiscriminator(bTagger) > bTagCut) nBjet++;
      }
    }
 
