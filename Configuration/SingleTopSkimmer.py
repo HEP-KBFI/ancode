@@ -181,7 +181,8 @@ process.out.outputCommands += [
     "keep *_offlinePrimaryVertices_*_*",
     "keep *_patTriggerEvent_*_*",
     "keep *_patTrigger_*_*",
-    "keep *_kt6PFJets_rho_*"
+    "keep *_kt6PFJets_rho_*",
+    "keep *_smearedJets_*_*"
 ]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
