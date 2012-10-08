@@ -120,14 +120,7 @@ process.vetoMuons = process.goodMuons.clone(
 
 
 # Jet quality cuts
-goodJet = 'pt>40'
-if isMC:
-    # In the case of MC make sure the jets are smeared and then select the jets based on the smeared pT, not reconstructed
-    process.load('AnalysisCode.SmearedJetProducer.smearedjetproducer_cfi')
-    getattr(process,"patPF2PATSequence").replace(process.selectedPatJets,process.smearedJets+process.selectedPatJets)
-    process.selectedPatJets.src=cms.InputTag("smearedJets")
-    goodJet = 'userFloat("smearPt")>40'
-
+goodJet = 'pt>30'
 goodJet += ' && abs(eta) < 4.7'
 goodJet += ' && numberOfDaughters>1'
 goodJet += ' && neutralHadronEnergyFraction<0.99'
