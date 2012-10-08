@@ -22,7 +22,9 @@ process.source = cms.Source("PoolSource",
 process.load('AnalysisCode.SingleTopAnalysis.singletopanalysis_cfi')
 #process.trig.debug=cms.bool(True)
 
+process.stanal.PUveto = cms.bool(False)
+
 process.p = cms.Path(
-    #process.trig+
+    process.trig+
     process.stanal
 )

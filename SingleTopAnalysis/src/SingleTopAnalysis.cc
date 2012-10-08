@@ -73,7 +73,7 @@ class SingleTopAnalysis : public edm::EDAnalyzer {
       TH1D *cflow;
       reco::Vertex PV;
       bool debug,PUveto;
-      double bTagCut;
+      double bTagCut, totalJets, looseJets, tightJets;
       std::string bTagger;
 };
 
@@ -103,6 +103,9 @@ SingleTopAnalysis::SingleTopAnalysis(const edm::ParameterSet& iConfig)
    bTagCut    = iConfig.getParameter<double>("bTagCut");
    debug      = iConfig.getParameter<bool>("debug");
    PUveto     = iConfig.getParameter<bool>("PUveto");
+   totalJets = 0;
+   looseJets = 0;
+   tightJets = 0;
 }
 
 
@@ -183,8 +186,13 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
    int nBjet = 0;
    for (unsigned int ij = 0; ij < jets->size(); ij++) {
      const Jet & it = jets->at(ij);
+     totalJets++;
      float mva = (*puJetIdMVA)[jets->refAt(ij)];
      int idflag = (*puJetIdFlag)[jets->refAt(ij)];
+     if (debug) cout << "Jet: " << it.pt() << " mva=" << mva << " idflag=" << idflag << " PU pass=" << PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) << endl;
+     if ( PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) ) looseJets++;
+     if ( PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kTight ) ) tightJets++;
+
      if ( !PUveto || PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) ) {
        // We have an adequate jet that isn't PU jet likely, let's count them
        nJet++;
@@ -232,6 +240,8 @@ SingleTopAnalysis::beginJob()
 void 
 SingleTopAnalysis::endJob() 
 {
+  using namespace std;
+  cout << "Total=" << totalJets << " loose=" << looseJets << " tight=" << tightJets << endl;
 }
 
 // ------------ method called when starting to processes a run  ------------
