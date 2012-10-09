@@ -31,7 +31,7 @@
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
-
+#include "CMGTools/External/interface/PileupJetIdentifier.h"
 //
 // class declaration
 //
@@ -107,12 +107,18 @@ SmearedJetProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    using namespace std;
    using namespace pat;
 
-   Handle<JetCollection> jets;
+   Handle<View<Jet> > jets;
    iEvent.getByLabel(inLabel,jets);
 
+   Handle<ValueMap<float> > puJetIdMVA;
+   iEvent.getByLabel("puJetMva","fullDiscriminant", puJetIdMVA);
+
+   Handle<ValueMap<int> > puJetIdFlag;
+   iEvent.getByLabel("puJetMva","fullId", puJetIdFlag);
+
    JetCollection *outJets = new JetCollection();
-   for (JetCollection::const_iterator j = jets->begin(); j != jets->end(); j++) {
-     Jet *jet = new Jet(*j);
+   for (unsigned int i = 0; i<jets->size(); i++) {
+     Jet *jet = new Jet(jets->at(i));
      double f = getFactor(jet->eta());
      double genPt = 0;
      double smearPt = 0;
@@ -120,7 +126,17 @@ SmearedJetProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
        genPt=jet->genJet()->pt();
      }
      smearPt = max(0., genPt + f * (jet->pt() - genPt) );
+
+     float mva = (*puJetIdMVA)[jets->refAt(i)];
+     int puIdFlag = (*puJetIdFlag)[jets->refAt(i)];
+     int puId = 0;
+     if ( PileupJetIdentifier::passJetId( puIdFlag, PileupJetIdentifier::kLoose ) ) puId++;
+     if ( PileupJetIdentifier::passJetId( puIdFlag, PileupJetIdentifier::kMedium ) ) puId++;
+     if ( PileupJetIdentifier::passJetId( puIdFlag, PileupJetIdentifier::kTight ) ) puId++;
      jet->addUserFloat("smearPt",smearPt);
+     jet->addUserFloat("puMVA",mva);
+     jet->addUserInt("puIdFlag",puIdFlag);
+     jet->addUserInt("puId",puId);
      outJets->push_back(*jet);
    }
 
