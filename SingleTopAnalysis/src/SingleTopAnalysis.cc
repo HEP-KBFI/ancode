@@ -33,6 +33,7 @@
 // Generic particle classes
 #include "DataFormats/PatCandidates/interface/Muon.h"
 #include "DataFormats/PatCandidates/interface/Electron.h"
+#include "DataFormats/PatCandidates/interface/Tau.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
 #include "CMGTools/External/interface/PileupJetIdentifier.h"
 #include "DataFormats/PatCandidates/interface/MET.h"
@@ -162,6 +163,7 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
    // If already at this step we have too many muons, give up
    if (nSigMu != 1) return;
    cflow->Fill(1);
+   if (debug) cout << "Step 1 pass: run=" << iEvent.id().run() << " lumi=" << iEvent.id().luminosityBlock() << " event=" << iEvent.id().event() << endl;
    
    // Quick check, if there are more than 2 veto muons we're already in trouble because it will contain the signal muon as well
    if (vmu->size() > 1) return;
@@ -173,23 +175,15 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
 
    // Check the jet collection and make sure we have the right amount of jets passing criteria. We apply the Loose PU veto here
 
-   Handle<View<Jet> > jets;
+   Handle<JetCollection> jets;
    iEvent.getByLabel(jetLab, jets);
-
-   Handle<ValueMap<float> > puJetIdMVA;
-   iEvent.getByLabel("puJetMva","fullDiscriminant", puJetIdMVA);
-
-   Handle<ValueMap<int> > puJetIdFlag;
-   iEvent.getByLabel("puJetMva","fullId", puJetIdFlag);
 
    int nJet = 0;
    int nBjet = 0;
-   for (unsigned int ij = 0; ij < jets->size(); ij++) {
-     const Jet & it = jets->at(ij);
+   for (JetCollection::const_iterator it = jets->begin(); it != jets->end(); it++) {
      totalJets++;
-     float mva = (*puJetIdMVA)[jets->refAt(ij)];
-     int idflag = (*puJetIdFlag)[jets->refAt(ij)];
-     if (debug) cout << "Jet: " << it.pt() << " mva=" << mva << " idflag=" << idflag << " PU pass=" << PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) << endl;
+     int idflag = it->userInt("puIdFlag");
+     if (debug) cout << "Jet: " << it->pt() << " idflag=" << idflag << " PU pass=" << PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) << endl;
      if ( PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) ) looseJets++;
      if ( PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kTight ) ) tightJets++;
 
@@ -197,13 +191,24 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
        // We have an adequate jet that isn't PU jet likely, let's count them
        nJet++;
        // B-tag point from: https://twiki.cern.ch/twiki/bin/viewauth/CMS/BTagPerformanceOP we use CSV Medium
-       if (it.bDiscriminator(bTagger) > bTagCut) nBjet++;
+       if (it->bDiscriminator(bTagger) > bTagCut) nBjet++;
      }
    }
 
+   // Temporary check on taus
+   Handle<TauCollection> taus;
+   iEvent.getByLabel("selectedPatTaus",taus);
+
+   int nt = 0;
+   for (TauCollection::const_iterator it = taus->begin(); it != taus->end(); it++) 
+     if (it->pt() > 40) nt++;
+
    // Next step is we need exactly two jets
+   if (debug) cout << "Step 4 check: run=" << iEvent.id().run() << " lumi=" << iEvent.id().luminosityBlock() << " event=" << iEvent.id().event() << " N taus=" << nt << endl;
    if (nJet != 2) return;
    cflow->Fill(4);
+
+   if (debug) cout << "Step 4 pass: run=" << iEvent.id().run() << " lumi=" << iEvent.id().luminosityBlock() << " event=" << iEvent.id().event() << " N taus=" << nt << endl;
 
    // Here we should check the W mass
    Handle<METCollection> mets;

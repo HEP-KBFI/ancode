@@ -18,13 +18,18 @@ process.source = cms.Source("PoolSource",
         'file:/hdfs/local/mario/singletop/53sync/tbar_tuple.root'
     )
 )
-
 process.load('AnalysisCode.SingleTopAnalysis.singletopanalysis_cfi')
-#process.trig.debug=cms.bool(True)
+#process.stanal.PUveto = cms.bool(False)
 
-process.stanal.PUveto = cms.bool(False)
+process.load('AnalysisCode.SmearedJetProducer.smearedjetproducer_cfi')
+
+process.load('PhysicsTools.PatAlgos.selectionLayer1.jetSelector_cfi')
+process.selectedPatJets.src = cms.InputTag("smearedJets")
+process.selectedPatJets.cut = 'userFloat("smearPt") > 40'
 
 process.p = cms.Path(
     process.trig+
+    process.smearedJets+
+    process.selectedPatJets+
     process.stanal
 )
