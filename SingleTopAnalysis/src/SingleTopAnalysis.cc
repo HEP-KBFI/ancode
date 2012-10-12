@@ -183,7 +183,7 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
    for (JetCollection::const_iterator it = jets->begin(); it != jets->end(); it++) {
      totalJets++;
      int idflag = it->userInt("puIdFlag");
-     if (debug) cout << "Jet: " << it->pt() << " idflag=" << idflag << " PU pass=" << PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) << endl;
+     if (debug) cout << "Jet: " << it->pt() << " smear pT:" << it->userFloat("smearPt") << " idflag=" << idflag << " PU pass=" << PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) << endl;
      if ( PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kLoose ) ) looseJets++;
      if ( PileupJetIdentifier::passJetId( idflag, PileupJetIdentifier::kTight ) ) tightJets++;
 
