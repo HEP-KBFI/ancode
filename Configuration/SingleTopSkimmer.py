@@ -18,7 +18,10 @@ isMC = True
 
 # Plug PAT on PFBRECO
 jetAlgo="AK5"
-usePF2PAT(process,runPF2PAT=True, jetAlgo=jetAlgo, runOnMC=isMC)
+usePF2PAT(process,runPF2PAT=True, jetAlgo=jetAlgo, runOnMC=isMC, pvCollection=cms.InputTag('goodOfflinePrimaryVertices'), typeIMetCorrections=True)
+
+process.patPF2PATSequence.insert(-1, process.producePFMETCorrections)
+process.pfPileUp.checkClosestZVertex = False
 
 # We can switch to GsfElectrons, but supposedly the inefficiency was fixed in 5_3_x
 #useGsfElectrons(process,postfix,"03")
