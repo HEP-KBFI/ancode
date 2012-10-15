@@ -15,6 +15,7 @@ from PhysicsTools.PatAlgos.tools.pfTools import *
 
 # do we run on MC or Data
 isMC = True
+postfix = ""
 
 # Plug PAT on PFBRECO
 jetAlgo="AK5"
@@ -24,7 +25,7 @@ process.patPF2PATSequence.insert(-1, process.producePFMETCorrections)
 process.pfPileUp.checkClosestZVertex = False
 
 # We can switch to GsfElectrons, but supposedly the inefficiency was fixed in 5_3_x
-#useGsfElectrons(process,postfix,"03")
+useGsfElectrons(process,postfix,dR="03")
 
 # Add electron MVA ID
 process.load('EGamma.EGammaAnalysisTools.electronIdMVAProducer_cfi') 
