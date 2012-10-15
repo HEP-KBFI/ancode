@@ -135,9 +135,6 @@ process.selectedPatJets.cut = goodJet
 # load the PU JetID sequence
 process.load("CMGTools.External.pujetidsequence_cff")
 
-# Trim down the genParticles collection
-process.load("AnalysisCode.SlimGenParticles.slimgenparticles_cfi")
-
 # The path that runs through the analysis
 process.p = cms.Path(
     process.goodOfflinePrimaryVertices+
@@ -149,8 +146,7 @@ process.p = cms.Path(
     process.muonsWithIsolation+
     process.goodMuons+
     process.vetoMuons+
-    process.puJetIdSqeuence+
-    process.slimGenParticles
+    process.puJetIdSqeuence
 )
 
 
@@ -173,12 +169,11 @@ process.out.outputCommands += [
     "keep *_goodMuons*_*_*",
     "keep *_puJetId_*_*",
     "keep *_puJetMva_*_*",
-    "keep *_slimGenParticles_*_*",
+    "keep *_genParticles_*_*",
     "keep *_offlinePrimaryVertices_*_*",
     "keep *_patTriggerEvent_*_*",
     "keep *_patTrigger_*_*",
-    "keep *_kt6PFJets_rho_*",
-    "keep *_smearedJets_*_*"
+    "keep *_kt6PFJets_rho_*"
 ]
 
 process.options.wantSummary = False       ##  (to suppress the long output at the end of the job)    
