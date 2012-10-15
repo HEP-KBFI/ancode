@@ -121,11 +121,12 @@ SmearedJetProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    JetCollection *outJets = new JetCollection();
    for (unsigned int i = 0; i<jets->size(); i++) {
      Jet *jet = new Jet(jets->at(i));
-     double f = getFactor(jet->eta());
+     double f = 0;
      double genPt = 0;
      double smearPt = 0;
      if (jet->genJet()) {
        genPt=jet->genJet()->pt();
+       f = getFactor(jet->genJet()->eta());
      }
      if (genPt > 1) smearPt = max(0., genPt + f * (jet->pt() - genPt) );
      
