@@ -57,6 +57,7 @@ class SmearedJetProducer : public edm::EDProducer {
       // ----------member data ---------------------------
       edm::InputTag inLabel;
       std::vector<double> etaBins, factors;
+      bool debug;
 };
 
 //
@@ -78,6 +79,7 @@ SmearedJetProducer::SmearedJetProducer(const edm::ParameterSet& iConfig)
   inLabel = iConfig.getParameter<edm::InputTag>("inLabel");
   etaBins = iConfig.getParameter<std::vector<double> >("etaBins");
   factors = iConfig.getParameter<std::vector<double> >("factors");
+  debug   = iConfig.getParameter<bool>("debug");
 }
 
 
@@ -125,8 +127,8 @@ SmearedJetProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
      if (jet->genJet()) {
        genPt=jet->genJet()->pt();
      }
-     smearPt = max(0., genPt + f * (jet->pt() - genPt) );
-
+     if (genPt > 1) smearPt = max(0., genPt + f * (jet->pt() - genPt) );
+     
      float mva = (*puJetIdMVA)[jets->refAt(i)];
      int puIdFlag = (*puJetIdFlag)[jets->refAt(i)];
      int puId = 0;
@@ -137,6 +139,7 @@ SmearedJetProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
      jet->addUserFloat("puMVA",mva);
      jet->addUserInt("puIdFlag",puIdFlag);
      jet->addUserInt("puId",puId);
+     if (debug) cout << "Smearing: Jet: pt=" << jet->pt() << " gen pt=" << genPt << " smeared pt=" << smearPt << " eta=" << jet->eta() << " factor=" << f << endl;
      outJets->push_back(*jet);
    }
 
