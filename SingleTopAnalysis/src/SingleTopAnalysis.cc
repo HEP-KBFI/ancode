@@ -72,6 +72,7 @@ class SingleTopAnalysis : public edm::EDAnalyzer {
       // ----------member data ---------------------------
       edm::InputTag goodMuLab, vetoMuLab, goodElLab, vetoElLab, jetLab, metLab, vertLab;
       TH1D *cflow;
+      TH1D *costh;
       reco::Vertex PV;
       bool debug,PUveto;
       double bTagCut, totalJets, looseJets, tightJets;
@@ -155,9 +156,13 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
 
    // Run through the good muons and apply final few missing criteria and make sure we only get 1 at maximum
    int nSigMu = 0;
+   Muon muon;
    for (MuonCollection::const_iterator mu = gmu->begin(); mu != gmu->end(); mu++) {
      if (debug) cout << "Mu: pT=" << mu->pt() << " eta=" << mu->eta() << " status=" << mu->status() << endl;
-     if (fabs(mu->vertex().z() - PV.position().z()) < 0.5) nSigMu++;
+     if (fabs(mu->vertex().z() - PV.position().z()) < 0.5) {
+       nSigMu++;
+       muon = *mu;
+     }
    }
 
    // If already at this step we have too many muons, give up
@@ -180,6 +185,7 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
 
    int nJet = 0;
    int nBjet = 0;
+   JetCollection selJets;
    for (JetCollection::const_iterator it = jets->begin(); it != jets->end(); it++) {
      totalJets++;
      int idflag = it->userInt("puIdFlag");
@@ -192,6 +198,8 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
        nJet++;
        // B-tag point from: https://twiki.cern.ch/twiki/bin/viewauth/CMS/BTagPerformanceOP we use CSV Medium
        if (it->bDiscriminator(bTagger) > bTagCut) nBjet++;
+       it->addUserFloat("btag",it->bDiscriminator(bTagger));
+       selJets.push_back(*it);
      }
    }
 
@@ -230,6 +238,16 @@ SingleTopAnalysis::analyze(const edm::Event& iEvent, const edm::EventSetup& iSet
 
    if (nBjet != 1) return;
    cflow->Fill(6);
+
+   // Ok, we got the the end of the selection, let's now plot cos theta
+   for (JetCollection::const_iterator jet = selJets->begin(); jet != selJets->end(); jet++) {
+     if (jet->userFloat('btag') > bTagCut) {
+       // This is the b-jet
+     } else {
+      // This is the light jet
+      
+     }
+   }
 }
 
 
@@ -239,6 +257,7 @@ SingleTopAnalysis::beginJob()
 {
   edm::Service<TFileService> fs;
   cflow = fs->make<TH1D>("cflow","Cut flow for sync",10,0,10);
+  costh = fs->make<TH1D>("costh","Cos theta",200,-1,1);
 }
 
 // ------------ method called once each job just after ending the event loop  ------------
