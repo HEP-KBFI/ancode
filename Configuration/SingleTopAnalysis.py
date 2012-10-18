@@ -28,25 +28,21 @@ process.selectedPatJets.cut = 'userFloat("smearPt") > 40 & userInt("puId") > 0'
 process.load('AnalysisCode.LeptonsProducer.leptonsproducer_cfi')
 #process.leptons.debug = cms.bool(True)
 
-#process.dumpContent = cms.EDAnalyzer('EventContentAnalyzer')
-
-process.goodOfflinePrimaryVertices = cms.EDFilter("PrimaryVertexObjectFilter",
-    filterParams =  cms.PSet(
-        minNdof = cms.double( 4. ),
-        maxZ    = cms.double( 24. ),
-        maxRho  = cms.double( 2. )
-    ),
-    filter      = cms.bool( True),
-    src         = cms.InputTag( 'offlinePrimaryVertices' )
-)
-
 process.load('AnalysisCode.SingleTopFilter.singletopfilter_cfi')
+
+process.lightJet = process.selectedPatJets.clone()
+process.lightJet.src=cms.InputTag("selectedPatJets")
+process.lightJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") < 0.679'
+
+process.bJet = process.lightJet.clone()
+process.bJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") > 0.679'
 
 process.p = cms.Path(
     process.trig+
-    process.goodOfflinePrimaryVertices+
     process.smearedJets+
     process.selectedPatJets+
     process.leptons+
-    process.stfilt
+    process.stfilt+
+    process.lightJet+
+    process.bJet
 )
