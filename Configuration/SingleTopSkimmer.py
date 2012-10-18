@@ -25,7 +25,7 @@ process.patPF2PATSequence.insert(-1, process.producePFMETCorrections)
 process.pfPileUp.checkClosestZVertex = False
 
 # We can switch to GsfElectrons, but supposedly the inefficiency was fixed in 5_3_x
-useGsfElectrons(process,postfix,dR="03")
+#useGsfElectrons(process,postfix,dR="03")
 
 # Add electron MVA ID
 process.load('EGamma.EGammaAnalysisTools.electronIdMVAProducer_cfi') 
@@ -171,7 +171,7 @@ process.out.outputCommands += [
     "keep *_puJetId_*_*",
     "keep *_puJetMva_*_*",
     "keep *_genParticles_*_*",
-    "keep *_offlinePrimaryVertices_*_*",
+    "keep *_*fflinePrimaryVertices_*_*",
     "keep *_patTriggerEvent_*_*",
     "keep *_patTrigger_*_*",
     "keep *_kt6PFJets_rho_*"
