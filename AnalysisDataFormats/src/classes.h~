@@ -1,9 +1,6 @@
 
-#include "AnalysisCode/AnalysisDataFormats/interface/HtRatio.h"
-#include "AnalysisCode/AnalysisDataFormats/interface/HtRatioFwd.h"
-
 #include "AnalysisCode/AnalysisDataFormats/interface/Neutrino.h"
-#include "AnalysisCode/AnalysisDataFormats/interface/Neutrino.h"
+#include "AnalysisCode/AnalysisDataFormats/interface/NeutrinoFwd.h"
 
 #include "DataFormats/Common/interface/AssociationVector.h"
 #include "DataFormats/Common/interface/RefProd.h"
@@ -44,12 +41,6 @@ namespace {
     /// as these dictionaries are not yet created in DataFormats/TrackReco/src/classes.h (DataFormats/GsfTrackReco/src/classes.h)
     edm::Ptr<reco::Track> dummyTrackPtr;
     edm::Ptr<reco::GsfTrack> dummyGsfTrackPtr;
-    
-    HtRatio dummyHtRatio;
-    edm::Wrapper<HtRatio> dymmyHtRatioWrapper;
-    HtRatioCollection dummyHtRatioCollection;
-    edm::Wrapper<HtRatioCollection> dummyHtRatioCollectionWrapper;
- 
     
     Neutrino dummyNeutrino;
     edm::Wrapper<Neutrino> dymmyNeutrinoWrapper;

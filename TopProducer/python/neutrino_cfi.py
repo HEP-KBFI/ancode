@@ -9,7 +9,7 @@ import FWCore.ParameterSet.Config as cms
 neutrinos = cms.EDProducer("NeutrinoProducer",
                           srcMET = cms.InputTag('patMETs'),
                           srcLepton = cms.InputTag('leptons','goodLeptons'),
-                          verbosity = cms.untracked.int32(1)
+                          verbosity = cms.untracked.int32(0)
                           )
 
 produceNeutrino = cms.Sequence(neutrinos)

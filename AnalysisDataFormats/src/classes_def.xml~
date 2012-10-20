@@ -14,18 +14,11 @@
   <class name="edm::Ptr<reco::Track>"/>
   <class name="edm::Ptr<reco::GsfTrack>"/>
 
-  <!-- create dictionaries for HtRatio objects -->
-  <class name="HtRatio"/>
-  <class name="edm::Wrapper<HtRatio>"/>
-  <class name="std::vector<HtRatio>"/>
-  <class name="edm::Wrapper<std::vector<HtRatio> >"/> 
-
   <!-- create dictionaries for TopCandidate electron objects -->
   <class name="Neutrino"/>
   <class name="edm::Wrapper<Neutrino >"/>
   <class name="std::vector<Neutrino >"/>
   <class name="edm::Wrapper<std::vector<Neutrino> >"/>
-  <class name="edm::Ptr<Neutrino>"/>
-
+ 
 
 </lcgdict>

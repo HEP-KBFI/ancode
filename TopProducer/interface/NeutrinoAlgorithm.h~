@@ -43,6 +43,26 @@ class NeutrinoAlgorithm
     }
     return TMath::Sqrt(mt2);
   }
+
+  double compM(const reco::Candidate::LorentzVector& lepton, const reco::Candidate::LorentzVector& neutrino)
+  {
+    double px = lepton.px() + neutrino.px();
+    double py = lepton.py() + neutrino.py();
+    double py = lepton.pz() + neutrino.pz();
+    double e = lepton.energy() + neutrino.energy();
+    double m2 = e*e - (px*px + py*py + pz*pz);
+    if ( m2 < 0 ) {
+      edm::LogWarning ("compM") << " m2 = " << m2 << " must not be negative !!";
+      return 0.;
+    }
+    return TMath::Sqrt(m2);
+  }
+
+  double square(double x)
+  {
+    return x*x;
+  }
+
 };
 
 #endif 

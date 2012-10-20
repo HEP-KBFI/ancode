@@ -36,30 +36,45 @@ void NeutrinoAlgorithm::computeNeutrino(Neutrino& neutrino,
   double PzNu2 = 0;
   double Lambda = mW*mW/2 + (leptonPtr->px()*metPtr->px() + leptonPtr->py()*metPtr->py());
   double D = square(Lambda)*square(leptonPtr->pz())/(square(square(leptonPtr->pt())) ) - (square(leptonPtr->energy())*square(metPtr->pt()) - square(Lambda))/square(leptonPtr->pt());
-  std::cout<< "D = "<<D<<std::endl; 
-  std::cout<<"lamda = "<<Lambda<<std::endl;
 
-  if( D > 0){
+  if( D > 0 || D == 0 ){
     PzNu1 = Lambda*leptonPtr->pz()/square(leptonPtr->pt()) + TMath::Sqrt(D);
     PzNu2 = Lambda*leptonPtr->pz()/square(leptonPtr->pt()) - TMath::Sqrt(D);
 
     if( abs(PzNu1) < abs(PzNu2) )//choose the solution with smaller absolute value
-	PzNu = PzNu1;
+      PzNu = PzNu1;
+    else
+      PzNu = PzNu2;
+  }
+  
+  if( D < 0){
+    if (verbosity_){
+      std::cout << "Negative discriminant, rescaling W mass " << std::endl;
+      std::cout << "mTW = "<< mTW <<std::endl;
+    }
+    mW = mTW; //rescale W mass to avoid imaginary solutions
+    Lambda = mW*mW/2 + (leptonPtr->px()*metPtr->px() + leptonPtr->py()*metPtr->py());
+    D = square(Lambda)*square(leptonPtr->pz())/(square(square(leptonPtr->pt())) ) - (square(leptonPtr->energy())*square(metPtr->pt()) - square(Lambda))/square(leptonPtr->pt()); //For check. should be 0
+    PzNu = Lambda*leptonPtr->pz()/square(leptonPtr->pt());
+    
+    if(verbosity_)
+      std::cout << "new D = "<<D<<std::endl;
   }
 
- 
-
+  //------------------------Fill neutrino 4-vector----------------------------
   P4Nu.SetPz(PzNu);
   P4Nu.SetE( TMath::Sqrt(P4Nu.Px()*P4Nu.Px() + P4Nu.Py()*P4Nu.Py() + P4Nu.Pz()*P4Nu.Pz()) );
-  //---------------------------------------------------------------------
   
+  double mWcomp = compM(leptonPtr->p4(), P4Nu); //computed W mass consistency check
+  
+  //---------------------------------------------------------------------  
   if ( verbosity_ ) {
     std::cout << "<NeutrinoAlgorithm::computeNeutrino>:" << std::endl;
     std::cout << " lepton Pt = " << leptonPt << std::endl;
     std::cout << " MET = " << metPt << std::endl;
     std::cout << " mTW = " << mTW << std::endl;
     std::cout << " P4(nu) = " << P4Nu <<std::endl;
+    std::cout << " W mass computed = " << mWcomp <<std::endl;
   }
-  
   neutrino.setP4Nu(P4Nu);
 }

@@ -1,7 +1,4 @@
 
-#include "AnalysisCode/AnalysisDataFormats/interface/HtRatio.h"
-#include "AnalysisCode/AnalysisDataFormats/interface/HtRatioFwd.h"
-
 #include "AnalysisCode/AnalysisDataFormats/interface/Neutrino.h"
 #include "AnalysisCode/AnalysisDataFormats/interface/NeutrinoFwd.h"
 
@@ -29,27 +26,21 @@ namespace {
     ///  o edm::Ptr<reco::CaloJet>
     ///  o edm::Ptr<reco::PFJet>
     /// as these dictionaries are not yet created in DataFormats/JetReco/src/classes.h
-    edm::Ptr<reco::CaloJet> dummyCaloJetPtr;
-    edm::Ptr<reco::PFJet> dummyPFJetPtr;
-    std::vector<edm::Ptr<reco::Jet> > dummyJetPtrCollection;
+    //    edm::Ptr<reco::CaloJet> dummyCaloJetPtr;
+    //   edm::Ptr<reco::PFJet> dummyPFJetPtr;
+    //std::vector<edm::Ptr<reco::Jet> > dummyJetPtrCollection;
 
     /// create dictionaries for
     ///  o edm::Ptr<reco::GenParticle>
     /// as these dictionaries are not yet created in DataFormats/HepMCCandidate/src/classes.h
-    edm::Ptr<reco::GenParticle> dummyGenParticlePtr;
+    //edm::Ptr<reco::GenParticle> dummyGenParticlePtr;
 
     /// create dictionaries for
     ///  o edm::Ptr<reco::Track>
     ///  o edm::Ptr<reco::GsfTrack>
     /// as these dictionaries are not yet created in DataFormats/TrackReco/src/classes.h (DataFormats/GsfTrackReco/src/classes.h)
-    edm::Ptr<reco::Track> dummyTrackPtr;
-    edm::Ptr<reco::GsfTrack> dummyGsfTrackPtr;
-    
-    HtRatio dummyHtRatio;
-    edm::Wrapper<HtRatio> dymmyHtRatioWrapper;
-    HtRatioCollection dummyHtRatioCollection;
-    edm::Wrapper<HtRatioCollection> dummyHtRatioCollectionWrapper;
- 
+    //edm::Ptr<reco::Track> dummyTrackPtr;
+    //edm::Ptr<reco::GsfTrack> dummyGsfTrackPtr;
     
     Neutrino dummyNeutrino;
     edm::Wrapper<Neutrino> dymmyNeutrinoWrapper;
