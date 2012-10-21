@@ -36,6 +36,9 @@
 #include "DataFormats/PatCandidates/interface/MET.h"
 #include "DataFormats/Candidate/interface/CandidateFwd.h"
 
+#include "AnalysisCode/AnalysisDataFormats/interface/Neutrino.h"
+#include "AnalysisCode/AnalysisDataFormats/interface/NeutrinoFwd.h"
+
 // Services for histogramming and trees
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
@@ -164,6 +167,13 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    double leppt = leps->begin()->pt();
 
    mt = sqrt( pow(leppt+met,2) - pow(lepx+mx,2) - pow(lepy+my,2) );
+
+   //----- alternatively get mt from the neutrino obect----
+   Handle<std::vector<Neutrino> > nts;
+   iEvent.getByLabel("neutrinos", nts);
+
+   mt = (nts->begin())->mTW();
+   //----------------------------------------------------
 
    if (mt < 40) return false;
    cflow->Fill(5);
