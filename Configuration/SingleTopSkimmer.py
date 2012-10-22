@@ -48,8 +48,8 @@ process.goodOfflinePrimaryVertices = cms.EDFilter("PrimaryVertexObjectFilter",
 # Perform a basic interesting events filter to reduce running time
 process.load("AnalysisCode.InterestingEvents.interestingevents_cfi")
 process.interesting.minLeptons = cms.untracked.int32(1) # at least one electron or muon
-process.interesting.minJets = cms.untracked.int32(2)    # at least 2 jets (b-jet + VBF jet)
-process.interesting.elPt = cms.untracked.double(30)     # minimal pT of electron
+process.interesting.minJets = cms.untracked.int32(0)    # at least 2 jets (b-jet + VBF jet)
+process.interesting.elPt = cms.untracked.double(20)     # minimal pT of electron
 process.interesting.muPt = cms.untracked.double(20)     # minimal pT of electron
 
 # Object selections are defined here
@@ -138,8 +138,8 @@ process.load("CMGTools.External.pujetidsequence_cff")
 
 # The path that runs through the analysis
 process.p = cms.Path(
+    process.interesting+
     process.goodOfflinePrimaryVertices+
-    #process.interesting+
     getattr(process,"patPF2PATSequence")+
     process.electronsWithIsolation+
     process.goodElectrons+
