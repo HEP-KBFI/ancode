@@ -46,6 +46,6 @@ process.p = cms.Path(
     process.leptons+
     process.stfilt+
     process.lightJet+
-    process.bJet
-    +process.produceHtRatio
+    process.bJet+
+    process.produceHtRatio
 )
