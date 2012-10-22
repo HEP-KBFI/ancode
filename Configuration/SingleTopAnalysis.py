@@ -37,7 +37,9 @@ process.lightJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") < 0
 process.bJet = process.lightJet.clone()
 process.bJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") > 0.679'
 
-process.load("AnalysisCode.Configuration.htRatio_cfi")
+process.load('AnalysisCode.TopProducer.neutrino_cfi')
+
+process.load('AnalysisCode.CosTheta.costheta_cfi')
 
 process.p = cms.Path(
     process.trig+
@@ -47,5 +49,6 @@ process.p = cms.Path(
     process.stfilt+
     process.lightJet+
     process.bJet+
-    process.produceHtRatio
+    process.neutrinos+
+    process.costheta
 )
