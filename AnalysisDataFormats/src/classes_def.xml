@@ -1,5 +1,12 @@
 <lcgdict>
 
+  <!-- create dictionaries for top objects -->
+  <class name="Top"/>
+  <class name="edm::Wrapper<Top >"/>
+  <class name="std::vector<Top >"/>
+  <class name="edm::Wrapper<std::vector<Top> >"/>
+
+
   <!-- create dictionaries for neutrino objects -->
   <class name="Neutrino"/>
   <class name="edm::Wrapper<Neutrino >"/>

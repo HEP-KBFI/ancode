@@ -37,7 +37,16 @@ process.lightJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") < 0
 process.bJet = process.lightJet.clone()
 process.bJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") > 0.679'
 
+#------------------------Skim for min 1 good photon (no iso required)--------------------------------
+process.photonCounter = cms.EDFilter("CandViewCountFilter",
+                                     src = cms.InputTag("bJet"),
+                                     minNumber = cms.uint32(1)
+                                     )
+
+process.load("AnalysisCode.TopProducer.top_cfi")
 process.load("AnalysisCode.TopProducer.neutrino_cfi")
+process.load("AnalysisCode.SingleTopFilter.singletopfilter_cfi")
+
 process.printEventContent = cms.EDAnalyzer("EventContentAnalyzer")
 
 process.p = cms.Path(
@@ -47,7 +56,10 @@ process.p = cms.Path(
     process.leptons+
 #    process.stfilt+
     process.lightJet+
-    process.bJet
-    +process.produceNeutrino
-#    +process.printEventContent    # dump of event content after PAT-tuple production   
+    process.bJet+
+    process.produceTop
+#    +process.selectW
+#    +process.printEventContent    # dump of event content after PAT-tuple production
+#    +process.stfilt
+
 )

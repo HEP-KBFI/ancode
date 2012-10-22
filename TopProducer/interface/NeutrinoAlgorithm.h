@@ -19,17 +19,17 @@ class NeutrinoAlgorithm
 {
 
  public:
-
+  
   NeutrinoAlgorithm(const edm::ParameterSet&);
   ~NeutrinoAlgorithm();
-
+  
   Neutrino buildNeutrino(const edm::Ptr<reco::Candidate>&, const edm::Ptr<pat::MET>&);
-
+  
  private:
-
+  
   void computeNeutrino(Neutrino&, const edm::Ptr<reco::Candidate>&, const edm::Ptr<pat::MET>&);
 
-  int verbosity_;
+  int debug_;
 
   double compMt(const reco::Candidate::LorentzVector& lepton,double metPx, double metPy)
   {

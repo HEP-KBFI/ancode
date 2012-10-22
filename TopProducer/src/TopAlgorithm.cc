@@ -1,34 +1,34 @@
-#include "AnalysisCode/TopProducer/interface/NeutrinoAlgorithm.h"
+#include "AnalysisCode/TopProducer/interface/TopAlgorithm.h"
 #include <TMath.h>
 
-NeutrinoAlgorithm::NeutrinoAlgorithm(const edm::ParameterSet& cfg)
+TopAlgorithm::TopAlgorithm(const edm::ParameterSet& cfg)
 {
   debug_ = cfg.getUntrackedParameter<int>("debug", 0);
 }
 
-NeutrinoAlgorithm::~NeutrinoAlgorithm() 
+TopAlgorithm::~TopAlgorithm() 
 {
-  //--- nothing to be done HtRatio...
 }
 
-Neutrino NeutrinoAlgorithm::buildNeutrino(const edm::Ptr<reco::Candidate>& leptonPtr, const edm::Ptr<pat::MET>& metPtr)
+Top TopAlgorithm::buildTop(const edm::Ptr<reco::Candidate>& leptonPtr, const edm::Ptr<pat::MET>& metPtr, const edm::Ptr<pat::Jet>& bjetPtr)
 {
-  Neutrino neutrino;
+  Top top;
 
-  computeNeutrino(neutrino, leptonPtr, metPtr);
+  computeTop(top, leptonPtr, metPtr, bjetPtr);
 
-  return neutrino;
+  return top;
 }
 
-void NeutrinoAlgorithm::computeNeutrino(Neutrino& neutrino,
-					const edm::Ptr<reco::Candidate>& leptonPtr, const edm::Ptr<pat::MET>& metPtr)
+void TopAlgorithm::computeTop(Top& top,
+			      const edm::Ptr<reco::Candidate>& leptonPtr, const edm::Ptr<pat::MET>& metPtr, const edm::Ptr<pat::Jet>& bjetPtr)
 {
   double mW = 80.385;
   double mTW = compMt(leptonPtr->p4(), metPtr->px(), metPtr->py());
   double leptonPt = leptonPtr->pt();
   double metPt = metPtr->pt();
-  reco::Candidate::LorentzVector P4Nu = metPtr->p4();
-
+  reco::Candidate::LorentzVector P4Nu = metPtr->p4(); // neutrino 4-vector
+  reco::Candidate::LorentzVector p4 = reco::Candidate::LorentzVector(0,0,0,0); // top 4-vector
+  std::cout << "p4 = " << p4 <<std::endl;
 
   //-------------Calculate z-component of the neutrino 4-vector--------  
   double PzNu = 0;
@@ -67,15 +67,28 @@ void NeutrinoAlgorithm::computeNeutrino(Neutrino& neutrino,
   
   double mWcomp = compM(leptonPtr->p4(), P4Nu); //computed W mass consistency check
   
-  //---------------------------------------------------------------------  
+  //------------------------Reconstruct top 4-vector------------------------  
+  
+  double pxTop = P4Nu.Px() + leptonPtr->px() + bjetPtr->px();
+  double pyTop = P4Nu.Py() + leptonPtr->py() + bjetPtr->py();
+  double pzTop = P4Nu.Pz() + leptonPtr->pz() + bjetPtr->pz();
+  double eTop = P4Nu.E() + leptonPtr->energy() + bjetPtr->energy();
+  
+  p4.SetPx(pxTop);
+  p4.SetPy(pyTop);
+  p4.SetPz(pzTop);
+  p4.SetE(eTop);
+
   if ( debug_ ) {
     std::cout << "<NeutrinoAlgorithm::computeNeutrino>:" << std::endl;
     std::cout << " lepton Pt = " << leptonPt << std::endl;
     std::cout << " MET = " << metPt << std::endl;
     std::cout << " mTW = " << mTW << std::endl;
     std::cout << " P4(nu) = " << P4Nu <<std::endl;
+    std::cout << " P4(top) = " << p4 <<std::endl;
     std::cout << " W mass computed = " << mWcomp <<std::endl;
   }
-  neutrino.setP4Nu(P4Nu);
-  neutrino.setmTW(mTW);
+  top.setP4Nu(P4Nu);
+  top.setmTW(mTW);
+  top.setp4(p4);
 }

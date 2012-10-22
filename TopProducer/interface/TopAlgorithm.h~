@@ -1,5 +1,5 @@
-#ifndef AnalysisCode_TopProducer_NeutrinoAlgorithm_h
-#define AnalysisCode_TopProducer_NeutrinoAlgorithm_h
+#ifndef AnalysisCode_TopProducer_TopAlgorithm_h
+#define AnalysisCode_TopProducer_TopAlgorithm_h
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
@@ -7,27 +7,28 @@
 #include "DataFormats/Common/interface/View.h"
 #include "DataFormats/Common/interface/Ptr.h"
 #include "DataFormats/PatCandidates/interface/Tau.h"
+#include "DataFormats/PatCandidates/interface/Jet.h"
 #include "DataFormats/PatCandidates/interface/MET.h"
 #include "DataFormats/Candidate/interface/Candidate.h" 
 #include "DataFormats/Candidate/interface/CandidateFwd.h" 
 
-#include "AnalysisCode/AnalysisDataFormats/interface/Neutrino.h"
+#include "AnalysisCode/AnalysisDataFormats/interface/Top.h"
 
 #include <TMath.h>
 
-class NeutrinoAlgorithm
+class TopAlgorithm
 {
 
  public:
   
-  NeutrinoAlgorithm(const edm::ParameterSet&);
-  ~NeutrinoAlgorithm();
+  TopAlgorithm(const edm::ParameterSet&);
+  ~TopAlgorithm();
   
-  Neutrino buildNeutrino(const edm::Ptr<reco::Candidate>&, const edm::Ptr<pat::MET>&);
+  Top buildTop(const edm::Ptr<reco::Candidate>&, const edm::Ptr<pat::MET>&, const edm::Ptr<pat::Jet>&);
   
  private:
   
-  void computeNeutrino(Neutrino&, const edm::Ptr<reco::Candidate>&, const edm::Ptr<pat::MET>&);
+  void computeTop(Top&, const edm::Ptr<reco::Candidate>&, const edm::Ptr<pat::MET>&, const edm::Ptr<pat::Jet>&);
 
   int verbosity_;
 

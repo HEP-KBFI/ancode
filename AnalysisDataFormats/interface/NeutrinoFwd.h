@@ -9,16 +9,16 @@
 
 #include <vector>
 
-/// collection of HtRatio objects
+/// collection of Neutrino objects
 typedef std::vector<Neutrino> NeutrinoCollection;
 
-/// persistent reference to a HtRatio object
+/// persistent reference to a Neutrino object
 typedef edm::Ref<NeutrinoCollection> NeutrinoRef;
 
-/// references to HtRatio collection
-typedef edm::RefProd<NeutrinoCollection> NEutrinoRefProd;
+/// references to Neutrino collection
+typedef edm::RefProd<NeutrinoCollection> NeutrinoRefProd;
 
-/// vector of references to htRatio objects all in the same collection
+/// vector of references to Neutrino objects all in the same collection
 typedef edm::RefVector<NeutrinoCollection> NeutrinoRefVector;
 
 #endif
