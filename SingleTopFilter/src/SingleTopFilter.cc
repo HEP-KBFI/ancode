@@ -116,6 +116,7 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    using namespace std;
    using namespace pat;
 
+   int ev = iEvent.id().event();
    // Let's count all events
    cflow->Fill(0);
 
@@ -125,6 +126,7 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
    if (leps->size() != 1) return false;
    cflow->Fill(1); // Passed single good lepton cut
+   if (debug) cout << "Step 1 pass: " << ev << endl;
 
    // Next let's read the veto collection and see if there are any muons/electrons to veto the event
    bool muveto = false;
@@ -139,9 +141,11 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
    if (muveto) return false;
    cflow->Fill(2); // Passed muon veto cut
+   if (debug) cout << "Step 2 pass: " << ev << endl;
 
    if (elveto) return false;
    cflow->Fill(3); // Passed also electron veto cut
+   if (debug) cout << "Step 3 pass: " << ev << endl;
 
    // Let's turn to jets
    Handle<JetCollection> jets;
@@ -149,6 +153,7 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
    if (jets->size() != 2) return false;
    cflow->Fill(4); // Passed jet counting cut
+   if (debug) cout << "Step 4 pass: " << ev << endl;
 
    // Now W mass constraint
    Handle<METCollection> mets;
@@ -167,6 +172,7 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
    if (mt < 40) return false;
    cflow->Fill(5);
+   if (debug) cout << "Step 5 pass: " << ev << endl;
 
    // And finally, do we have exactly one b-jet?
    int nBjet = 0;
@@ -176,6 +182,7 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
    if (nBjet != 1) return false;
    cflow->Fill(6); // Final passing count
+   if (debug) cout << "Step 6 pass: " << ev << endl;
 
    return true;
 }
