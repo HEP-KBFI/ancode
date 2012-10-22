@@ -24,7 +24,7 @@ class Neutrino //: public reco::LeafCandidate
   /// allow only HtRatioAlgorithm to change values of data-members
    friend class NeutrinoAlgorithm;
 
-  void setmTW(double mTW) { mTW_ = mTW; }
+  void setENu(double ENu) { ENu_ = ENu; }
   void setP4Nu(const reco::Candidate::LorentzVector& P4Nu) { P4Nu_ = P4Nu; }
 
   /// ratio of tau pt and sum of jet pt
