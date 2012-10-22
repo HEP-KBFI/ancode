@@ -127,6 +127,9 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    if (leps->size() != 1) return false;
    cflow->Fill(1); // Passed single good lepton cut
    if (debug) cout << "Step 1 pass: " << ev << endl;
+   if (debug)
+     for (reco::CandidateCollection::const_iterator it = leps->begin(); it != leps->end(); it++) 
+       cout << "Lepton: " << it->pdgId() << " pt = " << it->pt() << endl;
 
    // Next let's read the veto collection and see if there are any muons/electrons to veto the event
    bool muveto = false;
