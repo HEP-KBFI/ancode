@@ -135,7 +135,7 @@ LeptonsProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    for (MuonCollection::const_iterator mu = gMu->begin(); mu != gMu->end(); mu++) {
      if (fabs(mu->vertex().z() - PV.position().z()) < 0.5) {
        selLeps->push_back(*mu);
-       if (debug) cout << "mu: pt=" << mu->pt() << " eta=" << mu->eta() << " phi=" << mu->phi() << endl;
+       if (debug) cout << "mu: pt=" << mu->pt() << " eta=" << mu->eta() << " phi=" << mu->phi() << " iso=" << mu->userFloat("rhoCorrRelIso") << " tk: " << mu->globalTrack()->hitPattern().numberOfValidMuonHits() << endl;
      }
    }
 

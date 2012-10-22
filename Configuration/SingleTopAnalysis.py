@@ -15,7 +15,7 @@ process.load('AnalysisCode.TriggerFilter.triggerfilter_cfi')
 process.source = cms.Source("PoolSource",
     # replace 'myfile.root' with the source file you want to use
     fileNames = cms.untracked.vstring(
-        'file:/hdfs/local/mario/singletop/53sync/tuple_gsfele.root'
+        'file:/hdfs/local/mario/singletop/53sync/tuple_pfele.root'
     )
 )
 process.load('AnalysisCode.SmearedJetProducer.smearedjetproducer_cfi')
@@ -26,7 +26,7 @@ process.selectedPatJets.src = cms.InputTag("smearedJets")
 process.selectedPatJets.cut = 'userFloat("smearPt") > 40 & userInt("puId") > 0'
 
 process.load('AnalysisCode.LeptonsProducer.leptonsproducer_cfi')
-#process.leptons.debug = cms.bool(True)
+process.leptons.debug = cms.bool(True)
 
 process.load('AnalysisCode.SingleTopFilter.singletopfilter_cfi')
 
