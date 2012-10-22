@@ -28,7 +28,6 @@ void TopAlgorithm::computeTop(Top& top,
   double metPt = metPtr->pt();
   reco::Candidate::LorentzVector P4Nu = metPtr->p4(); // neutrino 4-vector
   reco::Candidate::LorentzVector p4 = reco::Candidate::LorentzVector(0,0,0,0); // top 4-vector
-  std::cout << "p4 = " << p4 <<std::endl;
 
   //-------------Calculate z-component of the neutrino 4-vector--------  
   double PzNu = 0;
@@ -69,15 +68,7 @@ void TopAlgorithm::computeTop(Top& top,
   
   //------------------------Reconstruct top 4-vector------------------------  
   
-  double pxTop = P4Nu.Px() + leptonPtr->px() + bjetPtr->px();
-  double pyTop = P4Nu.Py() + leptonPtr->py() + bjetPtr->py();
-  double pzTop = P4Nu.Pz() + leptonPtr->pz() + bjetPtr->pz();
-  double eTop = P4Nu.E() + leptonPtr->energy() + bjetPtr->energy();
-  
-  p4.SetPx(pxTop);
-  p4.SetPy(pyTop);
-  p4.SetPz(pzTop);
-  p4.SetE(eTop);
+  p4 = P4Nu + leptonPtr->p4() + bjetPtr->p4();
 
   if ( debug_ ) {
     std::cout << "<NeutrinoAlgorithm::computeNeutrino>:" << std::endl;

@@ -1,4 +1,9 @@
 <lcgdict>
+  <!-- create dictionaries for top+light jet pair objects -->
+  <class name="TopJetPair"/>
+  <class name="edm::Wrapper<TopJetPair >"/>
+  <class name="std::vector<TopJetPair >"/>
+  <class name="edm::Wrapper<std::vector<TopJetPair> >"/>
 
   <!-- create dictionaries for top objects -->
   <class name="Top"/>
