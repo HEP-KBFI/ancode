@@ -1,6 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 
-process = cms.Process("Demo")
+process = cms.Process("Analysis")
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
 
@@ -16,13 +16,8 @@ process.source = cms.Source("PoolSource",
     # replace 'myfile.root' with the source file you want to use
     fileNames = cms.untracked.vstring(
         'file:/hdfs/local/mario/singletop/53sync/tuple_gsfele.root'
-      #  'file:/hdfs/local/mario/singletop/53sync/tbar_tuple_sync2.root'
-      #  'file:../Configuration/tuple.root'
     )
 )
-process.load('AnalysisCode.SingleTopAnalysis.singletopanalysis_cfi')
-#process.stanal.PUveto = cms.bool(False)
-
 process.load('AnalysisCode.SmearedJetProducer.smearedjetproducer_cfi')
 process.smearedJets.debug = cms.bool(True)
 
@@ -31,25 +26,28 @@ process.selectedPatJets.src = cms.InputTag("smearedJets")
 process.selectedPatJets.cut = 'userFloat("smearPt") > 40 & userInt("puId") > 0'
 
 process.load('AnalysisCode.LeptonsProducer.leptonsproducer_cfi')
-process.leptons.debug = cms.bool(True)
+#process.leptons.debug = cms.bool(True)
 
-process.dumpContent = cms.EDAnalyzer('EventContentAnalyzer')
+process.load('AnalysisCode.SingleTopFilter.singletopfilter_cfi')
 
-process.goodOfflinePrimaryVertices = cms.EDFilter("PrimaryVertexObjectFilter",
-    filterParams =  cms.PSet(
-        minNdof = cms.double( 4. ),
-        maxZ    = cms.double( 24. ),
-        maxRho  = cms.double( 2. )
-    ),
-    filter      = cms.bool( True),
-    src         = cms.InputTag( 'offlinePrimaryVertices' )
-)
+process.lightJet = process.selectedPatJets.clone()
+process.lightJet.src=cms.InputTag("selectedPatJets")
+process.lightJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") < 0.679'
+
+process.bJet = process.lightJet.clone()
+process.bJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") > 0.679'
+
+process.load("AnalysisCode.TopProducer.neutrino_cfi")
+process.printEventContent = cms.EDAnalyzer("EventContentAnalyzer")
 
 process.p = cms.Path(
     process.trig+
-    process.goodOfflinePrimaryVertices+
     process.smearedJets+
     process.selectedPatJets+
     process.leptons+
-    process.stanal
+    process.stfilt+
+    process.lightJet+
+    process.bJet
+    +process.produceNeutrino
+#    +process.printEventContent    # dump of event content after PAT-tuple production   
 )

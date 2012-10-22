@@ -15,7 +15,7 @@ process.load('AnalysisCode.TriggerFilter.triggerfilter_cfi')
 process.source = cms.Source("PoolSource",
     # replace 'myfile.root' with the source file you want to use
     fileNames = cms.untracked.vstring(
-        'file:/hdfs/local/mario/singletop/53sync/tuple_pfele.root'
+        'file:/hdfs/local/mario/singletop/53sync/tuple_gsfele.root'
     )
 )
 process.load('AnalysisCode.SmearedJetProducer.smearedjetproducer_cfi')
@@ -26,7 +26,7 @@ process.selectedPatJets.src = cms.InputTag("smearedJets")
 process.selectedPatJets.cut = 'userFloat("smearPt") > 40 & userInt("puId") > 0'
 
 process.load('AnalysisCode.LeptonsProducer.leptonsproducer_cfi')
-process.leptons.debug = cms.bool(True)
+#process.leptons.debug = cms.bool(True)
 
 process.load('AnalysisCode.SingleTopFilter.singletopfilter_cfi')
 
@@ -37,15 +37,17 @@ process.lightJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") < 0
 process.bJet = process.lightJet.clone()
 process.bJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") > 0.679'
 
-process.load("AnalysisCode.Configuration.htRatio_cfi")
+process.load("AnalysisCode.TopProducer.neutrino_cfi")
+process.printEventContent = cms.EDAnalyzer("EventContentAnalyzer")
 
 process.p = cms.Path(
     process.trig+
     process.smearedJets+
     process.selectedPatJets+
     process.leptons+
-    process.stfilt+
+#    process.stfilt+
     process.lightJet+
     process.bJet
-    +process.produceHtRatio
+    +process.produceNeutrino
+#    +process.printEventContent    # dump of event content after PAT-tuple production   
 )
