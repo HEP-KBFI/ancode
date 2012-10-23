@@ -3,6 +3,7 @@ import FWCore.ParameterSet.Config as cms
 stfilt = cms.EDFilter('SingleTopFilter',
     goodLeptons     = cms.InputTag('leptons','goodLeptons'),
     vetoLeptons     = cms.InputTag('leptons','vetoLeptons'),
+    leptonFlavors   = cms.vint32(11,13),
     jets            = cms.InputTag('selectedPatJets'),
     met             = cms.InputTag('patMETs'),
     bTagger         = cms.string("combinedSecondaryVertexMVABJetTags"),

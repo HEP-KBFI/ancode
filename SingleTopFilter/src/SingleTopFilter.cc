@@ -69,6 +69,7 @@ class SingleTopFilter : public edm::EDFilter {
       std::string bTagger;
       double bTagCut;
       TH1D *cflow;
+      std::vector<int> lepFlavors;
 };
 
 //
@@ -92,6 +93,7 @@ SingleTopFilter::SingleTopFilter(const edm::ParameterSet& iConfig)
    metLab     = iConfig.getParameter<edm::InputTag>("met");
    bTagger    = iConfig.getParameter<std::string>("bTagger");
    bTagCut    = iConfig.getParameter<double>("bTagCut");
+   lepFlavors = iConfig.getParameter<std::vector<int> >("leptonFlavors");
 }
 
 
@@ -125,11 +127,19 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    iEvent.getByLabel(goodLepLab,leps);
 
    if (leps->size() != 1) return false;
-   cflow->Fill(1); // Passed single good lepton cut
-   if (debug) cout << "Step 1 pass: " << ev << endl;
    if (debug)
      for (reco::CandidateCollection::const_iterator it = leps->begin(); it != leps->end(); it++) 
        cout << "Lepton: " << it->pdgId() << " pt = " << it->pt() << endl;
+
+   // Let's check if the flavor matches that of allowed flavors too
+   int pid = abs(leps->begin()->pdgId());
+   bool pass = false;
+   for (unsigned int i = 0; i<lepFlavors.size(); i++) 
+     if (pid == lepFlavors[i]) pass=true;
+
+   if (!pass) return false;
+   cflow->Fill(1); // Passed single good lepton cut
+   if (debug) cout << "Step 1 pass: " << ev << endl;
 
    // Next let's read the veto collection and see if there are any muons/electrons to veto the event
    bool muveto = false;
