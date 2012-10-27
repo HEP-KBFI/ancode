@@ -10,7 +10,7 @@ topJetPairs = cms.EDProducer("TopJetPairProducer",
                       srcMET = cms.InputTag('patMETs'),
                       srcLepton = cms.InputTag('leptons','goodLeptons'),
                       srcBJet = cms.InputTag('bJet'),
-                      srcLightJet = cms.InputTag('lightJet'),
+                      srcLJet = cms.InputTag('lightJet'),
                       debug = cms.untracked.int32(1)
                       )
 

@@ -11,7 +11,7 @@ topJetPairs = cms.EDProducer("TopJetPairProducer",
                       srcLepton = cms.InputTag('leptons','goodLeptons'),
                       srcBJet = cms.InputTag('bJet'),
                       srcLJet = cms.InputTag('lightJet'),
-                      debug = cms.untracked.int32(1)
+                      debug = cms.untracked.int32(0)
                       )
 
 produceTopJetPairs = cms.Sequence(topJetPairs)
