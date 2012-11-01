@@ -11,7 +11,8 @@ topJetPairs = cms.EDProducer("TopJetPairProducer",
                       srcLepton = cms.InputTag('leptons','goodLeptons'),
                       srcBJet = cms.InputTag('bJet'),
                       srcLJet = cms.InputTag('lightJet'),
-                      debug = cms.untracked.int32(0)
+                      nuComputation = cms.untracked.int32(1), # 1 - always modify full 4vector with cubic solution. 2 - modify full 4vector only in case of imaginary solution of pz
+                      debug = cms.untracked.int32(1)
                       )
 
 produceTopJetPairs = cms.Sequence(topJetPairs)

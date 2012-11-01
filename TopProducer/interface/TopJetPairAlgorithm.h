@@ -31,6 +31,7 @@ class TopJetPairAlgorithm
   void computeTopJetPair(TopJetPair&, const edm::Ptr<reco::Candidate>&, const edm::Ptr<pat::MET>&, const edm::Ptr<pat::Jet>&, const edm::Ptr<pat::Jet>& );
 
   int debug_;
+  int nuComputation_;
 
   double compMt(const reco::Candidate::LorentzVector& lepton,double metPx, double metPy)
   {
@@ -89,8 +90,11 @@ class TopJetPairAlgorithm
     double L = square(mW)/2 + (pxL*met.px() + pyL*met.py());
     double D = L*L - square(pTL)*square(met.pt());
 
+    if( nuComputation_ != 1 && nuComputation_ !=2 )
+      edm::LogWarning ("compNuP4") << "Valid nuComputation methods are: 1 -- always use cubic equation with M_W mass constraint; 2 -- use cubic equation only if pz from (p4nu + p4el)->M() = MW is imaginary. Neurino reconstruction algorithm is not applied and p4nu = p4met is used";
+
     //------------------ if pz (nu) is real p3(nu) = (MET, pz)-------------------------------
-    if( D > 0 || D==0){ 
+    if( ( D > 0 || D==0 ) && nuComputation_ == 2 ){ 
       if(debug_)
 	std::cout<< "Real z, compute new pz"<<std::endl; 
       double pz1 = 0, pz2 = 0;
@@ -101,11 +105,11 @@ class TopJetPairAlgorithm
       else
 	pz = pz2;
     }
+
     //---------------imaginary solution of pz -> set D=0, find pz and modify px, py to satisfy mW = PDG-----------------
-    if( D < 0 ){ 
+    if( D < 0 || nuComputation_ == 1 ){ 
       if( debug_ )
 	std::cout<<"Imaginary z, find px, py, pz"<<std::endl;
-      pz = L*pzL/square(pTL);
            
       double a = square(lep.pt());
       double b = 3*mW*lep.pt()*lep.py();
@@ -129,9 +133,10 @@ class TopJetPairAlgorithm
       }
 
       if( !TMath::RootsCubic(coef1,z1,z2,z3) ){ //three real roots
-	std::cout<<"WARNING: THREE REAL SOLUTIONS! Use only z1"<<std::endl;
-	std::cout<<"z1 = "<< z1 << ", z2 = "<< z2 << ", z3 = "<< z3 <<std::endl;
+	edm::LogWarning ("compNuP4") << "THREE REAL SOLUTIONS: z1 = "<< z1 << ", z2 = "<< z2 << ", z3 = "<< z3 << ". Use only z1."; 
       }
+      double L_new = square(mW)/2 + (pxL*px + pyL*py);
+      pz = L_new*pzL/square(pTL);
     }
 
     //-------------------------fill neutrino 4-vector----------------------------------
@@ -139,6 +144,7 @@ class TopJetPairAlgorithm
     p4nu.SetPy(py);
     p4nu.SetPz(pz);
     p4nu.SetE(TMath::Sqrt( px*px + py*py + pz*pz) );
+
 
     return p4nu;
   }
