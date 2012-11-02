@@ -54,11 +54,9 @@ process.p = cms.Path(
     process.smearedJets+
     process.selectedPatJets+
     process.leptons+
-    process.stfilt+
+#    process.stfilt+
     process.lightJet+
     process.bJet+
-#    process.photonCounter
-#    +process.produceNeutrino
     process.produceTop
 #    +process.selectW
 #    +process.printEventContent    # dump of event content after PAT-tuple production

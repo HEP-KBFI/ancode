@@ -5,6 +5,8 @@
 #include "AnalysisCode/AnalysisDataFormats/interface/Top.h"
 #include "AnalysisCode/AnalysisDataFormats/interface/TopFwd.h"
 
+#include "AnalysisCode/AnalysisDataFormats/interface/TopJetPair.h"
+#include "AnalysisCode/AnalysisDataFormats/interface/TopJetPairFwd.h"
 
 #include "DataFormats/Common/interface/AssociationVector.h"
 #include "DataFormats/Common/interface/RefProd.h"
@@ -24,7 +26,11 @@
 
 namespace {
   struct AnalysisDataFormats_TauAnalysis_dictionary {
-
+    
+    TopJetPair dummyTopJetPair;
+    edm::Wrapper<TopJetPair> dymmyTopJetPairWrapper;
+    TopJetPairCollection dummyTopJetPairCollection;
+    edm::Wrapper<TopJetPairCollection> dummyTopJetPairCollectionWrapper;
 
     Top dummyTop;
     edm::Wrapper<Top> dymmyTopWrapper;

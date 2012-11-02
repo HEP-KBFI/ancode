@@ -43,6 +43,7 @@ process.photonCounter = cms.EDFilter("CandViewCountFilter",
                                      minNumber = cms.uint32(1)
                                      )
 
+process.load("AnalysisCode.TopProducer.topJetPair_cfi")
 process.load("AnalysisCode.TopProducer.top_cfi")
 process.load("AnalysisCode.TopProducer.neutrino_cfi")
 process.load("AnalysisCode.SingleTopFilter.singletopfilter_cfi")
@@ -57,7 +58,7 @@ process.p = cms.Path(
 #    process.stfilt+
     process.lightJet+
     process.bJet+
-    process.produceTop
+    process.produceTopJetPairs
 #    +process.selectW
 #    +process.printEventContent    # dump of event content after PAT-tuple production
 #    +process.stfilt
