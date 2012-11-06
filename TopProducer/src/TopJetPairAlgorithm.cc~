@@ -5,6 +5,7 @@
 TopJetPairAlgorithm::TopJetPairAlgorithm(const edm::ParameterSet& cfg)
 {
   debug_ = cfg.getUntrackedParameter<int>("debug", 0);
+  nuComputation_ = cfg.getUntrackedParameter<int>("nuComputation", 1);
 }
 
 TopJetPairAlgorithm::~TopJetPairAlgorithm() 
@@ -34,7 +35,7 @@ void TopJetPairAlgorithm::computeTopJetPair(TopJetPair& topJetPair,
 
   p4nu = compNuP4( leptonPtr->p4(),metPtr->p4() ); //fill neutrino 4-vector
     
-  reco::Candidate::LorentzVector p4W = p4nu + leptonPtr->p4();
+  reco::Candidate::LorentzVector p4W = metPtr->p4() + leptonPtr->p4();
   //---------------------------reconstruct final observables--------------------
 
   double mWcomp = compM(leptonPtr->p4(), p4nu); //computed W mass consistency check
