@@ -200,7 +200,7 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    }
 
 
-   if( selection == "sync"){
+   if( selection = "sync"){
 
      if (leps->size() != 1) return false;
      if (debug)
