@@ -137,10 +137,23 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    iEvent.getByLabel(metLab,mets);
 
 
+   if (leps->size() != 1) return false;
+   if (debug)
+     for (reco::CandidateCollection::const_iterator it = leps->begin(); it != leps->end(); it++)
+       cout << "Lepton: " << it->pdgId() << " pt = " << it->pt() << endl;
+
+   // Let's check if the flavor matches that of allowed flavors too                                                                                                                           
+   int pid = abs(leps->begin()->pdgId());
+   bool pass = false;
+   for (unsigned int i = 0; i<lepFlavors.size(); i++)
+     if (pid == lepFlavors[i]) pass=true;
+
+   if (!pass) return false;
+   cflow->Fill(1); // Passed single good lepton cut                                                                                                                                           
+   if (debug) cout << "Step 1 pass: " << ev << endl;
+
+
    if( selection == "TOP-12-011"){
-     if(leps->size() != 1) return false;
-     cflow->Fill(1); //one good lepton
-     
      bool muveto = false;
      bool elveto = false;
      
@@ -180,7 +193,6 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
      mt = sqrt( pow(leppt+mett,2) - pow(lepx+mx,2) - pow(lepy+my,2) );
 
-     //     double mtW = (leps->begin()->p4() + mets->begin()->p4() ).mt(); //miks ei anna sama tulemust?
      mtWmet->Fill( mt );
      met->Fill( mets->begin()->pt() );
 
@@ -202,21 +214,6 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
    if( selection == "sync"){
 
-     if (leps->size() != 1) return false;
-     if (debug)
-       for (reco::CandidateCollection::const_iterator it = leps->begin(); it != leps->end(); it++) 
-	 cout << "Lepton: " << it->pdgId() << " pt = " << it->pt() << endl;
-     
-     // Let's check if the flavor matches that of allowed flavors too
-     int pid = abs(leps->begin()->pdgId());
-     bool pass = false;
-     for (unsigned int i = 0; i<lepFlavors.size(); i++) 
-     if (pid == lepFlavors[i]) pass=true;
-     
-     if (!pass) return false;
-     cflow->Fill(1); // Passed single good lepton cut
-     if (debug) cout << "Step 1 pass: " << ev << endl;
-     
      // Next let's read the veto collection and see if there are any muons/electrons to veto the event
      bool muveto = false;
      bool elveto = false;
@@ -269,7 +266,7 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    }
 
    else{
-     edm::LogWarning ("compMt") << "Choose a valid selection path. Options: 'sync', 'TOP-12-011' ";
+     edm::LogWarning ("SingleTopFilter") << "Choose a valid selection path. Options: 'sync', 'TOP-12-011' ";
      return false;
    }
 
@@ -282,8 +279,8 @@ SingleTopFilter::beginJob()
   edm::Service<TFileService> fs;
   cflow = fs->make<TH1D>("cflow","Cut flow for sync",10,0,10);
 
-  leadJetPt = fs->make<TH1D>("leadJetPt","lead jet pt",300,0,150);
-  nextJetPt = fs->make<TH1D>("2ndJetPt","2nd jet pt",300,0,150); 
+  leadJetPt = fs->make<TH1D>("leadJetPt","lead jet pt",500,0,500);
+  nextJetPt = fs->make<TH1D>("2ndJetPt","2nd jet pt",500,0,500); 
 
   mtWmet = fs->make<TH1D>("mtWmet","MtW from met",200,0,200); 
   met = fs->make<TH1D>("met","MET",200,0,200);
