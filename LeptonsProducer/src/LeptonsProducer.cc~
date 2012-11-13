@@ -157,7 +157,7 @@ LeptonsProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    // Repeat for good electrons
    for (ElectronCollection::const_iterator el = gEl->begin(); el != gEl->end(); el++) {
      // Here we could do some selection
-     if( el->electronID("mvaTrigV0") > goodElMva && el->userFloat("rhoCorrRelIso") < 0.1 ) //tighten cut on electron mva and relIso
+     if( el->electronID("mvaTrigV0") > goodElMva ) //tighten cut on electron mva
        selLeps->push_back(*el);
 
      if (debug) cout << "el: pt=" << el->pt() << " eta=" << el->eta() << " phi=" << el->phi() << endl;
@@ -170,7 +170,7 @@ LeptonsProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
      for (reco::CandidateCollection::const_iterator c = selLeps->begin(); c != selLeps->end(); c++)
        if (reco::deltaR(el->p4(),c->p4()) < 0.1) found = true;
      if (debug) cout << " found=" << found << endl;
-     if ( !found && el->userFloat("rhoCorrRelIso") < 0.15 ) //tighten cut on rel Iso
+     if (!found)
        vetoLeps->push_back(*el);
    }
 
