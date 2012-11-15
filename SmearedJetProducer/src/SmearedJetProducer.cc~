@@ -122,9 +122,11 @@ SmearedJetProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    //  Handle<ValueMap<float> > puJetIdRMS;
    //iEvent.getByLabel("ptRMS","puJetId", puJetIdRMS);
 
+   //   JetCollection *outJets = new JetCollection();
    std::auto_ptr<JetCollection> outJets(new JetCollection());
    
    for (unsigned int i = 0; i<jets->size(); i++) {
+     //     Jet *jet = new Jet(jets->at(i));
      std::auto_ptr<Jet> jet(new Jet( jets->at(i) ) );
      
      double f = 0;

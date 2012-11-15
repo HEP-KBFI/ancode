@@ -137,23 +137,10 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    iEvent.getByLabel(metLab,mets);
 
 
-   if (leps->size() != 1) return false;
-   if (debug)
-     for (reco::CandidateCollection::const_iterator it = leps->begin(); it != leps->end(); it++)
-       cout << "Lepton: " << it->pdgId() << " pt = " << it->pt() << endl;
-
-   // Let's check if the flavor matches that of allowed flavors too                                                                                                                           
-   int pid = abs(leps->begin()->pdgId());
-   bool pass = false;
-   for (unsigned int i = 0; i<lepFlavors.size(); i++)
-     if (pid == lepFlavors[i]) pass=true;
-
-   if (!pass) return false;
-   cflow->Fill(1); // Passed single good lepton cut                                                                                                                                           
-   if (debug) cout << "Step 1 pass: " << ev << endl;
-
-
    if( selection == "TOP-12-011"){
+     if(leps->size() != 1) return false;
+     cflow->Fill(1); //one good lepton
+     
      bool muveto = false;
      bool elveto = false;
      
@@ -214,6 +201,21 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
    if( selection == "sync"){
 
+     if (leps->size() != 1) return false;
+     if (debug)
+       for (reco::CandidateCollection::const_iterator it = leps->begin(); it != leps->end(); it++) 
+	 cout << "Lepton: " << it->pdgId() << " pt = " << it->pt() << endl;
+     
+     // Let's check if the flavor matches that of allowed flavors too
+     int pid = abs(leps->begin()->pdgId());
+     bool pass = false;
+     for (unsigned int i = 0; i<lepFlavors.size(); i++) 
+     if (pid == lepFlavors[i]) pass=true;
+     
+     if (!pass) return false;
+     cflow->Fill(1); // Passed single good lepton cut
+     if (debug) cout << "Step 1 pass: " << ev << endl;
+     
      // Next let's read the veto collection and see if there are any muons/electrons to veto the event
      bool muveto = false;
      bool elveto = false;
