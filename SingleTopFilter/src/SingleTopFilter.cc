@@ -247,6 +247,8 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
      double leppt = leps->begin()->pt();
      
      mt = sqrt( pow(leppt+met,2) - pow(lepx+mx,2) - pow(lepy+my,2) );
+
+     if (debug) cout << "Mt calc: mx=" << mx << " my=" << my << " met=" << met << " px=" << lepx << " py=" << lepy << " pt=" << leppt << " mt=" << mt << endl;
      
      if (mt < 40) return false;
      cflow->Fill(5);
