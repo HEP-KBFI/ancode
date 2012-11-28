@@ -19,7 +19,11 @@ process.source = cms.Source("PoolSource",
     )
 )
 process.load('AnalysisCode.SmearedJetProducer.smearedjetproducer_cfi')
-process.smearedJets.debug = cms.bool(True)
+process.smearedJets.debug = cms.bool(False)
+
+process.load('PhysicsTools.PatAlgos.selectionLayer1.electronSelector_cfi')
+process.selectedPatElectrons.src = cms.InputTag('goodElectrons')
+process.selectedPatElectrons.cut = 'userFloat("rhoCorrRelIso") < 0.1'
 
 process.load('PhysicsTools.PatAlgos.selectionLayer1.jetSelector_cfi')
 process.selectedPatJets.src = cms.InputTag("smearedJets")
@@ -27,8 +31,10 @@ process.selectedPatJets.cut = 'userFloat("smearPt") > 40 & userInt("puId") > 0'
 
 process.load('AnalysisCode.LeptonsProducer.leptonsproducer_cfi')
 process.leptons.debug = cms.bool(True)
+process.leptons.goodElLab = cms.InputTag('selectedPatElectrons')
 
 process.load('AnalysisCode.SingleTopFilter.singletopfilter_cfi')
+process.stfilt.leptonFlavors=cms.vint32(11)
 
 process.lightJet = process.selectedPatJets.clone()
 process.lightJet.src=cms.InputTag("selectedPatJets")
@@ -42,9 +48,10 @@ process.load('AnalysisCode.TopProducer.neutrino_cfi')
 process.load('AnalysisCode.CosTheta.costheta_cfi')
 
 process.p = cms.Path(
-    process.trig+
+    #process.trig+
     process.smearedJets+
     process.selectedPatJets+
+    process.selectedPatElectrons+
     process.leptons+
     process.stfilt+
     process.lightJet+

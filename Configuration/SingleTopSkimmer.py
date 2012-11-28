@@ -21,7 +21,7 @@ postfix = ""
 jetAlgo="AK5"
 usePF2PAT(process,runPF2PAT=True, jetAlgo=jetAlgo, runOnMC=isMC, pvCollection=cms.InputTag('goodOfflinePrimaryVertices'), typeIMetCorrections=True)
 
-process.patPF2PATSequence.insert(-1, process.producePFMETCorrections)
+#process.patPF2PATSequence.insert(-1, process.producePFMETCorrections)
 process.pfPileUp.checkClosestZVertex = False
 
 # We can switch to GsfElectrons, but supposedly the inefficiency was fixed in 5_3_x
@@ -84,9 +84,11 @@ process.vetoElectrons = process.goodElectrons.clone(
     cut=goodVetoElectron
 )
 
-# Muon selection
 process.pfIsolatedMuons.isolationCut = cms.double( 0.5 ) # this isn't PU corrected so needs to be looser
+process.pfIsolatedElectrons.isolationCut = cms.double( 0.5 ) # This isn't PU corrected, so better have it looser
 
+
+# Muon selection
 goodMuon = 'isPFMuon'
 
 goodVetoMuon = goodMuon
@@ -131,10 +133,15 @@ goodJet += ' && neutralHadronEnergyFraction<0.99'
 goodJet += ' && neutralEmEnergyFraction<0.99'
 goodJet += ' && (abs(eta) > 2.4 | (chargedEmEnergyFraction<0.99 && chargedHadronEnergyFraction>0 && chargedMultiplicity>0))'
 
-process.selectedPatJets.cut = goodJet
+process.goodJets = process.selectedPatJets.clone()
+process.goodJets.cut = goodJet
 
 # load the PU JetID sequence
 process.load("CMGTools.External.pujetidsequence_cff")
+process.puJetId.jets=cms.InputTag("goodJets")
+process.puJetMva.jets=cms.InputTag("goodJets")
+process.puJetIdChs.jets=cms.InputTag("goodJets")
+process.puJetMvaChs.jets=cms.InputTag("goodJets")
 
 # The path that runs through the analysis
 process.p = cms.Path(
@@ -147,7 +154,9 @@ process.p = cms.Path(
     process.muonsWithIsolation+
     process.goodMuons+
     process.vetoMuons+
-    process.puJetIdSqeuence
+    process.goodJets+
+    process.puJetIdSqeuence+
+    process.puJetIdSqeuenceChs
 )
 
 
@@ -168,8 +177,11 @@ process.out.outputCommands += [
     "keep *_goodElectrons*_*_*",
     "keep *_vetoMuons*_*_*",
     "keep *_goodMuons*_*_*",
+    "keep *_goodJets*_*_*",
     "keep *_puJetId_*_*",
     "keep *_puJetMva_*_*",
+    "keep *_puJetIdChs_*_*",
+    "keep *_puJetMvaChs_*_*",
     "keep *_genParticles_*_*",
     "keep *_*fflinePrimaryVertices_*_*",
     "keep *_patTriggerEvent_*_*",
