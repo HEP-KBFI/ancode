@@ -122,7 +122,7 @@ class TopJetPairAlgorithm
       //---------------------Solve cubic equation for y = a(x) + sqrt(b(x))--------------------------------
       //Solving cubic equation for y = a(x) - sqrt(b(x)): TMath::RootsCubic({-d,c,-b,a},z1,z2,z3) gives equivalent px, py;
       
-      TMath::RootsCubic(coef1,z1,z2,z3);
+      TMath::RootsCubic(coef1,z1,z2,z3); //default one real and 2 imagnary roots, use only real solution
       px = ( square( z1 ) - square( mW )) / ( 4*lep.px() );
       py = ( square( mW )*lep.py() + 2*lep.px()*lep.py()*px + mW*lep.pt()*z1 ) / ( 2*square( lep.px() ) );
 	
@@ -133,7 +133,46 @@ class TopJetPairAlgorithm
       }
 
       if( !TMath::RootsCubic(coef1,z1,z2,z3) ){ //three real roots
-	edm::LogWarning ("compNuP4") << "THREE REAL SOLUTIONS: z1 = "<< z1 << ", z2 = "<< z2 << ", z3 = "<< z3 << ". Use only z1."; 
+	edm::LogWarning ("compNuP4") << "THREE REAL SOLUTIONS: z1 = "<< z1 << ", z2 = "<< z2 << ", z3 = "<< z3 << ". Choose minimal Delta_pT(nu, MET).";
+	double px1, py1, px2, py2, px3, py3, delta1, delta2, delta3;
+	
+	px1 = ( square( z1 ) - square( mW )) / ( 4*lep.px() );
+	py1 = ( square( mW )*lep.py() + 2*lep.px()*lep.py()*px1 + mW*lep.pt()*z1 ) / ( 2*square( lep.px() ) );
+	delta1 = TMath::Sqrt( square( px1 - met.px() ) + square( py1 - met.py() ) );
+
+	px2 = ( square( z2 ) - square( mW )) / ( 4*lep.px() );
+        py2 = ( square( mW )*lep.py() + 2*lep.px()*lep.py()*px2 + mW*lep.pt()*z2 ) / ( 2*square( lep.px() ) );
+	delta2 = TMath::Sqrt( square( px2 - met.px() ) + square( py2 - met.py() ) );
+
+	px3 = ( square( z3 ) - square( mW )) / ( 4*lep.px() );
+        py3 = ( square( mW )*lep.py() + 2*lep.px()*lep.py()*px3 + mW*lep.pt()*z3 ) / ( 2*square( lep.px() ) );
+	delta3 = TMath::Sqrt( square( px3 - met.px() ) + square( py3 - met.py() ) );
+	
+
+	if( delta1 < delta2 && delta1 < delta3){
+	  px = px1;
+	  py = py1;
+	  if(debug_)
+	    std::cout<<"Minimal delta1"<<std::endl;
+	}
+	if( delta2 < delta3 && delta2 < delta1){
+	  px = px2;
+	  py = py2;
+	  if(debug_)
+	    std::cout<<"Minimal delta2"<<std::endl;
+	}
+	if( delta3 < delta2 && delta3 < delta1 ){
+	  px = px3;
+	  py = py3;
+	  if(debug_)
+	    std::cout<<"Minimal delta3"<<std::endl;
+	}
+	if( abs(delta1-delta2) < 0.001 || abs(delta2-delta3) < 0.001 || abs(delta1-delta3) < 0.001 )
+	  edm::LogWarning ("compNuP4") << "Multiple minimal solutions" << ", delta1 = "<<delta1<<", delta2 = "<<delta2<<", delta3 = "<<delta3;	  
+	if(debug_){
+	  std::cout<<"delta1 = "<<delta1<<", delta2 = "<<delta2<<", delta3 = "<<delta3<<std::endl;
+	  std::cout<<"px = "<<px<<", py = "<<py<<std::endl;
+	}
       }
       double L_new = square(mW)/2 + (pxL*px + pyL*py);
       pz = L_new*pzL/square(pTL);

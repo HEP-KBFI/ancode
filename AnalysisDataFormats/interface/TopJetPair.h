@@ -16,6 +16,8 @@ class TopJetPair //: public reco::LeafCandidate
   ~TopJetPair() {}
   
   double costh() const { return costh_; }
+  double mTW() const { return mTW_; }
+  double met() const { return met_; }
   const reco::Candidate::LorentzVector& p4W() const { return p4W_; }
   const reco::Candidate::LorentzVector& p4nu() const { return p4nu_; }
   const reco::Candidate::LorentzVector& p4top() const { return p4top_; }
@@ -24,8 +26,10 @@ class TopJetPair //: public reco::LeafCandidate
 
  private:
 
-  /// allow only TopAlgorithm to change values of data-members
+  /// allow only TopJetPairAlgorithm to change values of data-members
    friend class TopJetPairAlgorithm;
+   void setmTW(double mTW) {mTW_ = mTW; }
+   void setmet(double met) {met_ = met; }
    void setp4W(const reco::Candidate::LorentzVector& p4W) { p4W_ = p4W; }
    void setcosth(double costh) { costh_ = costh; }
    void setp4nu(const reco::Candidate::LorentzVector& p4nu) { p4nu_ = p4nu; }
@@ -34,8 +38,9 @@ class TopJetPair //: public reco::LeafCandidate
    void setp4leptonTopCM(const reco::Candidate::LorentzVector& p4leptonTopCM) { p4leptonTopCM_ = p4leptonTopCM; }
 
 
-  /// tau 4-vector
+   double mTW_;
    double costh_;
+   double met_;
    reco::Candidate::LorentzVector p4W_; 
    reco::Candidate::LorentzVector p4nu_;
    reco::Candidate::LorentzVector p4top_;

@@ -59,6 +59,9 @@ void TopJetPairAlgorithm::computeTopJetPair(TopJetPair& topJetPair,
     std::cout << "cos theta = " << costh << std::endl;
     std::cout << " W mass computed = " << mWcomp <<", W mass (PDG) = "<< mW <<std::endl;
   }
+
+  topJetPair.setmTW(mTW);
+  topJetPair.setmet(metPtr->pt());
   topJetPair.setp4nu(p4nu);
   topJetPair.setp4W(p4W);
   topJetPair.setcosth(costh);
