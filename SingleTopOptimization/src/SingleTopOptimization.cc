@@ -34,6 +34,7 @@
 #include "DataFormats/Candidate/interface/Candidate.h" 
 #include "DataFormats/PatCandidates/interface/Electron.h"
 #include "DataFormats/PatCandidates/interface/Muon.h"
+#include "DataFormats/PatCandidates/interface/Jet.h"
 
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
@@ -65,7 +66,10 @@ class SingleTopOptimization : public edm::EDAnalyzer {
       virtual void endLuminosityBlock(edm::LuminosityBlock const&, edm::EventSetup const&);
 
       // ----------member data ---------------------------
-  TH1D *costh, *topMass, *Wmass, *el_g_MVA, *el_g_MVA_EB, *el_g_MVA_EE, *nuEta;
+  TH1D *costh, *topMass, *Wmass, *el_g_MVA, *el_g_MVA_EB, *el_g_MVA_EE, *el_g_pt, *el_g_eta, *el_g_relIso, *nuEta, *ljetPt_f, *bjetPt_f, *leadjetPt_f, *nextjetPt_f, *WmTmet, *met_f;
+  TH1D *costh_tight, *topMass_tight, *Wmass_tight, *el_g_MVA_tight, *WmTmet_tight, *met_f_tight, *el_g_pt_tight, *nuEta_tight, *el_g_relIso_tight;
+  TH1D *costh_inv, *topMass_inv, *Wmass_inv, *el_g_MVA_inv, *WmTmet_inv, *met_f_inv, *el_g_pt_inv, *nuEta_inv, *el_g_relIso_inv;
+
   TH2D *mvaGoodElvsVetoEl;
 };
 
@@ -123,59 +127,77 @@ SingleTopOptimization::analyze(const edm::Event& iEvent, const edm::EventSetup& 
    Handle<pat::ElectronCollection> vEl;
    iEvent.getByLabel("vetoElectrons",vEl);
 
-   //   std::cout<<vEl->size()<<" veto electrons in the event"<<endl;
-   //   std::cout<<gEl->size()<<" good electrons in the event"<<endl;
-   //   std::cout<<topjets->size()<<" top jet pairs in the event"<<endl;
+   Handle<pat::JetCollection> ljets;
+   iEvent.getByLabel("lightJet",ljets);
+
+   Handle<pat::JetCollection> bjets;
+   iEvent.getByLabel("bJet",bjets);
 
 
+   double relIso = 10000;
    //--------------Fill Histograms for good electrons---------------
    if( gEl->size() > 0 ){
      pat::ElectronCollection::const_iterator el = gEl->begin();
      el_g_MVA->Fill(  el->electronID("mvaTrigV0") );
+
+     relIso = el->userFloat("rhoCorrRelIso");
+     el_g_relIso->Fill( relIso );
+
+     el_g_pt->Fill( el->pt() );
+     el_g_eta->Fill( el->eta() );
      if( el->isEB() )
        el_g_MVA_EB->Fill( el->electronID("mvaTrigV0") );
      if(el->isEE() )
        el_g_MVA_EE->Fill( el->electronID("mvaTrigV0") );
+  
    }
-   
 
-
-   
-   /*  int numVel = 0; //number of veto electrons in the event
-
-   //----for investigating electron mva of veto electrons comment out the veto electron filter in stfilt--------
-   if( gEl->size() > 0 ){
-     pat::ElectronCollection::const_iterator el = gEl->begin();
-     for( int k = 0; k != 19; k++ ){
-       if( el->electronID("mvaTrigV0") > 0.1 + k*0.05 ){
-         mvaOptGoodEl->Fill(k);
-	 for( int j = 0; j != 19; j++ ){
-	   numVel = 0;
-	   for( pat::ElectronCollection::const_iterator vel = vEl->begin(); vel != vEl->end(); vel++ ){
-	     if( vel->electronID("mvaTrigV0") > 0.1 + k*0.05 )
-	       numVel++;
-	   }
-	   if(numVel < 2){ // if electron veto cut passes (commented out in stfilt)
-	     mvaGoodElvsVetoEl->Fill(k,j);
-	     mvaOptGoodEl->Fill(k);
-	     if( k == 0)
-	       el_g_MVA->Fill(el->electronID("mvaTrigV0") );
-	   }
-	 }
-       }
+   if(ljets->size() && bjets->size() ){
+     ljetPt_f->Fill(ljets->begin()->userFloat("smearPt") );
+     bjetPt_f->Fill(bjets->begin()->userFloat("smearPt") );
+     if( ljets->begin()->userFloat("smearPt") > bjets->begin()->userFloat("smearPt") ){
+       leadjetPt_f->Fill(ljets->begin()->userFloat("smearPt") );
+       nextjetPt_f->Fill(bjets->begin()->userFloat("smearPt"));
+     }
+     else{
+       leadjetPt_f->Fill(bjets->begin()->userFloat("smearPt") );
+       nextjetPt_f->Fill(ljets->begin()->userFloat("smearPt") );
      }
    }
-	     
-   */   
+
       
-         
-   //-------------------fill final histograms-----------------------
-   if(topjets->size()>0){
+    //-------------------fill final histograms-----------------------
+   if( topjets->size()>0 ){
      nuEta->Fill(topjets->begin()->p4nu().Eta());
      costh->Fill( topjets->begin()->costh() );
      topMass->Fill(TMath::Sqrt( topjets->begin()->p4top().M2() ) );
      Wmass->Fill(TMath::Sqrt( topjets->begin()->p4W().M2() ) );
+     WmTmet->Fill( topjets->begin()->mTW() );
+     met_f->Fill( topjets->begin()->met() );
    }
+
+   if( topjets->size()>0 && gEl->begin()->electronID("mvaTrigV0") > 0.98 && relIso < 0.1 ){
+     nuEta_tight->Fill(topjets->begin()->p4nu().Eta());
+     costh_tight->Fill( topjets->begin()->costh() );
+     topMass_tight->Fill(TMath::Sqrt( topjets->begin()->p4top().M2() ) );
+     WmTmet_tight->Fill( topjets->begin()->mTW() );
+     met_f_tight->Fill( topjets->begin()->met() );
+     el_g_MVA_tight->Fill(gEl->begin()->electronID("mvaTrigV0"));
+     el_g_pt_tight->Fill(gEl->begin()->pt());
+     el_g_relIso_tight->Fill(relIso);
+   }
+
+   if( topjets->size()>0 && gEl->begin()->electronID("mvaTrigV0") < 0.98 &&  relIso > 0.1 && relIso < 0.5 ){
+     nuEta_inv->Fill(topjets->begin()->p4nu().Eta());
+     costh_inv->Fill( topjets->begin()->costh() );
+     topMass_inv->Fill(TMath::Sqrt( topjets->begin()->p4top().M2() ) );
+     WmTmet_inv->Fill( topjets->begin()->mTW() );
+     met_f_inv->Fill( topjets->begin()->met() );
+     el_g_MVA_inv->Fill(gEl->begin()->electronID("mvaTrigV0"));
+     el_g_pt_inv->Fill(gEl->begin()->pt());
+     el_g_relIso_inv->Fill(relIso);
+   }
+
 
 }
 
@@ -187,13 +209,45 @@ SingleTopOptimization::beginJob()
   edm::Service<TFileService> fs;
   nuEta = fs->make<TH1D>("nuEta","nu eta",100,-5,5);
   costh = fs->make<TH1D>("costh","Cos(theta*) of lepton and light jet",100,-1,1);
-  topMass = fs->make<TH1D>("topMass","Mass of top quark",100,0,500);
+  topMass = fs->make<TH1D>("topMass","Mass of top quark",300,0,500);
   Wmass = fs->make<TH1D>("Wmass","Mass of recontructed W",240,50,110);
+  WmTmet = fs->make<TH1D>("WmTmet","mT of W from met",500,0,500);
+  met_f = fs->make<TH1D>("met_f","met",500,0,500);
+
   el_g_MVA = fs->make<TH1D>("el_g_MVA","good electron MVA",364,0.1,1.01);
   el_g_MVA_EB = fs->make<TH1D>("el_g_MVA_EB","good electron MVA (barrel)",364,0.1,1.01);
   el_g_MVA_EE = fs->make<TH1D>("el_g_MVA_EE","good electron MVA (endcap)",364,0.1,1.01);
+  
+  el_g_relIso = fs->make<TH1D>("el_g_relIso","electron rel iso",500,0,1);
+  el_g_pt = fs->make<TH1D>("el_g_pt","electron pt",500,0,500);
+  el_g_eta = fs->make<TH1D>("el_g_eta","electron eta",100,-3,3);
 
-  mvaGoodElvsVetoEl = fs->make<TH2D>("mvaGoodElvsVetoEl","Good electron vs Veto electron mva",19,0,19,19,0,19);
+  ljetPt_f = fs->make<TH1D>("ljetPt_f","ljet pt",500,0,500);
+  bjetPt_f = fs->make<TH1D>("bjetPt_f","bjet pt",500,0,500);
+  leadjetPt_f = fs->make<TH1D>("leadjetPt_f","lead jet pt",500,0,500);
+  nextjetPt_f = fs->make<TH1D>("nextjetPt_f","next jet pt",500,0,500);
+
+  //-------------tight sel-------------------------
+  nuEta_tight = fs->make<TH1D>("nuEta_tight","nu eta",100,-5,5);
+  costh_tight = fs->make<TH1D>("costh_tight","Cos(theta*) of lepton and light jet",100,-1,1);
+  topMass_tight = fs->make<TH1D>("topMass_tight","Mass of top quark",300,0,500);
+  Wmass_tight = fs->make<TH1D>("Wmass_tight","Mass of recontructed W",240,50,110);
+  WmTmet_tight = fs->make<TH1D>("WmTmet_tight","mT of W from met",500,0,500);
+  met_f_tight = fs->make<TH1D>("met_f_tight","met",500,0,500);
+  el_g_MVA_tight = fs->make<TH1D>("el_g_MVA_tight","good electron MVA",364,0.1,1.01);
+  el_g_pt_tight = fs->make<TH1D>("el_g_pt_tight","electron pt",500,0,500);
+  el_g_relIso_tight = fs->make<TH1D>("el_g_relIso_tight","electron rel iso",500,0,1);
+
+  //--------------------inv sel-----------------------
+  nuEta_inv = fs->make<TH1D>("nuEta_inv","nu eta",100,-5,5);
+  costh_inv = fs->make<TH1D>("costh_inv","Cos(theta*) of lepton and light jet",100,-1,1);
+  topMass_inv = fs->make<TH1D>("topMass_inv","Mass of top quark",300,0,500);
+  Wmass_inv = fs->make<TH1D>("Wmass_inv","Mass of recontructed W",240,50,110);
+  WmTmet_inv = fs->make<TH1D>("WmTmet_inv","mT of W from met",500,0,500);
+  met_f_inv = fs->make<TH1D>("met_f_inv","met",500,0,500);
+  el_g_MVA_inv = fs->make<TH1D>("el_g_MVA_inv","good electron MVA",364,0.1,1.01);
+  el_g_pt_inv = fs->make<TH1D>("el_g_pt_inv","electron pt",500,0,500);
+  el_g_relIso_inv = fs->make<TH1D>("el_g_relIso_inv","electron rel iso",500,0,1);
 }
 
 // ------------ method called once each job just after ending the event loop  ------------
