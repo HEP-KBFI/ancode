@@ -59,7 +59,7 @@ class LeptonsProducer : public edm::EDProducer {
 
       // ----------member data ---------------------------
       edm::InputTag goodMuLab, vetoMuLab, goodElLab, vetoElLab, pvLab;
-      double goodElMva;
+      double goodElMvaEB, goodElMvaEE, goodElRelIso_, goodElPtMax_;
       bool debug;
       reco::Vertex PV;
 };
@@ -85,7 +85,10 @@ LeptonsProducer::LeptonsProducer(const edm::ParameterSet& iConfig)
    goodMuLab  = iConfig.getParameter<edm::InputTag>("goodMuLab");
    vetoMuLab  = iConfig.getParameter<edm::InputTag>("vetoMuLab");
    goodElLab  = iConfig.getParameter<edm::InputTag>("goodElLab");
-   goodElMva  = iConfig.getParameter<double>("goodElMva");
+   goodElMvaEB  = iConfig.getParameter<double>("goodElMvaEB");
+   goodElMvaEE  = iConfig.getParameter<double>("goodElMvaEE");
+   goodElRelIso_ = iConfig.getParameter<double>("goodElRelIso");
+   goodElPtMax_ = iConfig.getParameter<double>("goodElPtMax");
    vetoElLab  = iConfig.getParameter<edm::InputTag>("vetoElLab");
    pvLab      = iConfig.getParameter<edm::InputTag>("pvLab");
 
@@ -116,10 +119,11 @@ LeptonsProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    auto_ptr<reco::CandidateCollection> vetoLeps(new reco::CandidateCollection());
  
    // Get the primary vertex
+
    Handle<reco::VertexCollection> pvs;
    iEvent.getByLabel(pvLab,pvs);
    PV=*(pvs->begin());
-
+        
    // Read in the collections
    Handle<MuonCollection> gMu;
    iEvent.getByLabel(goodMuLab,gMu);
@@ -135,7 +139,7 @@ LeptonsProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
    // Loop over good muon collection and do the final selections
    for (MuonCollection::const_iterator mu = gMu->begin(); mu != gMu->end(); mu++) {
-     if (fabs(mu->vertex().z() - PV.position().z()) < 0.5) {
+     if ( fabs(mu->vertex().z() - PV.position().z()) < 0.5 ) {
        selLeps->push_back(*mu);
        if (debug) cout << "mu: pt=" << mu->pt() << " eta=" << mu->eta() << " phi=" << mu->phi() << " iso=" << mu->userFloat("rhoCorrRelIso") << " tk: " << mu->globalTrack()->hitPattern().numberOfValidMuonHits() << endl;
      }
@@ -157,7 +161,7 @@ LeptonsProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    // Repeat for good electrons
    for (ElectronCollection::const_iterator el = gEl->begin(); el != gEl->end(); el++) {
      // Here we could do some selection
-     if( el->electronID("mvaTrigV0") > goodElMva && el->userFloat("rhoCorrRelIso") < 0.1 ) //tighten cut on electron mva and relIso
+     if( ( el->pt() < goodElPtMax_) && ( ( el->isEB() && el->electronID("mvaTrigV0") > goodElMvaEB ) || ( el->isEE() && el->electronID("mvaTrigV0") > goodElMvaEE ) ) && el->userFloat("rhoCorrRelIso") < goodElRelIso_ ) //tighten cut on electron mva and relIso
        selLeps->push_back(*el);
 
      if (debug) cout << "el: pt=" << el->pt() << " eta=" << el->eta() << " phi=" << el->phi() << endl;
