@@ -34,6 +34,7 @@
 // Objects for analysis
 #include "DataFormats/PatCandidates/interface/Jet.h"
 #include "DataFormats/PatCandidates/interface/MET.h"
+#include "DataFormats/PatCandidates/interface/Electron.h"
 #include "DataFormats/Candidate/interface/CandidateFwd.h"
 
 // Services for histogramming and trees
@@ -68,7 +69,9 @@ class SingleTopFilter : public edm::EDFilter {
       edm::InputTag goodLepLab, vetoLepLab, jetLab, metLab;
       std::string bTagger, selection;
       double bTagCut;
-      TH1D *cflow, *mtWmet, *met, *leadJetPt, *nextJetPt;
+      TH1D *cflow, *mtWmet, *met, *mtWmet_f, *met_f,*leadJetPt, *nextJetPt, *leadJetEta, *nextJetEta;
+      TH1F *leadJetSPt, *nextJetSPt, *leadJetPUmva, *nextJetPUmva, *vetoJetPUmva, *vetoJetRMS, *bJetSPt, *lJetSPt, *lJetRMS;
+      TH1I *numJets, *numJetsLB;
       std::vector<int> lepFlavors;
 };
 
@@ -136,11 +139,23 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
    Handle<METCollection> mets;
    iEvent.getByLabel(metLab,mets);
 
+   if (leps->size() != 1) return false;
+   if (debug)
+     for (reco::CandidateCollection::const_iterator it = leps->begin(); it != leps->end(); it++)
+       cout << "Lepton: " << it->pdgId() << " pt = " << it->pt() << endl;
+
+   // Let's check if the flavor matches that of allowed flavors too                                                                                                                           
+   int pid = abs(leps->begin()->pdgId());
+   bool pass = false;
+   for (unsigned int i = 0; i<lepFlavors.size(); i++)
+     if (pid == lepFlavors[i]) pass=true;
+
+   if (!pass) return false;
+   cflow->Fill(1); // Passed single good lepton cut                                                                                                                                           
+   if (debug) cout << "Step 1 pass: " << ev << endl;
+
 
    if( selection == "TOP-12-011"){
-     if(leps->size() != 1) return false;
-     cflow->Fill(1); //one good lepton
-     
      bool muveto = false;
      bool elveto = false;
      
@@ -155,19 +170,56 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
      if (elveto) return false;
      cflow->Fill(3); // Passed also electron veto cut   
 
+     Handle<JetCollection> ljets;
+     iEvent.getByLabel("lightJet",ljets);
+
+     Handle<JetCollection> bjets;
+     iEvent.getByLabel("bJet",bjets);
+
+     int i = 0;
+     for (JetCollection::const_iterator it = jets->begin(); it != jets->end(); it++){
+       if(i == 0){
+         leadJetPt->Fill( it->pt() );
+	 leadJetEta->Fill( it->eta() );
+	 leadJetPUmva->Fill( it->userFloat("puMVA") );
+       }
+       if(i == 1){
+         nextJetPt->Fill( it->pt() );
+	 nextJetEta->Fill( it->eta() );
+	 nextJetPUmva->Fill( it->userFloat("puMVA") );
+       }
+       if(i > 1){
+	 vetoJetPUmva->Fill( it->userFloat("puMVA") );
+	 vetoJetRMS->Fill( it->userFloat("RMS") );
+       }
+       i++;
+     }
+     numJets->Fill(i);
+     numJetsLB->Fill( bjets->size() + ljets->size() );
+
+     //     for(JetCollection::const_iterator it = ljets->begin(); it != ljets->end(); it++)
+     //  cout<<"pt = "<<it->userFloat("smearPt")<<", phi = "<<it->phi()<<", eta = "<<it->eta()<<endl;
+
+     //--------------exactly 1 b-jet existence----------------------------                                                                                                                             
+     if ( bjets->size() != 1 ) return false;
+     cflow->Fill(4);
+     bJetSPt->Fill( bjets->begin()->userFloat("smearPt") );
+
      //----------------2 jets with leading jet pt > 60----------------------
-     if( jets->size() != 2 || jets->begin()->pt() < 60) return false;
-     cflow->Fill(4); // Passed jet counting cut                 
-     
-     //---------------b-jet existence----------------------------
-     int nBjet = 0;
-     for (JetCollection::const_iterator it = jets->begin(); it != jets->end(); it++)
-       if (it->bDiscriminator(bTagger) > bTagCut )
-         nBjet++;
+     if( ljets->size() + bjets->size() != 2 || ( ljets->begin()->userFloat("smearPt") < 60  && bjets->begin()->userFloat("smearPt") < 60 ) ) return false;
+     cflow->Fill(5); // Passed jet counting and leading jet cut                
 
-     if (nBjet != 1) return false;
-     cflow->Fill(5); 
+     lJetSPt->Fill( ljets->begin()->userFloat("smearPt") );
+     lJetRMS->Fill( ljets->begin()->userFloat("RMS") );
 
+     if(ljets->begin()->userFloat("smearPt") > bjets->begin()->userFloat("smearPt") ){
+       leadJetSPt->Fill( ljets->begin()->userFloat("smearPt") );
+       nextJetSPt->Fill( bjets->begin()->userFloat("smearPt") );
+     }
+     else{
+       leadJetSPt->Fill( bjets->begin()->userFloat("smearPt") );
+       nextJetSPt->Fill( ljets->begin()->userFloat("smearPt") );
+     }
      //-------------------------- W mT -------------------------
      double mt = 0;
      double mx = mets->begin()->px();
@@ -183,17 +235,22 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
      mtWmet->Fill( mt );
      met->Fill( mets->begin()->pt() );
 
-     if( mt < 50 ) return false;
+     if( mt < 40 ) return false;
      cflow->Fill(6);
 
-     int i = 0;
-     for (JetCollection::const_iterator it = jets->begin(); it != jets->end(); it++){
-       if(i == 0)
-         leadJetPt->Fill( it->pt() );
-       if(i == 1)
-         nextJetPt->Fill( it->pt() );
-       i++;
+     met_f->Fill( mets->begin()->pt() );                                                                                                                                           
+     mtWmet_f->Fill(mt);
+
+     // pat electrons                                                                                                                                                                                                           
+     Handle<pat::ElectronCollection> gEl;
+     iEvent.getByLabel("goodElectrons",gEl);
+     if(gEl->size() < 1 ){
+       return false;
+       cout<<"last selection not applied, there are no good electrons"<<endl;
      }
+
+     if( gEl->begin()->electronID("mvaTrigV0") < 0.98 || gEl->begin()->userFloat("rhoCorrRelIso") > 0.1 ) return false;
+     cflow->Fill(7);
 
      return true;     
    }
@@ -201,21 +258,6 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
    if( selection == "sync"){
 
-     if (leps->size() != 1) return false;
-     if (debug)
-       for (reco::CandidateCollection::const_iterator it = leps->begin(); it != leps->end(); it++) 
-	 cout << "Lepton: " << it->pdgId() << " pt = " << it->pt() << endl;
-     
-     // Let's check if the flavor matches that of allowed flavors too
-     int pid = abs(leps->begin()->pdgId());
-     bool pass = false;
-     for (unsigned int i = 0; i<lepFlavors.size(); i++) 
-     if (pid == lepFlavors[i]) pass=true;
-     
-     if (!pass) return false;
-     cflow->Fill(1); // Passed single good lepton cut
-     if (debug) cout << "Step 1 pass: " << ev << endl;
-     
      // Next let's read the veto collection and see if there are any muons/electrons to veto the event
      bool muveto = false;
      bool elveto = false;
@@ -249,6 +291,8 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
      double leppt = leps->begin()->pt();
      
      mt = sqrt( pow(leppt+met,2) - pow(lepx+mx,2) - pow(lepy+my,2) );
+
+     if (debug) cout << "Mt calc: mx=" << mx << " my=" << my << " met=" << met << " px=" << lepx << " py=" << lepy << " pt=" << leppt << " mt=" << mt << endl;
      
      if (mt < 40) return false;
      cflow->Fill(5);
@@ -281,11 +325,30 @@ SingleTopFilter::beginJob()
   edm::Service<TFileService> fs;
   cflow = fs->make<TH1D>("cflow","Cut flow for sync",10,0,10);
 
+  leadJetEta = fs->make<TH1D>("leadJetEta","lead jet eta",300,-5.2,5.2);
+  nextJetEta = fs->make<TH1D>("nextJetEta","lead jet eta",300,-5.2,5.2);
   leadJetPt = fs->make<TH1D>("leadJetPt","lead jet pt",500,0,500);
   nextJetPt = fs->make<TH1D>("2ndJetPt","2nd jet pt",500,0,500); 
 
-  mtWmet = fs->make<TH1D>("mtWmet","MtW from met",200,0,200); 
-  met = fs->make<TH1D>("met","MET",200,0,200);
+  leadJetSPt = fs->make<TH1F>("leadJetSPt","lead jet smeared pt",500,0,500);
+  nextJetSPt = fs->make<TH1F>("2ndJetSPt","2nd jet smeared pt",500,0,500);
+
+  bJetSPt = fs->make<TH1F>("bJetSPt","b-jet smeared pt",500,0,500);
+  lJetSPt = fs->make<TH1F>("lJetSPt","light jet smeared pt",500,0,500);
+  lJetRMS = fs->make<TH1F>("lJetRMS","light jet RMS",200,0,0.1);
+
+  leadJetPUmva = fs->make<TH1F>("leadJetPUmva","lead jet pu mva",200,0,1);
+  nextJetPUmva = fs->make<TH1F>("nextJetPUmva","next jet pu mva",200,0,1);
+  vetoJetPUmva = fs->make<TH1F>("vetoJetPUmva","veto jet pu mva",200,0,1);
+  vetoJetRMS = fs->make<TH1F>("vetoJetRMS","veto jet pu mva",500,0,1);
+
+  numJets = fs->make<TH1I>("numJets","num jets",10,0,10);   
+  numJetsLB = fs->make<TH1I>("numJetsLB","num jets",10,0,10); 
+
+  mtWmet = fs->make<TH1D>("mtWmet","MtW from met",500,0,500); 
+  met = fs->make<TH1D>("met","MET",500,0,500);
+  mtWmet_f = fs->make<TH1D>("mtWmet_f","MtW from met",500,0,500);
+  met_f = fs->make<TH1D>("met_f","MET",500,0,500);
 
 }
 

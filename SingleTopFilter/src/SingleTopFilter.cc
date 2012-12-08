@@ -34,6 +34,7 @@
 // Objects for analysis
 #include "DataFormats/PatCandidates/interface/Jet.h"
 #include "DataFormats/PatCandidates/interface/MET.h"
+#include "DataFormats/PatCandidates/interface/Electron.h"
 #include "DataFormats/Candidate/interface/CandidateFwd.h"
 
 // Services for histogramming and trees
@@ -239,6 +240,16 @@ SingleTopFilter::filter(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
      met_f->Fill( mets->begin()->pt() );                                                                                                                                           
      mtWmet_f->Fill(mt);
+
+     // pat electrons                                                                                                                                                                                                           
+     Handle<pat::ElectronCollection> gEl;
+     iEvent.getByLabel("goodElectrons",gEl);
+     if(gEl->size() < 1 ){
+       return false;
+       cout<<"last selection not applied, there are no good electrons"<<endl;
+     }
+
+     if( gEl->begin()->electronID("mvaTrigV0") > 0.98 && gEl->begin()->userFloat("rhoCorrRelIso") < 0.1 )  cflow->Fill(7);
 
      return true;     
    }
