@@ -53,3 +53,10 @@ trig = cms.EDFilter('TriggerFilter',
     noTrig      = cms.vstring(),
     debug       = cms.bool(False)
 )
+
+trigDiMu = cms.EDFilter('TriggerFilter',
+    trigLabel   = cms.InputTag("patTriggerEvent"),
+    yesTrig     = cms.vstring( "HLT_Mu17_Mu8_v"),
+    noTrig      = cms.vstring(),
+    debug       = cms.bool(False)
+)
