@@ -129,7 +129,7 @@ SmearedJetProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
      
      double f = 0;
      double genPt = 0;
-     double smearPt = 0;
+     double smearPt = jet->pt();
      if (jet->genJet()) {
        genPt=jet->genJet()->pt();
        f = getFactor(jet->genJet()->eta());
