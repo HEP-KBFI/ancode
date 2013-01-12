@@ -1,6 +1,24 @@
 ## import skeleton process
 from PhysicsTools.PatAlgos.patTemplate_cfg import *
 
+# Load variable parsing
+import FWCore.ParameterSet.VarParsing as VarParsing
+options = VarParsing.VarParsing ('analysis')
+options.register('gtag',
+   "START53_V15::All",
+   VarParsing.VarParsing.multiplicity.singleton,
+   VarParsing.VarParsing.varType.string,
+   "Global tag to be used"
+)
+options.register('mc',
+   True,
+   VarParsing.VarParsing.multiplicity.singleton,
+   VarParsing.VarParsing.varType.int,
+   "Is this MC dataset"
+)
+options.parseArguments()
+
+
 # load the PAT config
 process.load("PhysicsTools.PatAlgos.patSequences_cff") 
 
@@ -14,7 +32,7 @@ process.patTrigger.processName = '*'
 from PhysicsTools.PatAlgos.tools.pfTools import *
 
 # do we run on MC or Data
-isMC = True
+isMC = options.mc
 postfix = ""
 
 # Plug PAT on PFBRECO
@@ -161,10 +179,12 @@ process.p = cms.Path(
 
 
 
-if isMC:
-    process.GlobalTag.globaltag =  'START53_V7F::All'
-else:
-    process.GlobalTag.globaltag =  'FT_53_V6C_AN2::All' # NB! Set this per dataset!!!
+#if isMC:
+#    process.GlobalTag.globaltag =  'START53_V7F::All'
+#else:
+#    process.GlobalTag.globaltag =  'FT_53_V6C_AN2::All' # NB! Set this per dataset!!!
+
+process.GlobalTag.globaltag=options.gtag
 
 process.source.fileNames = [
     "/store/mc/Summer12_DR53X/T_t-channel_TuneZ2star_8TeV-powheg-tauola/AODSIM/PU_S10_START53_V7A-v1/0000/0077EE51-88DC-E111-88BE-0018F3D09684.root"
