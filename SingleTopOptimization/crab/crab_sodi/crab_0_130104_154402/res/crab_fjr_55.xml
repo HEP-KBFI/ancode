@@ -1,0 +1,671 @@
+<FrameworkJobReport Status="Success">
+	<ExitCode Value="50117"/>
+	<InputFile>
+		<EventsRead>
+			1771
+		</EventsRead>
+		<Runs>
+			{1: [5250, 5261, 5277, 5303, 5306, 5319, 5320, 5332, 5395, 5400, 5401, 5410, 5420, 5436, 5441, 5455, 5456, 5459, 5475, 5480]}
+		</Runs>
+		<ModuleLabel>
+			source
+		</ModuleLabel>
+		<FileType>
+			EDM
+		</FileType>
+		<LFN>
+			/store/user/mario/Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/Summer12-stop-step1-synced/4abb869c2c9729b82d5a6bb08525e8d2/tuple_119_1_7wY.root
+		</LFN>
+		<PFN>
+			file:/hdfs/cms/store/user/mario/Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/Summer12-stop-step1-synced/4abb869c2c9729b82d5a6bb08525e8d2/tuple_119_1_7wY.root
+		</PFN>
+		<MergedBySize>
+			False
+		</MergedBySize>
+		<Catalog/>
+		<Checksums>
+			{}
+		</Checksums>
+		<GUID>
+			AEEBA4B4-7643-E211-8D00-F90B58BC96F0
+		</GUID>
+		<State Value="closed"/>
+		<Runs>
+			<Run ID="1">
+				<LumiSection ID="5250"/>
+				<LumiSection ID="5261"/>
+				<LumiSection ID="5277"/>
+				<LumiSection ID="5303"/>
+				<LumiSection ID="5306"/>
+				<LumiSection ID="5319"/>
+				<LumiSection ID="5320"/>
+				<LumiSection ID="5332"/>
+				<LumiSection ID="5395"/>
+				<LumiSection ID="5400"/>
+				<LumiSection ID="5401"/>
+				<LumiSection ID="5410"/>
+				<LumiSection ID="5420"/>
+				<LumiSection ID="5436"/>
+				<LumiSection ID="5441"/>
+				<LumiSection ID="5455"/>
+				<LumiSection ID="5456"/>
+				<LumiSection ID="5459"/>
+				<LumiSection ID="5475"/>
+				<LumiSection ID="5480"/>
+			</Run>
+		</Runs>
+		<Branches>
+			<Branch>
+				CaloTowers_goodJets_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype1p2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				StoredPileupJetIdentifieredmValueMap_puJetId__PAT.
+			</Branch>
+			<Branch>
+				StoredPileupJetIdentifieredmValueMap_puJetIdChs__PAT.
+			</Branch>
+			<Branch>
+				double_kt6PFJets_rho_RECO.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_cutbasedDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_fullDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_philv1Discriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_simpleDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMvaChs_cutbasedDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMvaChs_fullDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMvaChs_simpleDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_cutbasedId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_fullId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_philv1Id_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_simpleId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMvaChs_cutbasedId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMvaChs_fullId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMvaChs_simpleId_PAT.
+			</Branch>
+			<Branch>
+				ints_genParticles__SIM.
+			</Branch>
+			<Branch>
+				patElectrons_goodElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_selectedPatElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_vetoElectrons__PAT.
+			</Branch>
+			<Branch>
+				patJets_goodJets__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJets__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype1p2Corr__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype2Corr__PAT.
+			</Branch>
+			<Branch>
+				patMETs_patMETs__PAT.
+			</Branch>
+			<Branch>
+				patMuons_goodMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_selectedPatMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_vetoMuons__PAT.
+			</Branch>
+			<Branch>
+				patPFParticles_selectedPatPFParticles__PAT.
+			</Branch>
+			<Branch>
+				patTaus_selectedPatTaus__PAT.
+			</Branch>
+			<Branch>
+				patTriggerAlgorithms_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerConditions_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerEvent_patTriggerEvent__PAT.
+			</Branch>
+			<Branch>
+				patTriggerFilters_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjectStandAlones_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjects_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerPaths_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_goodJets_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJets_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype1p2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_goodJets_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJets_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype1p2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenParticles_genParticles__SIM.
+			</Branch>
+			<Branch>
+				recoPFCandidates_goodJets_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJets_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype1p2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_goodOfflinePrimaryVertices__PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_offlinePrimaryVertices__RECO.
+			</Branch>
+		</Branches>
+	</InputFile>
+	<InputFile>
+		<EventsRead>
+			4411
+		</EventsRead>
+		<Runs>
+			{1: [4541, 5475, 5490, 5492, 5507, 5555, 5576, 5586, 5590, 5641, 5662, 5671, 5673, 5711, 5730, 5746, 5798, 5800, 5803, 5846, 5847, 5969, 5988, 5995, 6010, 6012, 6031, 6058, 6059, 6064, 6140, 6142, 6229, 6232, 6237, 6261, 6315, 6327, 6377, 6382, 6425, 6428, 6432, 6506, 6508, 6518, 6527, 6566]}
+		</Runs>
+		<ModuleLabel>
+			source
+		</ModuleLabel>
+		<FileType>
+			EDM
+		</FileType>
+		<LFN>
+			/store/user/mario/Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/Summer12-stop-step1-synced/4abb869c2c9729b82d5a6bb08525e8d2/tuple_120_1_PxY.root
+		</LFN>
+		<PFN>
+			file:/hdfs/cms/store/user/mario/Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/Summer12-stop-step1-synced/4abb869c2c9729b82d5a6bb08525e8d2/tuple_120_1_PxY.root
+		</PFN>
+		<MergedBySize>
+			False
+		</MergedBySize>
+		<Catalog/>
+		<Checksums>
+			{}
+		</Checksums>
+		<GUID>
+			1A9D4FB5-7643-E211-A712-BD3568BCCF34
+		</GUID>
+		<State Value="closed"/>
+		<Runs>
+			<Run ID="1">
+				<LumiSection ID="4541"/>
+				<LumiSection ID="5475"/>
+				<LumiSection ID="5490"/>
+				<LumiSection ID="5492"/>
+				<LumiSection ID="5507"/>
+				<LumiSection ID="5555"/>
+				<LumiSection ID="5576"/>
+				<LumiSection ID="5586"/>
+				<LumiSection ID="5590"/>
+				<LumiSection ID="5641"/>
+				<LumiSection ID="5662"/>
+				<LumiSection ID="5671"/>
+				<LumiSection ID="5673"/>
+				<LumiSection ID="5711"/>
+				<LumiSection ID="5730"/>
+				<LumiSection ID="5746"/>
+				<LumiSection ID="5798"/>
+				<LumiSection ID="5800"/>
+				<LumiSection ID="5803"/>
+				<LumiSection ID="5846"/>
+				<LumiSection ID="5847"/>
+				<LumiSection ID="5969"/>
+				<LumiSection ID="5988"/>
+				<LumiSection ID="5995"/>
+				<LumiSection ID="6010"/>
+				<LumiSection ID="6012"/>
+				<LumiSection ID="6031"/>
+				<LumiSection ID="6058"/>
+				<LumiSection ID="6059"/>
+				<LumiSection ID="6064"/>
+				<LumiSection ID="6140"/>
+				<LumiSection ID="6142"/>
+				<LumiSection ID="6229"/>
+				<LumiSection ID="6232"/>
+				<LumiSection ID="6237"/>
+				<LumiSection ID="6261"/>
+				<LumiSection ID="6315"/>
+				<LumiSection ID="6327"/>
+				<LumiSection ID="6377"/>
+				<LumiSection ID="6382"/>
+				<LumiSection ID="6425"/>
+				<LumiSection ID="6428"/>
+				<LumiSection ID="6432"/>
+				<LumiSection ID="6506"/>
+				<LumiSection ID="6508"/>
+				<LumiSection ID="6518"/>
+				<LumiSection ID="6527"/>
+				<LumiSection ID="6566"/>
+			</Run>
+		</Runs>
+		<Branches>
+			<Branch>
+				CaloTowers_goodJets_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype1p2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				StoredPileupJetIdentifieredmValueMap_puJetId__PAT.
+			</Branch>
+			<Branch>
+				StoredPileupJetIdentifieredmValueMap_puJetIdChs__PAT.
+			</Branch>
+			<Branch>
+				double_kt6PFJets_rho_RECO.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_cutbasedDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_fullDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_philv1Discriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_simpleDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMvaChs_cutbasedDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMvaChs_fullDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMvaChs_simpleDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_cutbasedId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_fullId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_philv1Id_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_simpleId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMvaChs_cutbasedId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMvaChs_fullId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMvaChs_simpleId_PAT.
+			</Branch>
+			<Branch>
+				ints_genParticles__SIM.
+			</Branch>
+			<Branch>
+				patElectrons_goodElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_selectedPatElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_vetoElectrons__PAT.
+			</Branch>
+			<Branch>
+				patJets_goodJets__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJets__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype1p2Corr__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype2Corr__PAT.
+			</Branch>
+			<Branch>
+				patMETs_patMETs__PAT.
+			</Branch>
+			<Branch>
+				patMuons_goodMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_selectedPatMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_vetoMuons__PAT.
+			</Branch>
+			<Branch>
+				patPFParticles_selectedPatPFParticles__PAT.
+			</Branch>
+			<Branch>
+				patTaus_selectedPatTaus__PAT.
+			</Branch>
+			<Branch>
+				patTriggerAlgorithms_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerConditions_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerEvent_patTriggerEvent__PAT.
+			</Branch>
+			<Branch>
+				patTriggerFilters_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjectStandAlones_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjects_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerPaths_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_goodJets_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJets_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype1p2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_goodJets_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJets_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype1p2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenParticles_genParticles__SIM.
+			</Branch>
+			<Branch>
+				recoPFCandidates_goodJets_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJets_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype1p2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_goodOfflinePrimaryVertices__PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_offlinePrimaryVertices__RECO.
+			</Branch>
+		</Branches>
+	</InputFile>
+	<AnalysisFile>
+		<SEName Value="None"/>
+		<LFN Value="None"/>
+		<PFN Value="None"/>
+		<Source Value="TFileService"/>
+		<FileName>
+			/home/cms030/home_creur_029198160/CREAM029198160/glide_mI8677/execute/dir_10485/CMSSW_5_3_5/optHistograms.root
+		</FileName>
+		<SurlForGrid Value="None"/>
+	</AnalysisFile>
+	<FrameworkError ExitStatus="0" Type="WrapperExitCode"/>
+	<FrameworkError ExitStatus="0" Type="ExeExitCode"/>
+	<TimingService/>
+	<ReadBranches>
+		<Branch Name="recoVertexs_goodOfflinePrimaryVertices__PAT." ReadCount="6182"/>
+		<Branch Name="patMuons_goodMuons__PAT." ReadCount="6182"/>
+		<Branch Name="patMuons_vetoMuons__PAT." ReadCount="6182"/>
+		<Branch Name="StoredPileupJetIdentifieredmValueMap_puJetId__PAT." ReadCount="6182"/>
+		<Branch Name="intedmValueMap_puJetMva_fullId_PAT." ReadCount="6182"/>
+		<Branch Name="patElectrons_goodElectrons__PAT." ReadCount="6182"/>
+		<Branch Name="recoGenJets_goodJets_genJets_PAT." ReadCount="6010"/>
+		<Branch Name="patElectrons_vetoElectrons__PAT." ReadCount="6182"/>
+		<Branch Name="patJets_goodJets__PAT." ReadCount="6182"/>
+		<Branch Name="recoPFCandidates_goodJets_pfCandidates_PAT." ReadCount="5763"/>
+		<Branch Name="floatedmValueMap_puJetMva_fullDiscriminant_PAT." ReadCount="6182"/>
+		<Branch Name="patMETs_patMETs__PAT." ReadCount="6182"/>
+	</ReadBranches>
+	<GeneratorInfo/>
+	<PerformanceReport>
+		<CPU/>
+		<Memory/>
+		<PerformanceSummary Metric="CrabTiming">
+			<Metric Name="ExeTime" Value="113"/>
+			<Metric Name="WrapperTime" Value="600"/>
+			<Metric Name="CpuTime" Value="&quot;36.08 6.81 37%&quot;"/>
+			<Metric Name="StageoutTime" Value="-1"/>
+		</PerformanceSummary>
+		<PerformanceSummary Metric="StorageStatistics">
+			<Metric Name="Timing-tstoragefile-writeActual-totalMegabytes" Value="0.000407219"/>
+			<Metric Name="Timing-file-readv-numSuccessfulOperations" Value="22"/>
+			<Metric Name="ROOT-tfile-read-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-readv-maxMsecs" Value="24822.6"/>
+			<Metric Name="Timing-tstoragefile-readActual-totalMegabytes" Value="97.1959"/>
+			<Metric Name="Timing-file-write-totalMegabytes" Value="0.000407219"/>
+			<Metric Name="Timing-file-destruct-totalMsecs" Value="0.04992"/>
+			<Metric Name="Timing-file-position-numSuccessfulOperations" Value="44670"/>
+			<Metric Name="Timing-file-writev-numSuccessfulOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-writeActual-numOperations" Value="4"/>
+			<Metric Name="Timing-tstoragefile-write-numSuccessfulOperations" Value="4"/>
+			<Metric Name="Timing-tstoragefile-read-maxMsecs" Value="24873.1"/>
+			<Metric Name="Timing-file-read-minMsecs" Value="0.002048"/>
+			<Metric Name="Timing-file-construct-totalMsecs" Value="0.010496"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-totalMsecs" Value="0"/>
+			<Metric Name="Timing-file-read-numSuccessfulOperations" Value="38"/>
+			<Metric Name="Timing-file-writev-totalMsecs" Value="0"/>
+			<Metric Name="Timing-file-position-numOperations" Value="44670"/>
+			<Metric Name="Timing-tstoragefile-seek-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-readv-totalMsecs" Value="39461.9"/>
+			<Metric Name="Timing-file-construct-minMsecs" Value="0.000768"/>
+			<Metric Name="Timing-file-stagein-numSuccessfulOperations" Value="2"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-totalMegabytes" Value="65.2033"/>
+			<Metric Name="Timing-file-close-minMsecs" Value="0.121344"/>
+			<Metric Name="ROOT-tfile-write-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-readActual-numOperations" Value="60"/>
+			<Metric Name="Timing-file-stagein-maxMsecs" Value="0.00128"/>
+			<Metric Name="Timing-tstoragefile-writeActual-totalMsecs" Value="0.13696"/>
+			<Metric Name="Timing-tstoragefile-flush-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-readAsync-totalMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-write-minMsecs" Value="0.012288"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-numOperations" Value="4"/>
+			<Metric Name="Timing-file-writev-numOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-close-numOperations" Value="2"/>
+			<Metric Name="Timing-tstoragefile-readAsync-minMsecs" Value="0"/>
+			<Metric Name="Timing-file-stagein-numOperations" Value="2"/>
+			<Metric Name="Timing-tstoragefile-readActual-maxMsecs" Value="24822.6"/>
+			<Metric Name="Timing-file-readv-numOperations" Value="22"/>
+			<Metric Name="Timing-file-prefetch-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-close-totalMsecs" Value="0.767744"/>
+			<Metric Name="Timing-tstoragefile-readActual-numSuccessfulOperations" Value="60"/>
+			<Metric Name="Timing-file-write-numOperations" Value="4"/>
+			<Metric Name="Timing-file-open-numSuccessfulOperations" Value="3"/>
+			<Metric Name="Timing-file-position-minMsecs" Value="0.000256"/>
+			<Metric Name="Timing-file-read-maxMsecs" Value="146.561"/>
+			<Metric Name="Timing-file-prefetch-minMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-writeActual-numSuccessfulOperations" Value="4"/>
+			<Metric Name="Timing-tstoragefile-read-totalMegabytes" Value="66.8729"/>
+			<Metric Name="Timing-tstoragefile-readAsync-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-close-numSuccessfulOperations" Value="2"/>
+			<Metric Name="Timing-file-stagein-totalMsecs" Value="0.001792"/>
+			<Metric Name="Timing-tstoragefile-close-minMsecs" Value="0.188416"/>
+			<Metric Name="Timing-file-writev-minMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-read-minMsecs" Value="0.000768"/>
+			<Metric Name="Timing-tstoragefile-seek-maxMsecs" Value="0.07552"/>
+			<Metric Name="Timing-tstoragefile-seek-minMsecs" Value="0.000768"/>
+			<Metric Name="Timing-file-construct-numOperations" Value="3"/>
+			<Metric Name="Timing-tstoragefile-write-numOperations" Value="4"/>
+			<Metric Name="Timing-file-close-numSuccessfulOperations" Value="2"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-maxMsecs" Value="24873.1"/>
+			<Metric Name="Timing-file-destruct-minMsecs" Value="0.003072"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-maxMsecs" Value="0"/>
+			<Metric Name="Timing-file-close-maxMsecs" Value="0.56448"/>
+			<Metric Name="Timing-file-close-totalMsecs" Value="0.685824"/>
+			<Metric Name="Timing-file-destruct-numOperations" Value="2"/>
+			<Metric Name="Timing-tstoragefile-writeActual-minMsecs" Value="0.011264"/>
+			<Metric Name="Timing-file-stagein-minMsecs" Value="0.000512"/>
+			<Metric Name="Timing-file-write-minMsecs" Value="0.01024"/>
+			<Metric Name="Timing-tstoragefile-readActual-minMsecs" Value="0.002816"/>
+			<Metric Name="Timing-tstoragefile-stat-numSuccessfulOperations" Value="4"/>
+			<Metric Name="Timing-tstoragefile-flush-maxMsecs" Value="284.431"/>
+			<Metric Name="Timing-file-readv-minMsecs" Value="0.005888"/>
+			<Metric Name="Timing-tstoragefile-readAsync-maxMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-stat-totalMsecs" Value="19.0868"/>
+			<Metric Name="Timing-file-writev-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-flush-totalMsecs" Value="284.427"/>
+			<Metric Name="Timing-file-position-totalMsecs" Value="62.7343"/>
+			<Metric Name="Timing-tstoragefile-read-numOperations" Value="44650"/>
+			<Metric Name="Timing-file-destruct-numSuccessfulOperations" Value="2"/>
+			<Metric Name="Timing-file-open-maxMsecs" Value="118.147"/>
+			<Metric Name="Timing-file-close-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-construct-totalMsecs" Value="10186.9"/>
+			<Metric Name="Timing-tstoragefile-seek-numOperations" Value="44654"/>
+			<Metric Name="Timing-tstoragefile-readActual-totalMsecs" Value="40007.3"/>
+			<Metric Name="Timing-tstoragefile-flush-numSuccessfulOperations" Value="1"/>
+			<Metric Name="Parameter-untracked-string-readHint" Value="auto-detect"/>
+			<Metric Name="Timing-file-destruct-maxMsecs" Value="0.046848"/>
+			<Metric Name="Timing-tstoragefile-construct-numSuccessfulOperations" Value="3"/>
+			<Metric Name="Timing-tstoragefile-writeActual-maxMsecs" Value="0.044288"/>
+			<Metric Name="Timing-file-position-maxMsecs" Value="12.4401"/>
+			<Metric Name="Timing-tstoragefile-seek-totalMsecs" Value="84.9298"/>
+			<Metric Name="Timing-tstoragefile-flush-numOperations" Value="1"/>
+			<Metric Name="Timing-tstoragefile-flush-minMsecs" Value="284.431"/>
+			<Metric Name="Timing-file-prefetch-totalMsecs" Value="0"/>
+			<Metric Name="Timing-file-open-minMsecs" Value="0.155648"/>
+			<Metric Name="Timing-file-close-numOperations" Value="2"/>
+			<Metric Name="Timing-tstoragefile-flush-totalMsecs" Value="284.431"/>
+			<Metric Name="Timing-tstoragefile-construct-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-destruct-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-write-totalMsecs" Value="0.12544"/>
+			<Metric Name="Timing-file-write-numSuccessfulOperations" Value="4"/>
+			<Metric Name="Timing-file-flush-numOperations" Value="1"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-numSuccessfulOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-stat-numOperations" Value="4"/>
+			<Metric Name="Timing-file-read-numOperations" Value="38"/>
+			<Metric Name="Timing-tstoragefile-seek-numSuccessfulOperations" Value="44654"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-numOperations" Value="44612"/>
+			<Metric Name="Timing-file-position-totalMegabytes" Value="0"/>
+			<Metric Name="Parameter-untracked-bool-enabled" Value="true"/>
+			<Metric Name="Timing-tstoragefile-readAsync-numSuccessfulOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-minMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-construct-maxMsecs" Value="9568.54"/>
+			<Metric Name="Timing-file-prefetch-numSuccessfulOperations" Value="0"/>
+			<Metric Name="Timing-file-write-maxMsecs" Value="0.041728"/>
+			<Metric Name="Timing-file-construct-maxMsecs" Value="0.007936"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-minMsecs" Value="0.000512"/>
+			<Metric Name="Timing-tstoragefile-read-totalMsecs" Value="40169"/>
+			<Metric Name="Timing-tstoragefile-write-totalMsecs" Value="0.155904"/>
+			<Metric Name="Timing-file-readv-totalMegabytes" Value="95.5264"/>
+			<Metric Name="Parameter-untracked-string-cacheHint" Value="application-only"/>
+			<Metric Name="Timing-file-prefetch-maxMsecs" Value="0"/>
+			<Metric Name="Timing-file-writev-maxMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-construct-numOperations" Value="3"/>
+			<Metric Name="Timing-file-open-totalMegabytes" Value="0"/>
+			<Metric Name="Parameter-untracked-bool-stats" Value="true"/>
+			<Metric Name="Timing-tstoragefile-stat-maxMsecs" Value="12.4513"/>
+			<Metric Name="Timing-tstoragefile-write-totalMegabytes" Value="0.000407219"/>
+			<Metric Name="Timing-tstoragefile-readAsync-numOperations" Value="10"/>
+			<Metric Name="Timing-tstoragefile-construct-minMsecs" Value="286.904"/>
+			<Metric Name="Timing-tstoragefile-close-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-stat-minMsecs" Value="0.005632"/>
+			<Metric Name="Timing-file-open-totalMsecs" Value="186.41"/>
+			<Metric Name="Timing-tstoragefile-stat-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-open-numOperations" Value="3"/>
+			<Metric Name="Timing-file-flush-minMsecs" Value="284.427"/>
+			<Metric Name="Timing-file-flush-numSuccessfulOperations" Value="1"/>
+			<Metric Name="Timing-file-flush-maxMsecs" Value="284.427"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-totalMsecs" Value="39593.9"/>
+			<Metric Name="Timing-file-prefetch-numOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-numSuccessfulOperations" Value="44612"/>
+			<Metric Name="Timing-file-construct-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-read-totalMegabytes" Value="1.66954"/>
+			<Metric Name="Timing-tstoragefile-write-maxMsecs" Value="0.058368"/>
+			<Metric Name="Timing-tstoragefile-close-maxMsecs" Value="0.579328"/>
+			<Metric Name="Timing-tstoragefile-read-numSuccessfulOperations" Value="44650"/>
+			<Metric Name="Timing-file-read-totalMsecs" Value="545.257"/>
+			<Metric Name="Timing-file-construct-numSuccessfulOperations" Value="3"/>
+			<Metric Name="Timing-file-stagein-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-flush-totalMegabytes" Value="0"/>
+		</PerformanceSummary>
+	</PerformanceReport>
+</FrameworkJobReport>

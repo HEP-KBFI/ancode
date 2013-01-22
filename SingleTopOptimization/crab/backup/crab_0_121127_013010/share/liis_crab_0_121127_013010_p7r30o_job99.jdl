@@ -1,0 +1,46 @@
+Universe  = vanilla
+Environment = CONDOR_ID=$(Cluster).$(Process);JobRunCount=$$([ ifThenElse(isUndefined(JobRunCount),0,JobRunCount) ]);GlideinMemory=$$([ ifThenElse(isUndefined(ImageSize_RAW),0,ImageSize_RAW) ]);Glidein_MonitorID=$$([ ifThenElse(isUndefined(Glidein_MonitorID),0,Glidein_MonitorID) ]) 
+since=(CurrentTime-EnteredCurrentStatus)
+Periodic_Remove = (((JobStatus == 2) && ((CurrentTime - JobCurrentStartDate) > (MaxWallTimeMins*60))) =?= True) || (JobStatus==5 && $(since)>691200) || (JobStatus==1 && $(since)>691200)
+x509userproxy = x509up_u1000009
+stream_output = false
+stream_error  = false
+notification  = never
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+copy_to_spool           = false
++DESIRED_SEs = "ganymede.hep.kbfi.ee"
++DESIRED_CMSVersion ="CMSSW_5_3_5"
++DESIRED_CMSVersionNr ="50305"
++DESIRED_CMSScramArch ="slc5_amd64_gcc462"
++Glidein_MonitorID = "https://submit-2.t2.ucsd.edu//121127//$(Cluster).$(Process)"
++MaxWallTimeMins = 1440
+transfer_input_files = default.tgz,arguments.xml,CMSSW.sh
+Executable = CMSSW.sh
+log     = condor.log
+
++BLTaskID = "liis_crab_0_121127_013010_p7r30o"
+Arguments  = 93 2
+output  = CMSSW_93.stdout
+error   = CMSSW_93.stderr
+transfer_output_remaps   = "CMSSW_93.stderr=/dev/null; CMSSW_93.stdout=/dev/null"
+transfer_output_files   = out_files_93.tgz,crab_fjr_93.xml
+Queue 1
+Arguments  = 94 2
+output  = CMSSW_94.stdout
+error   = CMSSW_94.stderr
+transfer_output_remaps   = "CMSSW_94.stderr=/dev/null; CMSSW_94.stdout=/dev/null"
+transfer_output_files   = out_files_94.tgz,crab_fjr_94.xml
+Queue 1
+Arguments  = 96 2
+output  = CMSSW_96.stdout
+error   = CMSSW_96.stderr
+transfer_output_remaps   = "CMSSW_96.stderr=/dev/null; CMSSW_96.stdout=/dev/null"
+transfer_output_files   = out_files_96.tgz,crab_fjr_96.xml
+Queue 1
+Arguments  = 99 2
+output  = CMSSW_99.stdout
+error   = CMSSW_99.stderr
+transfer_output_remaps   = "CMSSW_99.stderr=/dev/null; CMSSW_99.stdout=/dev/null"
+transfer_output_files   = out_files_99.tgz,crab_fjr_99.xml
+Queue 1

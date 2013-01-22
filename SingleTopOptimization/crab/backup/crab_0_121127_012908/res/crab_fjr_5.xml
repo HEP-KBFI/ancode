@@ -1,0 +1,1704 @@
+<FrameworkJobReport Status="Success">
+	<ExitCode Value="50117"/>
+	<InputFile>
+		<EventsRead>
+			894
+		</EventsRead>
+		<Runs>
+			{1: [10342, 10351, 10537, 10562, 10837, 10908, 10941, 11096]}
+		</Runs>
+		<ModuleLabel>
+			source
+		</ModuleLabel>
+		<FileType>
+			EDM
+		</FileType>
+		<LFN>
+			/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_4_4_oTw.root
+		</LFN>
+		<PFN>
+			file:/hdfs/cms/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_4_4_oTw.root
+		</PFN>
+		<MergedBySize>
+			False
+		</MergedBySize>
+		<Catalog/>
+		<Checksums>
+			{}
+		</Checksums>
+		<GUID>
+			764C51CD-521F-E211-934D-9FDF8C1F71D1
+		</GUID>
+		<State Value="closed"/>
+		<Runs>
+			<Run ID="1">
+				<LumiSection ID="10342"/>
+				<LumiSection ID="10351"/>
+				<LumiSection ID="10537"/>
+				<LumiSection ID="10562"/>
+				<LumiSection ID="10837"/>
+				<LumiSection ID="10908"/>
+				<LumiSection ID="10941"/>
+				<LumiSection ID="11096"/>
+			</Run>
+		</Runs>
+		<Branches>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype1p2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				StoredPileupJetIdentifieredmValueMap_puJetId__PAT.
+			</Branch>
+			<Branch>
+				double_kt6PFJets_rho_RECO.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_cutbasedDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_fullDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_philv1Discriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_simpleDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_cutbasedId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_fullId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_philv1Id_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_simpleId_PAT.
+			</Branch>
+			<Branch>
+				ints_genParticles__SIM.
+			</Branch>
+			<Branch>
+				patElectrons_goodElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_selectedPatElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_vetoElectrons__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJets__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype1p2Corr__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype2Corr__PAT.
+			</Branch>
+			<Branch>
+				patMETs_patMETs__PAT.
+			</Branch>
+			<Branch>
+				patMuons_goodMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_selectedPatMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_vetoMuons__PAT.
+			</Branch>
+			<Branch>
+				patPFParticles_selectedPatPFParticles__PAT.
+			</Branch>
+			<Branch>
+				patTaus_selectedPatTaus__PAT.
+			</Branch>
+			<Branch>
+				patTriggerAlgorithms_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerConditions_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerEvent_patTriggerEvent__PAT.
+			</Branch>
+			<Branch>
+				patTriggerFilters_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjectStandAlones_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjects_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerPaths_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJets_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype1p2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJets_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype1p2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenParticles_genParticles__SIM.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJets_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype1p2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_goodOfflinePrimaryVertices__PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_offlinePrimaryVertices__RECO.
+			</Branch>
+		</Branches>
+	</InputFile>
+	<InputFile>
+		<EventsRead>
+			21918
+		</EventsRead>
+		<Runs>
+			{1: [10116, 10122, 11096, 11324, 11329, 11535, 11700, 11708, 11711, 11717, 11743, 11800, 12263, 12283, 12319, 12685, 12798, 12977, 12988, 13289, 13399, 13424, 13577, 14003, 14034, 14081, 14100, 14134, 14140, 14173, 14205, 14254, 14395, 14498, 14533, 14562, 14736, 17781, 20276, 24286, 24288, 24718, 24786, 47754, 47864, 47865, 47874, 47892, 48015, 59719, 59741, 59768, 59793, 59850, 59884, 59886, 59898, 60069, 60072, 60073, 60092, 60114, 60152, 60415, 60427, 61052, 61055, 61289, 61297, 61414, 61421, 61485, 61509, 61557, 61679, 61718, 61816, 61818, 61852, 61866, 61871, 61873, 61894, 61900, 61912, 61914, 61915, 61924, 61961, 62009, 62016, 62022, 62031, 62050, 62051, 62054, 62056, 62061, 62071, 62079, 62080, 62113, 62144, 62172, 62175, 62185, 62187, 62217, 62222, 62243, 62253, 62268, 62286, 62288, 62289, 62299, 62314, 62382, 62671, 62685, 62708, 62709, 62736, 62742, 62744, 62756, 62757, 62766, 62769, 62778, 62784, 62788, 62790, 62797, 62798, 62824, 62831, 62836, 62845, 62858, 62932, 62950, 62968, 63088, 63301, 63307, 63331, 63340, 63361, 63367, 63391, 63405, 63409, 63421, 63422, 63441, 63529, 63531, 63552, 63563, 63569, 63574, 63578, 63587, 63590, 63599, 63617, 63626]}
+		</Runs>
+		<ModuleLabel>
+			source
+		</ModuleLabel>
+		<FileType>
+			EDM
+		</FileType>
+		<LFN>
+			/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_5_12_hFx.root
+		</LFN>
+		<PFN>
+			file:/hdfs/cms/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_5_12_hFx.root
+		</PFN>
+		<MergedBySize>
+			False
+		</MergedBySize>
+		<Catalog/>
+		<Checksums>
+			{}
+		</Checksums>
+		<GUID>
+			7C421AFE-3A28-E211-9DED-F3E7438A1BBE
+		</GUID>
+		<State Value="closed"/>
+		<Runs>
+			<Run ID="1">
+				<LumiSection ID="10116"/>
+				<LumiSection ID="10122"/>
+				<LumiSection ID="11096"/>
+				<LumiSection ID="11324"/>
+				<LumiSection ID="11329"/>
+				<LumiSection ID="11535"/>
+				<LumiSection ID="11700"/>
+				<LumiSection ID="11708"/>
+				<LumiSection ID="11711"/>
+				<LumiSection ID="11717"/>
+				<LumiSection ID="11743"/>
+				<LumiSection ID="11800"/>
+				<LumiSection ID="12263"/>
+				<LumiSection ID="12283"/>
+				<LumiSection ID="12319"/>
+				<LumiSection ID="12685"/>
+				<LumiSection ID="12798"/>
+				<LumiSection ID="12977"/>
+				<LumiSection ID="12988"/>
+				<LumiSection ID="13289"/>
+				<LumiSection ID="13399"/>
+				<LumiSection ID="13424"/>
+				<LumiSection ID="13577"/>
+				<LumiSection ID="14003"/>
+				<LumiSection ID="14034"/>
+				<LumiSection ID="14081"/>
+				<LumiSection ID="14100"/>
+				<LumiSection ID="14134"/>
+				<LumiSection ID="14140"/>
+				<LumiSection ID="14173"/>
+				<LumiSection ID="14205"/>
+				<LumiSection ID="14254"/>
+				<LumiSection ID="14395"/>
+				<LumiSection ID="14498"/>
+				<LumiSection ID="14533"/>
+				<LumiSection ID="14562"/>
+				<LumiSection ID="14736"/>
+				<LumiSection ID="17781"/>
+				<LumiSection ID="20276"/>
+				<LumiSection ID="24286"/>
+				<LumiSection ID="24288"/>
+				<LumiSection ID="24718"/>
+				<LumiSection ID="24786"/>
+				<LumiSection ID="47754"/>
+				<LumiSection ID="47864"/>
+				<LumiSection ID="47865"/>
+				<LumiSection ID="47874"/>
+				<LumiSection ID="47892"/>
+				<LumiSection ID="48015"/>
+				<LumiSection ID="59719"/>
+				<LumiSection ID="59741"/>
+				<LumiSection ID="59768"/>
+				<LumiSection ID="59793"/>
+				<LumiSection ID="59850"/>
+				<LumiSection ID="59884"/>
+				<LumiSection ID="59886"/>
+				<LumiSection ID="59898"/>
+				<LumiSection ID="60069"/>
+				<LumiSection ID="60072"/>
+				<LumiSection ID="60073"/>
+				<LumiSection ID="60092"/>
+				<LumiSection ID="60114"/>
+				<LumiSection ID="60152"/>
+				<LumiSection ID="60415"/>
+				<LumiSection ID="60427"/>
+				<LumiSection ID="61052"/>
+				<LumiSection ID="61055"/>
+				<LumiSection ID="61289"/>
+				<LumiSection ID="61297"/>
+				<LumiSection ID="61414"/>
+				<LumiSection ID="61421"/>
+				<LumiSection ID="61485"/>
+				<LumiSection ID="61509"/>
+				<LumiSection ID="61557"/>
+				<LumiSection ID="61679"/>
+				<LumiSection ID="61718"/>
+				<LumiSection ID="61816"/>
+				<LumiSection ID="61818"/>
+				<LumiSection ID="61852"/>
+				<LumiSection ID="61866"/>
+				<LumiSection ID="61871"/>
+				<LumiSection ID="61873"/>
+				<LumiSection ID="61894"/>
+				<LumiSection ID="61900"/>
+				<LumiSection ID="61912"/>
+				<LumiSection ID="61914"/>
+				<LumiSection ID="61915"/>
+				<LumiSection ID="61924"/>
+				<LumiSection ID="61961"/>
+				<LumiSection ID="62009"/>
+				<LumiSection ID="62016"/>
+				<LumiSection ID="62022"/>
+				<LumiSection ID="62031"/>
+				<LumiSection ID="62050"/>
+				<LumiSection ID="62051"/>
+				<LumiSection ID="62054"/>
+				<LumiSection ID="62056"/>
+				<LumiSection ID="62061"/>
+				<LumiSection ID="62071"/>
+				<LumiSection ID="62079"/>
+				<LumiSection ID="62080"/>
+				<LumiSection ID="62113"/>
+				<LumiSection ID="62144"/>
+				<LumiSection ID="62172"/>
+				<LumiSection ID="62175"/>
+				<LumiSection ID="62185"/>
+				<LumiSection ID="62187"/>
+				<LumiSection ID="62217"/>
+				<LumiSection ID="62222"/>
+				<LumiSection ID="62243"/>
+				<LumiSection ID="62253"/>
+				<LumiSection ID="62268"/>
+				<LumiSection ID="62286"/>
+				<LumiSection ID="62288"/>
+				<LumiSection ID="62289"/>
+				<LumiSection ID="62299"/>
+				<LumiSection ID="62314"/>
+				<LumiSection ID="62382"/>
+				<LumiSection ID="62671"/>
+				<LumiSection ID="62685"/>
+				<LumiSection ID="62708"/>
+				<LumiSection ID="62709"/>
+				<LumiSection ID="62736"/>
+				<LumiSection ID="62742"/>
+				<LumiSection ID="62744"/>
+				<LumiSection ID="62756"/>
+				<LumiSection ID="62757"/>
+				<LumiSection ID="62766"/>
+				<LumiSection ID="62769"/>
+				<LumiSection ID="62778"/>
+				<LumiSection ID="62784"/>
+				<LumiSection ID="62788"/>
+				<LumiSection ID="62790"/>
+				<LumiSection ID="62797"/>
+				<LumiSection ID="62798"/>
+				<LumiSection ID="62824"/>
+				<LumiSection ID="62831"/>
+				<LumiSection ID="62836"/>
+				<LumiSection ID="62845"/>
+				<LumiSection ID="62858"/>
+				<LumiSection ID="62932"/>
+				<LumiSection ID="62950"/>
+				<LumiSection ID="62968"/>
+				<LumiSection ID="63088"/>
+				<LumiSection ID="63301"/>
+				<LumiSection ID="63307"/>
+				<LumiSection ID="63331"/>
+				<LumiSection ID="63340"/>
+				<LumiSection ID="63361"/>
+				<LumiSection ID="63367"/>
+				<LumiSection ID="63391"/>
+				<LumiSection ID="63405"/>
+				<LumiSection ID="63409"/>
+				<LumiSection ID="63421"/>
+				<LumiSection ID="63422"/>
+				<LumiSection ID="63441"/>
+				<LumiSection ID="63529"/>
+				<LumiSection ID="63531"/>
+				<LumiSection ID="63552"/>
+				<LumiSection ID="63563"/>
+				<LumiSection ID="63569"/>
+				<LumiSection ID="63574"/>
+				<LumiSection ID="63578"/>
+				<LumiSection ID="63587"/>
+				<LumiSection ID="63590"/>
+				<LumiSection ID="63599"/>
+				<LumiSection ID="63617"/>
+				<LumiSection ID="63626"/>
+			</Run>
+		</Runs>
+		<Branches>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype1p2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				StoredPileupJetIdentifieredmValueMap_puJetId__PAT.
+			</Branch>
+			<Branch>
+				double_kt6PFJets_rho_RECO.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_cutbasedDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_fullDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_philv1Discriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_simpleDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_cutbasedId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_fullId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_philv1Id_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_simpleId_PAT.
+			</Branch>
+			<Branch>
+				ints_genParticles__SIM.
+			</Branch>
+			<Branch>
+				patElectrons_goodElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_selectedPatElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_vetoElectrons__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJets__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype1p2Corr__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype2Corr__PAT.
+			</Branch>
+			<Branch>
+				patMETs_patMETs__PAT.
+			</Branch>
+			<Branch>
+				patMuons_goodMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_selectedPatMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_vetoMuons__PAT.
+			</Branch>
+			<Branch>
+				patPFParticles_selectedPatPFParticles__PAT.
+			</Branch>
+			<Branch>
+				patTaus_selectedPatTaus__PAT.
+			</Branch>
+			<Branch>
+				patTriggerAlgorithms_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerConditions_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerEvent_patTriggerEvent__PAT.
+			</Branch>
+			<Branch>
+				patTriggerFilters_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjectStandAlones_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjects_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerPaths_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJets_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype1p2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJets_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype1p2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenParticles_genParticles__SIM.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJets_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype1p2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_goodOfflinePrimaryVertices__PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_offlinePrimaryVertices__RECO.
+			</Branch>
+		</Branches>
+	</InputFile>
+	<InputFile>
+		<EventsRead>
+			21607
+		</EventsRead>
+		<Runs>
+			{1: [931, 1676, 1903, 1966, 2203, 2214, 2236, 2341, 2381, 2592, 3411, 3706, 3937, 4556, 4611, 4858, 4890, 5057, 5110, 5171, 5184, 5425, 5582, 5594, 5685, 5688, 5701, 5908, 5969, 5999, 6047, 6065, 6253, 6659, 7424, 17858, 19179, 23597, 23638, 23848, 24034, 24703, 24803, 24957, 24962, 26383, 26414, 46757, 47212, 48174, 48190, 48231, 48635, 59761, 59779, 59845, 59848, 61879, 61902, 61985, 62072, 62127, 62137, 62182, 62189, 62199, 62206, 62255, 62275, 62478, 62489, 62491, 62495, 62512, 62542, 62560, 62613, 62614, 62674, 62796, 62837, 62886, 62920, 62940, 62946, 62966, 63002, 63055, 63062, 63068, 63084, 63088, 63091, 63106, 63113, 63116, 63132, 63138, 63140, 63150, 63151, 63157, 63159, 63175, 63176, 63182, 63195, 63215, 63218, 63224, 63232, 63233, 63249, 63251, 63253, 63254, 63256, 63259, 63262, 63274, 63286, 63304, 63309, 63325, 63343, 63352, 63354, 63358, 63365, 63373, 63382, 63414, 63433, 63435, 63448, 63451, 63453, 63465, 63470, 63527, 63537, 63582, 63596, 63628, 63629, 63631, 63639, 63646, 63648, 63650, 63657, 63668, 63676, 63677, 63695, 63705, 63709, 63720, 63753, 63757, 63772, 63775, 63786, 63787, 63792, 63826, 63856, 63862]}
+		</Runs>
+		<ModuleLabel>
+			source
+		</ModuleLabel>
+		<FileType>
+			EDM
+		</FileType>
+		<LFN>
+			/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_6_13_pyC.root
+		</LFN>
+		<PFN>
+			file:/hdfs/cms/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_6_13_pyC.root
+		</PFN>
+		<MergedBySize>
+			False
+		</MergedBySize>
+		<Catalog/>
+		<Checksums>
+			{}
+		</Checksums>
+		<GUID>
+			A068D5B1-EB27-E211-A4B1-032F5C77F66E
+		</GUID>
+		<State Value="closed"/>
+		<Runs>
+			<Run ID="1">
+				<LumiSection ID="931"/>
+				<LumiSection ID="1676"/>
+				<LumiSection ID="1903"/>
+				<LumiSection ID="1966"/>
+				<LumiSection ID="2203"/>
+				<LumiSection ID="2214"/>
+				<LumiSection ID="2236"/>
+				<LumiSection ID="2341"/>
+				<LumiSection ID="2381"/>
+				<LumiSection ID="2592"/>
+				<LumiSection ID="3411"/>
+				<LumiSection ID="3706"/>
+				<LumiSection ID="3937"/>
+				<LumiSection ID="4556"/>
+				<LumiSection ID="4611"/>
+				<LumiSection ID="4858"/>
+				<LumiSection ID="4890"/>
+				<LumiSection ID="5057"/>
+				<LumiSection ID="5110"/>
+				<LumiSection ID="5171"/>
+				<LumiSection ID="5184"/>
+				<LumiSection ID="5425"/>
+				<LumiSection ID="5582"/>
+				<LumiSection ID="5594"/>
+				<LumiSection ID="5685"/>
+				<LumiSection ID="5688"/>
+				<LumiSection ID="5701"/>
+				<LumiSection ID="5908"/>
+				<LumiSection ID="5969"/>
+				<LumiSection ID="5999"/>
+				<LumiSection ID="6047"/>
+				<LumiSection ID="6065"/>
+				<LumiSection ID="6253"/>
+				<LumiSection ID="6659"/>
+				<LumiSection ID="7424"/>
+				<LumiSection ID="17858"/>
+				<LumiSection ID="19179"/>
+				<LumiSection ID="23597"/>
+				<LumiSection ID="23638"/>
+				<LumiSection ID="23848"/>
+				<LumiSection ID="24034"/>
+				<LumiSection ID="24703"/>
+				<LumiSection ID="24803"/>
+				<LumiSection ID="24957"/>
+				<LumiSection ID="24962"/>
+				<LumiSection ID="26383"/>
+				<LumiSection ID="26414"/>
+				<LumiSection ID="46757"/>
+				<LumiSection ID="47212"/>
+				<LumiSection ID="48174"/>
+				<LumiSection ID="48190"/>
+				<LumiSection ID="48231"/>
+				<LumiSection ID="48635"/>
+				<LumiSection ID="59761"/>
+				<LumiSection ID="59779"/>
+				<LumiSection ID="59845"/>
+				<LumiSection ID="59848"/>
+				<LumiSection ID="61879"/>
+				<LumiSection ID="61902"/>
+				<LumiSection ID="61985"/>
+				<LumiSection ID="62072"/>
+				<LumiSection ID="62127"/>
+				<LumiSection ID="62137"/>
+				<LumiSection ID="62182"/>
+				<LumiSection ID="62189"/>
+				<LumiSection ID="62199"/>
+				<LumiSection ID="62206"/>
+				<LumiSection ID="62255"/>
+				<LumiSection ID="62275"/>
+				<LumiSection ID="62478"/>
+				<LumiSection ID="62489"/>
+				<LumiSection ID="62491"/>
+				<LumiSection ID="62495"/>
+				<LumiSection ID="62512"/>
+				<LumiSection ID="62542"/>
+				<LumiSection ID="62560"/>
+				<LumiSection ID="62613"/>
+				<LumiSection ID="62614"/>
+				<LumiSection ID="62674"/>
+				<LumiSection ID="62796"/>
+				<LumiSection ID="62837"/>
+				<LumiSection ID="62886"/>
+				<LumiSection ID="62920"/>
+				<LumiSection ID="62940"/>
+				<LumiSection ID="62946"/>
+				<LumiSection ID="62966"/>
+				<LumiSection ID="63002"/>
+				<LumiSection ID="63055"/>
+				<LumiSection ID="63062"/>
+				<LumiSection ID="63068"/>
+				<LumiSection ID="63084"/>
+				<LumiSection ID="63088"/>
+				<LumiSection ID="63091"/>
+				<LumiSection ID="63106"/>
+				<LumiSection ID="63113"/>
+				<LumiSection ID="63116"/>
+				<LumiSection ID="63132"/>
+				<LumiSection ID="63138"/>
+				<LumiSection ID="63140"/>
+				<LumiSection ID="63150"/>
+				<LumiSection ID="63151"/>
+				<LumiSection ID="63157"/>
+				<LumiSection ID="63159"/>
+				<LumiSection ID="63175"/>
+				<LumiSection ID="63176"/>
+				<LumiSection ID="63182"/>
+				<LumiSection ID="63195"/>
+				<LumiSection ID="63215"/>
+				<LumiSection ID="63218"/>
+				<LumiSection ID="63224"/>
+				<LumiSection ID="63232"/>
+				<LumiSection ID="63233"/>
+				<LumiSection ID="63249"/>
+				<LumiSection ID="63251"/>
+				<LumiSection ID="63253"/>
+				<LumiSection ID="63254"/>
+				<LumiSection ID="63256"/>
+				<LumiSection ID="63259"/>
+				<LumiSection ID="63262"/>
+				<LumiSection ID="63274"/>
+				<LumiSection ID="63286"/>
+				<LumiSection ID="63304"/>
+				<LumiSection ID="63309"/>
+				<LumiSection ID="63325"/>
+				<LumiSection ID="63343"/>
+				<LumiSection ID="63352"/>
+				<LumiSection ID="63354"/>
+				<LumiSection ID="63358"/>
+				<LumiSection ID="63365"/>
+				<LumiSection ID="63373"/>
+				<LumiSection ID="63382"/>
+				<LumiSection ID="63414"/>
+				<LumiSection ID="63433"/>
+				<LumiSection ID="63435"/>
+				<LumiSection ID="63448"/>
+				<LumiSection ID="63451"/>
+				<LumiSection ID="63453"/>
+				<LumiSection ID="63465"/>
+				<LumiSection ID="63470"/>
+				<LumiSection ID="63527"/>
+				<LumiSection ID="63537"/>
+				<LumiSection ID="63582"/>
+				<LumiSection ID="63596"/>
+				<LumiSection ID="63628"/>
+				<LumiSection ID="63629"/>
+				<LumiSection ID="63631"/>
+				<LumiSection ID="63639"/>
+				<LumiSection ID="63646"/>
+				<LumiSection ID="63648"/>
+				<LumiSection ID="63650"/>
+				<LumiSection ID="63657"/>
+				<LumiSection ID="63668"/>
+				<LumiSection ID="63676"/>
+				<LumiSection ID="63677"/>
+				<LumiSection ID="63695"/>
+				<LumiSection ID="63705"/>
+				<LumiSection ID="63709"/>
+				<LumiSection ID="63720"/>
+				<LumiSection ID="63753"/>
+				<LumiSection ID="63757"/>
+				<LumiSection ID="63772"/>
+				<LumiSection ID="63775"/>
+				<LumiSection ID="63786"/>
+				<LumiSection ID="63787"/>
+				<LumiSection ID="63792"/>
+				<LumiSection ID="63826"/>
+				<LumiSection ID="63856"/>
+				<LumiSection ID="63862"/>
+			</Run>
+		</Runs>
+		<Branches>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype1p2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				StoredPileupJetIdentifieredmValueMap_puJetId__PAT.
+			</Branch>
+			<Branch>
+				double_kt6PFJets_rho_RECO.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_cutbasedDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_fullDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_philv1Discriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_simpleDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_cutbasedId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_fullId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_philv1Id_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_simpleId_PAT.
+			</Branch>
+			<Branch>
+				ints_genParticles__SIM.
+			</Branch>
+			<Branch>
+				patElectrons_goodElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_selectedPatElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_vetoElectrons__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJets__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype1p2Corr__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype2Corr__PAT.
+			</Branch>
+			<Branch>
+				patMETs_patMETs__PAT.
+			</Branch>
+			<Branch>
+				patMuons_goodMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_selectedPatMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_vetoMuons__PAT.
+			</Branch>
+			<Branch>
+				patPFParticles_selectedPatPFParticles__PAT.
+			</Branch>
+			<Branch>
+				patTaus_selectedPatTaus__PAT.
+			</Branch>
+			<Branch>
+				patTriggerAlgorithms_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerConditions_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerEvent_patTriggerEvent__PAT.
+			</Branch>
+			<Branch>
+				patTriggerFilters_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjectStandAlones_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjects_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerPaths_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJets_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype1p2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJets_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype1p2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenParticles_genParticles__SIM.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJets_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype1p2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_goodOfflinePrimaryVertices__PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_offlinePrimaryVertices__RECO.
+			</Branch>
+		</Branches>
+	</InputFile>
+	<InputFile>
+		<EventsRead>
+			21536
+		</EventsRead>
+		<Runs>
+			{1: [9632, 9747, 9808, 9875, 9978, 11156, 11892, 12330, 12530, 12540, 12562, 12581, 12682, 12854, 12855, 12902, 12976, 13035, 13071, 13108, 13120, 13158, 13220, 13233, 13275, 13324, 13341, 13437, 13529, 13545, 13550, 13601, 13632, 13645, 13663, 13676, 13679, 13768, 13814, 13883, 13893, 13949, 13958, 13961, 13986, 13992, 13998, 14015, 14163, 14251, 14259, 14261, 14322, 14344, 14405, 14444, 14482, 14501, 14601, 14874, 15015, 15017, 15022, 15052, 15072, 15091, 15362, 15390, 15408, 15447, 15451, 15542, 15809, 15971, 15995, 16327, 16560, 16591, 16609, 16631, 16786, 16910, 17071, 17144, 17231, 17716, 17890, 17948, 18033, 18036, 18082, 18189, 18194, 18205, 18304, 18397, 18417, 18442, 18538, 18838, 18873, 18895, 18985, 19021, 19072, 19264, 19378, 19558, 19588, 19619, 19622, 19727, 19733, 19750, 19775, 19788, 19796, 19802, 19839, 19849, 19850, 19853, 19859, 19933, 19968, 20165, 20185, 20319, 20354, 20359, 20419, 20433, 20469, 20579, 20690, 20751, 20789, 20847, 20850, 21056, 21066, 21088, 21100, 21103, 21133, 21146, 21152, 21159, 21166, 21167, 21177, 21184, 21191, 21235, 21254, 21267, 21272, 21275, 21327, 21333, 21336, 21344, 21349, 21360, 21418, 21701, 22153, 22168]}
+		</Runs>
+		<ModuleLabel>
+			source
+		</ModuleLabel>
+		<FileType>
+			EDM
+		</FileType>
+		<LFN>
+			/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_138_3_rGY.root
+		</LFN>
+		<PFN>
+			file:/hdfs/cms/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_138_3_rGY.root
+		</PFN>
+		<MergedBySize>
+			False
+		</MergedBySize>
+		<Catalog/>
+		<Checksums>
+			{}
+		</Checksums>
+		<GUID>
+			60475F34-531F-E211-8C5E-894FD0ACF46C
+		</GUID>
+		<State Value="closed"/>
+		<Runs>
+			<Run ID="1">
+				<LumiSection ID="9632"/>
+				<LumiSection ID="9747"/>
+				<LumiSection ID="9808"/>
+				<LumiSection ID="9875"/>
+				<LumiSection ID="9978"/>
+				<LumiSection ID="11156"/>
+				<LumiSection ID="11892"/>
+				<LumiSection ID="12330"/>
+				<LumiSection ID="12530"/>
+				<LumiSection ID="12540"/>
+				<LumiSection ID="12562"/>
+				<LumiSection ID="12581"/>
+				<LumiSection ID="12682"/>
+				<LumiSection ID="12854"/>
+				<LumiSection ID="12855"/>
+				<LumiSection ID="12902"/>
+				<LumiSection ID="12976"/>
+				<LumiSection ID="13035"/>
+				<LumiSection ID="13071"/>
+				<LumiSection ID="13108"/>
+				<LumiSection ID="13120"/>
+				<LumiSection ID="13158"/>
+				<LumiSection ID="13220"/>
+				<LumiSection ID="13233"/>
+				<LumiSection ID="13275"/>
+				<LumiSection ID="13324"/>
+				<LumiSection ID="13341"/>
+				<LumiSection ID="13437"/>
+				<LumiSection ID="13529"/>
+				<LumiSection ID="13545"/>
+				<LumiSection ID="13550"/>
+				<LumiSection ID="13601"/>
+				<LumiSection ID="13632"/>
+				<LumiSection ID="13645"/>
+				<LumiSection ID="13663"/>
+				<LumiSection ID="13676"/>
+				<LumiSection ID="13679"/>
+				<LumiSection ID="13768"/>
+				<LumiSection ID="13814"/>
+				<LumiSection ID="13883"/>
+				<LumiSection ID="13893"/>
+				<LumiSection ID="13949"/>
+				<LumiSection ID="13958"/>
+				<LumiSection ID="13961"/>
+				<LumiSection ID="13986"/>
+				<LumiSection ID="13992"/>
+				<LumiSection ID="13998"/>
+				<LumiSection ID="14015"/>
+				<LumiSection ID="14163"/>
+				<LumiSection ID="14251"/>
+				<LumiSection ID="14259"/>
+				<LumiSection ID="14261"/>
+				<LumiSection ID="14322"/>
+				<LumiSection ID="14344"/>
+				<LumiSection ID="14405"/>
+				<LumiSection ID="14444"/>
+				<LumiSection ID="14482"/>
+				<LumiSection ID="14501"/>
+				<LumiSection ID="14601"/>
+				<LumiSection ID="14874"/>
+				<LumiSection ID="15015"/>
+				<LumiSection ID="15017"/>
+				<LumiSection ID="15022"/>
+				<LumiSection ID="15052"/>
+				<LumiSection ID="15072"/>
+				<LumiSection ID="15091"/>
+				<LumiSection ID="15362"/>
+				<LumiSection ID="15390"/>
+				<LumiSection ID="15408"/>
+				<LumiSection ID="15447"/>
+				<LumiSection ID="15451"/>
+				<LumiSection ID="15542"/>
+				<LumiSection ID="15809"/>
+				<LumiSection ID="15971"/>
+				<LumiSection ID="15995"/>
+				<LumiSection ID="16327"/>
+				<LumiSection ID="16560"/>
+				<LumiSection ID="16591"/>
+				<LumiSection ID="16609"/>
+				<LumiSection ID="16631"/>
+				<LumiSection ID="16786"/>
+				<LumiSection ID="16910"/>
+				<LumiSection ID="17071"/>
+				<LumiSection ID="17144"/>
+				<LumiSection ID="17231"/>
+				<LumiSection ID="17716"/>
+				<LumiSection ID="17890"/>
+				<LumiSection ID="17948"/>
+				<LumiSection ID="18033"/>
+				<LumiSection ID="18036"/>
+				<LumiSection ID="18082"/>
+				<LumiSection ID="18189"/>
+				<LumiSection ID="18194"/>
+				<LumiSection ID="18205"/>
+				<LumiSection ID="18304"/>
+				<LumiSection ID="18397"/>
+				<LumiSection ID="18417"/>
+				<LumiSection ID="18442"/>
+				<LumiSection ID="18538"/>
+				<LumiSection ID="18838"/>
+				<LumiSection ID="18873"/>
+				<LumiSection ID="18895"/>
+				<LumiSection ID="18985"/>
+				<LumiSection ID="19021"/>
+				<LumiSection ID="19072"/>
+				<LumiSection ID="19264"/>
+				<LumiSection ID="19378"/>
+				<LumiSection ID="19558"/>
+				<LumiSection ID="19588"/>
+				<LumiSection ID="19619"/>
+				<LumiSection ID="19622"/>
+				<LumiSection ID="19727"/>
+				<LumiSection ID="19733"/>
+				<LumiSection ID="19750"/>
+				<LumiSection ID="19775"/>
+				<LumiSection ID="19788"/>
+				<LumiSection ID="19796"/>
+				<LumiSection ID="19802"/>
+				<LumiSection ID="19839"/>
+				<LumiSection ID="19849"/>
+				<LumiSection ID="19850"/>
+				<LumiSection ID="19853"/>
+				<LumiSection ID="19859"/>
+				<LumiSection ID="19933"/>
+				<LumiSection ID="19968"/>
+				<LumiSection ID="20165"/>
+				<LumiSection ID="20185"/>
+				<LumiSection ID="20319"/>
+				<LumiSection ID="20354"/>
+				<LumiSection ID="20359"/>
+				<LumiSection ID="20419"/>
+				<LumiSection ID="20433"/>
+				<LumiSection ID="20469"/>
+				<LumiSection ID="20579"/>
+				<LumiSection ID="20690"/>
+				<LumiSection ID="20751"/>
+				<LumiSection ID="20789"/>
+				<LumiSection ID="20847"/>
+				<LumiSection ID="20850"/>
+				<LumiSection ID="21056"/>
+				<LumiSection ID="21066"/>
+				<LumiSection ID="21088"/>
+				<LumiSection ID="21100"/>
+				<LumiSection ID="21103"/>
+				<LumiSection ID="21133"/>
+				<LumiSection ID="21146"/>
+				<LumiSection ID="21152"/>
+				<LumiSection ID="21159"/>
+				<LumiSection ID="21166"/>
+				<LumiSection ID="21167"/>
+				<LumiSection ID="21177"/>
+				<LumiSection ID="21184"/>
+				<LumiSection ID="21191"/>
+				<LumiSection ID="21235"/>
+				<LumiSection ID="21254"/>
+				<LumiSection ID="21267"/>
+				<LumiSection ID="21272"/>
+				<LumiSection ID="21275"/>
+				<LumiSection ID="21327"/>
+				<LumiSection ID="21333"/>
+				<LumiSection ID="21336"/>
+				<LumiSection ID="21344"/>
+				<LumiSection ID="21349"/>
+				<LumiSection ID="21360"/>
+				<LumiSection ID="21418"/>
+				<LumiSection ID="21701"/>
+				<LumiSection ID="22153"/>
+				<LumiSection ID="22168"/>
+			</Run>
+		</Runs>
+		<Branches>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype1p2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				StoredPileupJetIdentifieredmValueMap_puJetId__PAT.
+			</Branch>
+			<Branch>
+				double_kt6PFJets_rho_RECO.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_cutbasedDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_fullDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_philv1Discriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_simpleDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_cutbasedId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_fullId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_philv1Id_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_simpleId_PAT.
+			</Branch>
+			<Branch>
+				ints_genParticles__SIM.
+			</Branch>
+			<Branch>
+				patElectrons_goodElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_selectedPatElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_vetoElectrons__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJets__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype1p2Corr__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype2Corr__PAT.
+			</Branch>
+			<Branch>
+				patMETs_patMETs__PAT.
+			</Branch>
+			<Branch>
+				patMuons_goodMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_selectedPatMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_vetoMuons__PAT.
+			</Branch>
+			<Branch>
+				patPFParticles_selectedPatPFParticles__PAT.
+			</Branch>
+			<Branch>
+				patTaus_selectedPatTaus__PAT.
+			</Branch>
+			<Branch>
+				patTriggerAlgorithms_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerConditions_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerEvent_patTriggerEvent__PAT.
+			</Branch>
+			<Branch>
+				patTriggerFilters_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjectStandAlones_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjects_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerPaths_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJets_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype1p2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJets_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype1p2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenParticles_genParticles__SIM.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJets_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype1p2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_goodOfflinePrimaryVertices__PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_offlinePrimaryVertices__RECO.
+			</Branch>
+		</Branches>
+	</InputFile>
+	<InputFile>
+		<EventsRead>
+			19596
+		</EventsRead>
+		<Runs>
+			{1: [12436, 12458, 13846, 14004, 14678, 14731, 14987, 15426, 15475, 15480, 15545, 15548, 15636, 15955, 16016, 16363, 16407, 16443, 17164, 17334, 17606, 17782, 17903, 17916, 17921, 18060, 18062, 18063, 18091, 18108, 18167, 18169, 18203, 18300, 18382, 18473, 18511, 18846, 18870, 18936, 19015, 19027, 19037, 19039, 19066, 19077, 19083, 19108, 19184, 19315, 19366, 19427, 19712, 19739, 19744, 19751, 19779, 19806, 19817, 19965, 19969, 20023, 20025, 20053, 20097, 20168, 20172, 20210, 20234, 20242, 20256, 20265, 20267, 20269, 20272, 20316, 20349, 20384, 20391, 20394, 20395, 20397, 20408, 20409, 20418, 20427, 20444, 20478, 20479, 20484, 20488, 20496, 20511, 20518, 20528, 20534, 20544, 20546, 20553, 20556, 20570, 20605, 20612, 20618, 20673, 20678, 20695, 20845, 20870, 20921, 20933, 21231, 21237, 21344, 21345, 21354, 21361, 21362, 21397, 21402, 21414, 21425, 21434, 21452, 21460, 21473, 21495, 21548, 21569, 21596, 21597, 21603, 21605, 21608, 21635, 21636, 21648, 21660, 21667, 21702, 21726, 21727, 21750, 21751, 21770, 21780, 21804, 21824, 21849, 22024, 22066, 22939, 22989, 22993]}
+		</Runs>
+		<ModuleLabel>
+			source
+		</ModuleLabel>
+		<FileType>
+			EDM
+		</FileType>
+		<LFN>
+			/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_139_5_FkA.root
+		</LFN>
+		<PFN>
+			file:/hdfs/cms/store/user/mario/QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_139_5_FkA.root
+		</PFN>
+		<MergedBySize>
+			False
+		</MergedBySize>
+		<Catalog/>
+		<Checksums>
+			{}
+		</Checksums>
+		<GUID>
+			7EEA3581-E822-E211-8B5B-2164ED2E2760
+		</GUID>
+		<State Value="closed"/>
+		<Runs>
+			<Run ID="1">
+				<LumiSection ID="12436"/>
+				<LumiSection ID="12458"/>
+				<LumiSection ID="13846"/>
+				<LumiSection ID="14004"/>
+				<LumiSection ID="14678"/>
+				<LumiSection ID="14731"/>
+				<LumiSection ID="14987"/>
+				<LumiSection ID="15426"/>
+				<LumiSection ID="15475"/>
+				<LumiSection ID="15480"/>
+				<LumiSection ID="15545"/>
+				<LumiSection ID="15548"/>
+				<LumiSection ID="15636"/>
+				<LumiSection ID="15955"/>
+				<LumiSection ID="16016"/>
+				<LumiSection ID="16363"/>
+				<LumiSection ID="16407"/>
+				<LumiSection ID="16443"/>
+				<LumiSection ID="17164"/>
+				<LumiSection ID="17334"/>
+				<LumiSection ID="17606"/>
+				<LumiSection ID="17782"/>
+				<LumiSection ID="17903"/>
+				<LumiSection ID="17916"/>
+				<LumiSection ID="17921"/>
+				<LumiSection ID="18060"/>
+				<LumiSection ID="18062"/>
+				<LumiSection ID="18063"/>
+				<LumiSection ID="18091"/>
+				<LumiSection ID="18108"/>
+				<LumiSection ID="18167"/>
+				<LumiSection ID="18169"/>
+				<LumiSection ID="18203"/>
+				<LumiSection ID="18300"/>
+				<LumiSection ID="18382"/>
+				<LumiSection ID="18473"/>
+				<LumiSection ID="18511"/>
+				<LumiSection ID="18846"/>
+				<LumiSection ID="18870"/>
+				<LumiSection ID="18936"/>
+				<LumiSection ID="19015"/>
+				<LumiSection ID="19027"/>
+				<LumiSection ID="19037"/>
+				<LumiSection ID="19039"/>
+				<LumiSection ID="19066"/>
+				<LumiSection ID="19077"/>
+				<LumiSection ID="19083"/>
+				<LumiSection ID="19108"/>
+				<LumiSection ID="19184"/>
+				<LumiSection ID="19315"/>
+				<LumiSection ID="19366"/>
+				<LumiSection ID="19427"/>
+				<LumiSection ID="19712"/>
+				<LumiSection ID="19739"/>
+				<LumiSection ID="19744"/>
+				<LumiSection ID="19751"/>
+				<LumiSection ID="19779"/>
+				<LumiSection ID="19806"/>
+				<LumiSection ID="19817"/>
+				<LumiSection ID="19965"/>
+				<LumiSection ID="19969"/>
+				<LumiSection ID="20023"/>
+				<LumiSection ID="20025"/>
+				<LumiSection ID="20053"/>
+				<LumiSection ID="20097"/>
+				<LumiSection ID="20168"/>
+				<LumiSection ID="20172"/>
+				<LumiSection ID="20210"/>
+				<LumiSection ID="20234"/>
+				<LumiSection ID="20242"/>
+				<LumiSection ID="20256"/>
+				<LumiSection ID="20265"/>
+				<LumiSection ID="20267"/>
+				<LumiSection ID="20269"/>
+				<LumiSection ID="20272"/>
+				<LumiSection ID="20316"/>
+				<LumiSection ID="20349"/>
+				<LumiSection ID="20384"/>
+				<LumiSection ID="20391"/>
+				<LumiSection ID="20394"/>
+				<LumiSection ID="20395"/>
+				<LumiSection ID="20397"/>
+				<LumiSection ID="20408"/>
+				<LumiSection ID="20409"/>
+				<LumiSection ID="20418"/>
+				<LumiSection ID="20427"/>
+				<LumiSection ID="20444"/>
+				<LumiSection ID="20478"/>
+				<LumiSection ID="20479"/>
+				<LumiSection ID="20484"/>
+				<LumiSection ID="20488"/>
+				<LumiSection ID="20496"/>
+				<LumiSection ID="20511"/>
+				<LumiSection ID="20518"/>
+				<LumiSection ID="20528"/>
+				<LumiSection ID="20534"/>
+				<LumiSection ID="20544"/>
+				<LumiSection ID="20546"/>
+				<LumiSection ID="20553"/>
+				<LumiSection ID="20556"/>
+				<LumiSection ID="20570"/>
+				<LumiSection ID="20605"/>
+				<LumiSection ID="20612"/>
+				<LumiSection ID="20618"/>
+				<LumiSection ID="20673"/>
+				<LumiSection ID="20678"/>
+				<LumiSection ID="20695"/>
+				<LumiSection ID="20845"/>
+				<LumiSection ID="20870"/>
+				<LumiSection ID="20921"/>
+				<LumiSection ID="20933"/>
+				<LumiSection ID="21231"/>
+				<LumiSection ID="21237"/>
+				<LumiSection ID="21344"/>
+				<LumiSection ID="21345"/>
+				<LumiSection ID="21354"/>
+				<LumiSection ID="21361"/>
+				<LumiSection ID="21362"/>
+				<LumiSection ID="21397"/>
+				<LumiSection ID="21402"/>
+				<LumiSection ID="21414"/>
+				<LumiSection ID="21425"/>
+				<LumiSection ID="21434"/>
+				<LumiSection ID="21452"/>
+				<LumiSection ID="21460"/>
+				<LumiSection ID="21473"/>
+				<LumiSection ID="21495"/>
+				<LumiSection ID="21548"/>
+				<LumiSection ID="21569"/>
+				<LumiSection ID="21596"/>
+				<LumiSection ID="21597"/>
+				<LumiSection ID="21603"/>
+				<LumiSection ID="21605"/>
+				<LumiSection ID="21608"/>
+				<LumiSection ID="21635"/>
+				<LumiSection ID="21636"/>
+				<LumiSection ID="21648"/>
+				<LumiSection ID="21660"/>
+				<LumiSection ID="21667"/>
+				<LumiSection ID="21702"/>
+				<LumiSection ID="21726"/>
+				<LumiSection ID="21727"/>
+				<LumiSection ID="21750"/>
+				<LumiSection ID="21751"/>
+				<LumiSection ID="21770"/>
+				<LumiSection ID="21780"/>
+				<LumiSection ID="21804"/>
+				<LumiSection ID="21824"/>
+				<LumiSection ID="21849"/>
+				<LumiSection ID="22024"/>
+				<LumiSection ID="22066"/>
+				<LumiSection ID="22939"/>
+				<LumiSection ID="22989"/>
+				<LumiSection ID="22993"/>
+			</Run>
+		</Runs>
+		<Branches>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype1p2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				CaloTowers_selectedPatJetsForMETtype2Corr_caloTowers_PAT.
+			</Branch>
+			<Branch>
+				StoredPileupJetIdentifieredmValueMap_puJetId__PAT.
+			</Branch>
+			<Branch>
+				double_kt6PFJets_rho_RECO.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_cutbasedDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_fullDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_philv1Discriminant_PAT.
+			</Branch>
+			<Branch>
+				floatedmValueMap_puJetMva_simpleDiscriminant_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_cutbasedId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_fullId_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_philv1Id_PAT.
+			</Branch>
+			<Branch>
+				intedmValueMap_puJetMva_simpleId_PAT.
+			</Branch>
+			<Branch>
+				ints_genParticles__SIM.
+			</Branch>
+			<Branch>
+				patElectrons_goodElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_selectedPatElectrons__PAT.
+			</Branch>
+			<Branch>
+				patElectrons_vetoElectrons__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJets__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype1p2Corr__PAT.
+			</Branch>
+			<Branch>
+				patJets_selectedPatJetsForMETtype2Corr__PAT.
+			</Branch>
+			<Branch>
+				patMETs_patMETs__PAT.
+			</Branch>
+			<Branch>
+				patMuons_goodMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_selectedPatMuons__PAT.
+			</Branch>
+			<Branch>
+				patMuons_vetoMuons__PAT.
+			</Branch>
+			<Branch>
+				patPFParticles_selectedPatPFParticles__PAT.
+			</Branch>
+			<Branch>
+				patTaus_selectedPatTaus__PAT.
+			</Branch>
+			<Branch>
+				patTriggerAlgorithms_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerConditions_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerEvent_patTriggerEvent__PAT.
+			</Branch>
+			<Branch>
+				patTriggerFilters_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjectStandAlones_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerObjects_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				patTriggerPaths_patTrigger__PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJets_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype1p2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoBaseTagInfosOwned_selectedPatJetsForMETtype2Corr_tagInfos_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJets_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype1p2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenJets_selectedPatJetsForMETtype2Corr_genJets_PAT.
+			</Branch>
+			<Branch>
+				recoGenParticles_genParticles__SIM.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJets_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype1p2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoPFCandidates_selectedPatJetsForMETtype2Corr_pfCandidates_PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_goodOfflinePrimaryVertices__PAT.
+			</Branch>
+			<Branch>
+				recoVertexs_offlinePrimaryVertices__RECO.
+			</Branch>
+		</Branches>
+	</InputFile>
+	<AnalysisFile>
+		<SEName Value="None"/>
+		<LFN Value="None"/>
+		<PFN Value="None"/>
+		<Source Value="TFileService"/>
+		<FileName>
+			/home/cms067/home_creur_814632553/CREAM814632553/glide_X32478/execute/dir_6551/CMSSW_5_3_5/optHistograms.root
+		</FileName>
+		<SurlForGrid Value="None"/>
+	</AnalysisFile>
+	<FrameworkError ExitStatus="0" Type="WrapperExitCode"/>
+	<FrameworkError ExitStatus="0" Type="ExeExitCode"/>
+	<TimingService/>
+	<ReadBranches>
+		<Branch Name="recoVertexs_goodOfflinePrimaryVertices__PAT." ReadCount="85551"/>
+		<Branch Name="patMuons_goodMuons__PAT." ReadCount="85551"/>
+		<Branch Name="patMuons_vetoMuons__PAT." ReadCount="85551"/>
+		<Branch Name="StoredPileupJetIdentifieredmValueMap_puJetId__PAT." ReadCount="85551"/>
+		<Branch Name="intedmValueMap_puJetMva_fullId_PAT." ReadCount="85551"/>
+		<Branch Name="patJets_selectedPatJets__PAT." ReadCount="85551"/>
+		<Branch Name="patElectrons_goodElectrons__PAT." ReadCount="85551"/>
+		<Branch Name="patMETs_patMETs__PAT." ReadCount="85551"/>
+		<Branch Name="recoGenJets_selectedPatJets_genJets_PAT." ReadCount="85548"/>
+		<Branch Name="patElectrons_vetoElectrons__PAT." ReadCount="85551"/>
+		<Branch Name="floatedmValueMap_puJetMva_fullDiscriminant_PAT." ReadCount="85551"/>
+		<Branch Name="recoPFCandidates_selectedPatJets_pfCandidates_PAT." ReadCount="85548"/>
+	</ReadBranches>
+	<GeneratorInfo/>
+	<PerformanceReport>
+		<CPU/>
+		<Memory/>
+		<PerformanceSummary Metric="CrabTiming">
+			<Metric Name="ExeTime" Value="438"/>
+			<Metric Name="WrapperTime" Value="600"/>
+			<Metric Name="CpuTime" Value="&quot;285.59 9.63 67%&quot;"/>
+			<Metric Name="StageoutTime" Value="-1"/>
+		</PerformanceSummary>
+		<PerformanceSummary Metric="StorageStatistics">
+			<Metric Name="Timing-tstoragefile-writeActual-totalMegabytes" Value="0.000407219"/>
+			<Metric Name="Timing-file-readv-numSuccessfulOperations" Value="122"/>
+			<Metric Name="ROOT-tfile-read-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-readv-maxMsecs" Value="9682.28"/>
+			<Metric Name="Timing-tstoragefile-readActual-totalMegabytes" Value="891.189"/>
+			<Metric Name="Timing-file-write-totalMegabytes" Value="0.000407219"/>
+			<Metric Name="Timing-file-destruct-totalMsecs" Value="0.066816"/>
+			<Metric Name="Timing-file-position-numSuccessfulOperations" Value="405016"/>
+			<Metric Name="Timing-file-writev-numSuccessfulOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-writeActual-numOperations" Value="4"/>
+			<Metric Name="Timing-tstoragefile-write-numSuccessfulOperations" Value="4"/>
+			<Metric Name="Timing-tstoragefile-read-maxMsecs" Value="9682.75"/>
+			<Metric Name="Timing-file-read-minMsecs" Value="0.001536"/>
+			<Metric Name="Timing-file-construct-totalMsecs" Value="0.0128"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-totalMsecs" Value="0"/>
+			<Metric Name="Timing-file-read-numSuccessfulOperations" Value="95"/>
+			<Metric Name="Timing-file-writev-totalMsecs" Value="0"/>
+			<Metric Name="Timing-file-position-numOperations" Value="405016"/>
+			<Metric Name="Timing-tstoragefile-seek-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-readv-totalMsecs" Value="112452"/>
+			<Metric Name="Timing-file-construct-minMsecs" Value="0.000512"/>
+			<Metric Name="Timing-file-stagein-numSuccessfulOperations" Value="5"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-totalMegabytes" Value="822.215"/>
+			<Metric Name="Timing-file-close-minMsecs" Value="0.071168"/>
+			<Metric Name="ROOT-tfile-write-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-readActual-numOperations" Value="217"/>
+			<Metric Name="Timing-file-stagein-maxMsecs" Value="0.00128"/>
+			<Metric Name="Timing-tstoragefile-writeActual-totalMsecs" Value="0.123648"/>
+			<Metric Name="Timing-tstoragefile-flush-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-readAsync-totalMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-write-minMsecs" Value="0.010752"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-numOperations" Value="4"/>
+			<Metric Name="Timing-file-writev-numOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-close-numOperations" Value="5"/>
+			<Metric Name="Timing-tstoragefile-readAsync-minMsecs" Value="0"/>
+			<Metric Name="Timing-file-stagein-numOperations" Value="5"/>
+			<Metric Name="Timing-tstoragefile-readActual-maxMsecs" Value="9682.28"/>
+			<Metric Name="Timing-file-readv-numOperations" Value="122"/>
+			<Metric Name="Timing-file-prefetch-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-close-totalMsecs" Value="1.03066"/>
+			<Metric Name="Timing-tstoragefile-readActual-numSuccessfulOperations" Value="217"/>
+			<Metric Name="Timing-file-write-numOperations" Value="4"/>
+			<Metric Name="Timing-file-open-numSuccessfulOperations" Value="6"/>
+			<Metric Name="Timing-file-position-minMsecs" Value="0.000256"/>
+			<Metric Name="Timing-file-read-maxMsecs" Value="1451.97"/>
+			<Metric Name="Timing-file-prefetch-minMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-writeActual-numSuccessfulOperations" Value="4"/>
+			<Metric Name="Timing-tstoragefile-read-totalMegabytes" Value="829.921"/>
+			<Metric Name="Timing-tstoragefile-readAsync-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-close-numSuccessfulOperations" Value="5"/>
+			<Metric Name="Timing-file-stagein-totalMsecs" Value="0.003072"/>
+			<Metric Name="Timing-tstoragefile-close-minMsecs" Value="0.088576"/>
+			<Metric Name="Timing-file-writev-minMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-read-minMsecs" Value="0.000512"/>
+			<Metric Name="Timing-tstoragefile-seek-maxMsecs" Value="10.0173"/>
+			<Metric Name="Timing-tstoragefile-seek-minMsecs" Value="0.000768"/>
+			<Metric Name="Timing-file-construct-numOperations" Value="6"/>
+			<Metric Name="Timing-tstoragefile-write-numOperations" Value="4"/>
+			<Metric Name="Timing-file-close-numSuccessfulOperations" Value="5"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-maxMsecs" Value="9682.74"/>
+			<Metric Name="Timing-file-destruct-minMsecs" Value="0.00256"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-maxMsecs" Value="0"/>
+			<Metric Name="Timing-file-close-maxMsecs" Value="0.534016"/>
+			<Metric Name="Timing-file-close-totalMsecs" Value="0.899072"/>
+			<Metric Name="Timing-file-destruct-numOperations" Value="5"/>
+			<Metric Name="Timing-tstoragefile-writeActual-minMsecs" Value="0.009472"/>
+			<Metric Name="Timing-file-stagein-minMsecs" Value="0.000256"/>
+			<Metric Name="Timing-file-write-minMsecs" Value="0.00896"/>
+			<Metric Name="Timing-tstoragefile-readActual-minMsecs" Value="0.002048"/>
+			<Metric Name="Timing-tstoragefile-stat-numSuccessfulOperations" Value="10"/>
+			<Metric Name="Timing-tstoragefile-flush-maxMsecs" Value="32.7066"/>
+			<Metric Name="Timing-file-readv-minMsecs" Value="0.006144"/>
+			<Metric Name="Timing-tstoragefile-readAsync-maxMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-stat-totalMsecs" Value="6.37466"/>
+			<Metric Name="Timing-file-writev-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-flush-totalMsecs" Value="32.7032"/>
+			<Metric Name="Timing-file-position-totalMsecs" Value="342.978"/>
+			<Metric Name="Timing-tstoragefile-read-numOperations" Value="404972"/>
+			<Metric Name="Timing-file-destruct-numSuccessfulOperations" Value="5"/>
+			<Metric Name="Timing-file-open-maxMsecs" Value="426.809"/>
+			<Metric Name="Timing-file-close-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-construct-totalMsecs" Value="8065.54"/>
+			<Metric Name="Timing-tstoragefile-seek-numOperations" Value="404976"/>
+			<Metric Name="Timing-tstoragefile-readActual-totalMsecs" Value="114591"/>
+			<Metric Name="Timing-tstoragefile-flush-numSuccessfulOperations" Value="1"/>
+			<Metric Name="Parameter-untracked-string-readHint" Value="auto-detect"/>
+			<Metric Name="Timing-file-destruct-maxMsecs" Value="0.053248"/>
+			<Metric Name="Timing-tstoragefile-construct-numSuccessfulOperations" Value="6"/>
+			<Metric Name="Timing-tstoragefile-writeActual-maxMsecs" Value="0.049408"/>
+			<Metric Name="Timing-file-position-maxMsecs" Value="10.0065"/>
+			<Metric Name="Timing-tstoragefile-seek-totalMsecs" Value="621.349"/>
+			<Metric Name="Timing-tstoragefile-flush-numOperations" Value="1"/>
+			<Metric Name="Timing-tstoragefile-flush-minMsecs" Value="32.7066"/>
+			<Metric Name="Timing-file-prefetch-totalMsecs" Value="0"/>
+			<Metric Name="Timing-file-open-minMsecs" Value="0.164352"/>
+			<Metric Name="Timing-file-close-numOperations" Value="5"/>
+			<Metric Name="Timing-tstoragefile-flush-totalMsecs" Value="32.7066"/>
+			<Metric Name="Timing-tstoragefile-construct-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-destruct-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-write-totalMsecs" Value="0.11136"/>
+			<Metric Name="Timing-file-write-numSuccessfulOperations" Value="4"/>
+			<Metric Name="Timing-file-flush-numOperations" Value="1"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-numSuccessfulOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-stat-numOperations" Value="10"/>
+			<Metric Name="Timing-file-read-numOperations" Value="95"/>
+			<Metric Name="Timing-tstoragefile-seek-numSuccessfulOperations" Value="404976"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-numOperations" Value="404877"/>
+			<Metric Name="Timing-file-position-totalMegabytes" Value="0"/>
+			<Metric Name="Parameter-untracked-bool-enabled" Value="true"/>
+			<Metric Name="Timing-tstoragefile-readAsync-numSuccessfulOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-writeViaCache-minMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-construct-maxMsecs" Value="7073.12"/>
+			<Metric Name="Timing-file-prefetch-numSuccessfulOperations" Value="0"/>
+			<Metric Name="Timing-file-write-maxMsecs" Value="0.040448"/>
+			<Metric Name="Timing-file-construct-maxMsecs" Value="0.007936"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-minMsecs" Value="0.000256"/>
+			<Metric Name="Timing-tstoragefile-read-totalMsecs" Value="116071"/>
+			<Metric Name="Timing-tstoragefile-write-totalMsecs" Value="0.144128"/>
+			<Metric Name="Timing-file-readv-totalMegabytes" Value="883.484"/>
+			<Metric Name="Parameter-untracked-string-cacheHint" Value="application-only"/>
+			<Metric Name="Timing-file-prefetch-maxMsecs" Value="0"/>
+			<Metric Name="Timing-file-writev-maxMsecs" Value="0"/>
+			<Metric Name="Timing-tstoragefile-construct-numOperations" Value="6"/>
+			<Metric Name="Timing-file-open-totalMegabytes" Value="0"/>
+			<Metric Name="Parameter-untracked-bool-stats" Value="true"/>
+			<Metric Name="Timing-tstoragefile-stat-maxMsecs" Value="1.41875"/>
+			<Metric Name="Timing-tstoragefile-write-totalMegabytes" Value="0.000407219"/>
+			<Metric Name="Timing-tstoragefile-readAsync-numOperations" Value="25"/>
+			<Metric Name="Timing-tstoragefile-construct-minMsecs" Value="64.3395"/>
+			<Metric Name="Timing-tstoragefile-close-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-tstoragefile-stat-minMsecs" Value="0.004096"/>
+			<Metric Name="Timing-file-open-totalMsecs" Value="940.681"/>
+			<Metric Name="Timing-tstoragefile-stat-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-open-numOperations" Value="6"/>
+			<Metric Name="Timing-file-flush-minMsecs" Value="32.7032"/>
+			<Metric Name="Timing-file-flush-numSuccessfulOperations" Value="1"/>
+			<Metric Name="Timing-file-flush-maxMsecs" Value="32.7032"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-totalMsecs" Value="113706"/>
+			<Metric Name="Timing-file-prefetch-numOperations" Value="0"/>
+			<Metric Name="Timing-tstoragefile-readViaCache-numSuccessfulOperations" Value="404877"/>
+			<Metric Name="Timing-file-construct-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-read-totalMegabytes" Value="7.70541"/>
+			<Metric Name="Timing-tstoragefile-write-maxMsecs" Value="0.065792"/>
+			<Metric Name="Timing-tstoragefile-close-maxMsecs" Value="0.548352"/>
+			<Metric Name="Timing-tstoragefile-read-numSuccessfulOperations" Value="404972"/>
+			<Metric Name="Timing-file-read-totalMsecs" Value="2138.37"/>
+			<Metric Name="Timing-file-construct-numSuccessfulOperations" Value="6"/>
+			<Metric Name="Timing-file-stagein-totalMegabytes" Value="0"/>
+			<Metric Name="Timing-file-flush-totalMegabytes" Value="0"/>
+		</PerformanceSummary>
+	</PerformanceReport>
+</FrameworkJobReport>

@@ -1,0 +1,33 @@
+<FrameworkJobReport Status="Failed">
+	<ExitCode Value="50117"/>
+	<SkippedFile Lfn="/store/user/mario/QCD_Pt_170_250_BCtoE_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_317_1_Ptw.root" Pfn="file:/hdfs/cms/store/user/mario/QCD_Pt_170_250_BCtoE_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_317_1_Ptw.root"/>
+	<FrameworkError ExitStatus="8028" Type="Fatal Exception">
+		An exception of category 'FallbackFileOpenError' occurred while
+						   [0] Constructing the EventProcessor
+						   [1] Constructing input source of type PoolSource
+						   [2] Calling RootInputFileSequence::initFile()
+						   [3] Calling StorageFactory::open()
+						   [4] Calling XrdFile::open()
+						Exception Message:
+						Input file file:/hdfs/cms/store/user/mario/QCD_Pt_170_250_BCtoE_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_317_1_Ptw.root was not found, could not be opened, or is corrupted.
+						Fallback Input file root://xrootd.ba.infn.it//store/user/mario/QCD_Pt_170_250_BCtoE_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_317_1_Ptw.root also was not found, could not be opened, or is corrupted.
+						   Additional Info:
+						      [a] XrdClient::Open(name='root://xrootd.ba.infn.it//store/user/mario/QCD_Pt_170_250_BCtoE_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_317_1_Ptw.root', flags=0x10, permissions=0666) =&gt; error 'No servers are available to read the file.' (errno=3011)
+						      [b] Current server connection: root://cms-xrd-global.cern.ch:1094//store/user/mario/QCD_Pt_170_250_BCtoE_TuneZ2star_8TeV_pythia6/Summer12-stop-pfele-step1/3d176ac8da5e9dff208d057f4733ca91/tuple_317_1_Ptw.root
+	</FrameworkError>
+	<FrameworkError ExitStatus="8028" Type="WrapperExitCode"/>
+	<FrameworkError ExitStatus="8028" Type="ExeExitCode"/>
+	<TimingService/>
+	<ReadBranches/>
+	<GeneratorInfo/>
+	<PerformanceReport>
+		<CPU/>
+		<Memory/>
+		<PerformanceSummary Metric="CrabTiming">
+			<Metric Name="ExeTime" Value="86"/>
+			<Metric Name="WrapperTime" Value="600"/>
+			<Metric Name="CpuTime" Value="&quot;0.94 2.75 4%&quot;"/>
+			<Metric Name="StageoutTime" Value="-2"/>
+		</PerformanceSummary>
+	</PerformanceReport>
+</FrameworkJobReport>
