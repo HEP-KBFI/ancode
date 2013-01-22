@@ -67,8 +67,8 @@ class SingleTopOptimization : public edm::EDAnalyzer {
 
       // ----------member data ---------------------------
   TH1D *costh, *topMass, *Wmass, *el_g_MVA, *el_g_MVA_EB, *el_g_MVA_EE, *el_g_pt, *el_g_eta, *el_g_relIso, *nuEta, *ljetPt_f, *bjetPt_f, *leadjetPt_f, *nextjetPt_f, *WmTmet, *met_f;
-  TH1D *costh_tight, *topMass_tight, *Wmass_tight, *el_g_MVA_tight, *WmTmet_tight, *met_f_tight, *el_g_pt_tight, *nuEta_tight, *el_g_reIso_tight;
-  TH1D *costh_inv, *topMass_inv, *Wmass_inv, *el_g_MVA_inv, *WmTmet_inv, *met_f_inv, *el_g_pt_inv, *nuEta_inv, *el_g_relIso_inv;
+  TH1D *costh_tight, *topMass_tight, *el_g_MVA_tight, *WmTmet_tight, *met_f_tight, *el_g_pt_tight, *nuEta_tight, *el_g_relIso_tight;
+  TH1D *costh_inv, *topMass_inv, *el_g_MVA_inv, *WmTmet_inv, *met_f_inv, *el_g_pt_inv, *nuEta_inv, *el_g_relIso_inv;
 
   TH2D *mvaGoodElvsVetoEl;
 };
@@ -176,6 +176,9 @@ SingleTopOptimization::analyze(const edm::Event& iEvent, const edm::EventSetup& 
      met_f->Fill( topjets->begin()->met() );
    }
 
+   if(topjets->size() < 1 )
+     cout<<"POLE TOPJETTE!"<<endl;
+
    if( topjets->size()>0 && gEl->begin()->electronID("mvaTrigV0") > 0.98 && relIso < 0.1 ){
      nuEta_tight->Fill(topjets->begin()->p4nu().Eta());
      costh_tight->Fill( topjets->begin()->costh() );
@@ -186,8 +189,7 @@ SingleTopOptimization::analyze(const edm::Event& iEvent, const edm::EventSetup& 
      el_g_pt_tight->Fill(gEl->begin()->pt());
      el_g_relIso_tight->Fill(relIso);
    }
-
-   if( topjets->size()>0 && gEl->begin()->electronID("mvaTrigV0") < 0.98 &&  relIso > 0.1 && relIso < 0.5 ){
+   if( topjets->size() && ( gEl->begin()->electronID("mvaTrigV0") <= 0.98 || relIso >= 0.1 ) ){
      nuEta_inv->Fill(topjets->begin()->p4nu().Eta());
      costh_inv->Fill( topjets->begin()->costh() );
      topMass_inv->Fill(TMath::Sqrt( topjets->begin()->p4top().M2() ) );
@@ -197,8 +199,7 @@ SingleTopOptimization::analyze(const edm::Event& iEvent, const edm::EventSetup& 
      el_g_pt_inv->Fill(gEl->begin()->pt());
      el_g_relIso_inv->Fill(relIso);
    }
-
-
+   
 }
 
 
@@ -231,7 +232,6 @@ SingleTopOptimization::beginJob()
   nuEta_tight = fs->make<TH1D>("nuEta_tight","nu eta",100,-5,5);
   costh_tight = fs->make<TH1D>("costh_tight","Cos(theta*) of lepton and light jet",100,-1,1);
   topMass_tight = fs->make<TH1D>("topMass_tight","Mass of top quark",300,0,500);
-  Wmass_tight = fs->make<TH1D>("Wmass_tight","Mass of recontructed W",240,50,110);
   WmTmet_tight = fs->make<TH1D>("WmTmet_tight","mT of W from met",500,0,500);
   met_f_tight = fs->make<TH1D>("met_f_tight","met",500,0,500);
   el_g_MVA_tight = fs->make<TH1D>("el_g_MVA_tight","good electron MVA",364,0.1,1.01);
@@ -242,7 +242,6 @@ SingleTopOptimization::beginJob()
   nuEta_inv = fs->make<TH1D>("nuEta_inv","nu eta",100,-5,5);
   costh_inv = fs->make<TH1D>("costh_inv","Cos(theta*) of lepton and light jet",100,-1,1);
   topMass_inv = fs->make<TH1D>("topMass_inv","Mass of top quark",300,0,500);
-  Wmass_inv = fs->make<TH1D>("Wmass_inv","Mass of recontructed W",240,50,110);
   WmTmet_inv = fs->make<TH1D>("WmTmet_inv","mT of W from met",500,0,500);
   met_f_inv = fs->make<TH1D>("met_f_inv","met",500,0,500);
   el_g_MVA_inv = fs->make<TH1D>("el_g_MVA_inv","good electron MVA",364,0.1,1.01);

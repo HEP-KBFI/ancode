@@ -177,7 +177,7 @@ SingleTopOptimization::analyze(const edm::Event& iEvent, const edm::EventSetup& 
    }
 
    if(topjets->size() < 1 )
-     cout<<"POLE TOPJETTE!"<<endl;
+     cout<<"No top jet pairs in the event!"<<endl;
 
    if( topjets->size()>0 && gEl->begin()->electronID("mvaTrigV0") > 0.98 && relIso < 0.1 ){
      nuEta_tight->Fill(topjets->begin()->p4nu().Eta());
