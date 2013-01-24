@@ -3,12 +3,12 @@ import FWCore.ParameterSet.Config as cms
 process = cms.Process("Analysis")
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
-process.MessageLogger.cerr.FwkReport.reportEvery = 1
+process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
 process.TFileService = cms.Service("TFileService",
-    fileName = cms.string('optHistograms.root')
+    fileName = cms.string('optHistograms_data_aug06.root')
 )
 
 process.load('AnalysisCode.TriggerFilter.triggerfilter_cfi')
@@ -20,8 +20,57 @@ process.source = cms.Source("PoolSource",
 #    "file:/hdfs/cms/store/user/mario/Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/Summer12-stop-step1-synced/4abb869c2c9729b82d5a6bb08525e8d2/tuple_41_1_1gl.root",
 #    "file:/hdfs/cms/store/user/mario/Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/Summer12-stop-step1-synced/4abb869c2c9729b82d5a6bb08525e8d2/tuple_42_1_GR2.root",
 #    "file:/hdfs/cms/store/user/mario/Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/Summer12-stop-step1-synced/4abb869c2c9729b82d5a6bb08525e8d2/tuple_105_1_y8h.root"
-#----------data-----------
-    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_7_1_WKs.root"
+#----------data aug06-----------
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_7_1_WKs.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_10_1_TdW.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_4_1_0wF.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_12_1_Vb0.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_8_1_3vt.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_6_1_PXR.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_2_1_OkZ.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_15_1_OGt.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_14_1_EX2.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_16_1_m8z.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_1_1_D47.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_3_1_JOm.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_5_1_XDV.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_9_1_CP.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_11_1_BW5.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_13_1_C30.root",
+#    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-aug06-v1/2c6a66df74a4534e1b9bb81eadd2b5a7/tuple_17_1_Doq.root"
+#----------data jul13A---------------
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_100_1_RT6.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_101_1_l49.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_102_1_8Tn.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_103_1_9fR.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_104_2_ZZF.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_105_1_lZk.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_107_2_dxA.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_108_1_XsT.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_109_1_XIU.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_10_1_zS5.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_110_1_HiW.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_111_1_6lc.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_112_1_zLj.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_113_1_3Pf.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_114_1_kC4.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_115_1_Rnk.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_116_1_PTI.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_117_1_TNT.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_118_1_27Q.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_119_1_epB.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_11_1_qjo.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_120_1_cGd.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_121_1_68J.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_122_1_41U.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_123_2_lQ3.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_124_1_bMx.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_125_1_Crt.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_126_1_EuI.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_127_1_q3M.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_128_1_mYt.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_129_1_0h0.root",
+    "file:/hdfs/cms/store/user/mario/SingleElectron/Summer12-SingleTop-first-jul13-runA-v1/9476e6c01f0636717be2e9d2519307ba/tuple_12_1_OVM.root",
 
 #"file:/hdfs/cms/store/user/mario/QCD_Pt_170_250_BCtoE_TuneZ2star_8TeV_pythia6/Summer12-stop-step1-synced/4abb869c2c9729b82d5a6bb08525e8d2/tuple_100_1_W6c.root",
 
@@ -115,7 +164,7 @@ process.stfilt.selection = cms.string("TOP-12-011")
 process.stfilt.leptonFlavors = cms.vint32(11)
 process.stfilt.leadJetPt = cms.double(40)
 process.stfilt.mtW = cms.double(0)
-process.stfilt.met = cms.double(45)
+process.stfilt.metCut = cms.double(45)
 
 process.load('PhysicsTools.PatAlgos.selectionLayer1.jetSelector_cfi')
 process.selectedPatJets.src = cms.InputTag("smearedJets")
@@ -123,10 +172,15 @@ process.selectedPatJets.cut = 'userFloat("smearPt") > 40 & eta < 4.5'
 
 process.lightJet = process.selectedPatJets.clone()
 process.lightJet.src=cms.InputTag("selectedPatJets")
-process.lightJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") < 0.679 & userFloat("RMS") < 0.025'
+#process.lightJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") < 0.679 & userFloat("RMS") < 0.025'
+process.lightJet.cut = 'bDiscriminator("trackCountingHighPurBJetTags") < 3.41 & userFloat("RMS") < 0.025'
+
 
 process.bJet = process.lightJet.clone()
-process.bJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") > 0.679'
+#process.bJet.cut = 'bDiscriminator("combinedSecondaryVertexMVABJetTags") > 0.679'
+process.bJet.cut = 'bDiscriminator("trackCountingHighPurBJetTags") > 3.41'
+
+process.load('AnalysisCode.SingleTopSidebands.singletopsidebands_cfi')
 
 #------------------------Skim for min 1 good photon (no iso required)--------------------------------
 process.photonCounter = cms.EDFilter("CandViewCountFilter",
@@ -136,6 +190,8 @@ process.photonCounter = cms.EDFilter("CandViewCountFilter",
 
 process.load("AnalysisCode.TopProducer.topJetPair_cfi")
 process.topJetPairs.debug = cms.untracked.int32(0)
+process.load("AnalysisCode.TopProducer.neutrino_cfi")
+process.neutrinos.debug = cms.untracked.int32(0)
 
 process.load("AnalysisCode.SingleTopFilter.singletopfilter_cfi")
 
@@ -151,8 +207,11 @@ process.p = cms.Path(
     +process.lightJet
     +process.bJet
     +process.leptons
-    +process.stfilt
     +process.produceTopJetPairs
+    +process.produceNeutrinos
+    +process.sidebands
+    +process.stfilt
     +process.demo
-
+#    +process.trigEleAll
+#    +process.trigEle
 )

@@ -1,31 +1,16 @@
 [CMSSW]
-total_number_of_events  = -1
-number_of_jobs          = 100
+number_of_jobs		= 100
+total_number_of_lumis 	= -1
+lumi_mask 		= a.json
 pset                    = ../singletopoptimization_cfg.py
-#datasetpath		= /Tbar_t-channel_TuneZ2star_8TeV-powheg-tauola/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
 
-#datasetpath		= /TTJets_MassiveBinDECAY_TuneZ2star_8TeV-madgraph-tauola/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /WJetsToLNu_TuneZ2Star_8TeV-madgraph-tarball/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /ZZ_TuneZ2star_8TeV_pythia6_tauola/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /WW_TuneZ2star_8TeV_pythia6_tauola/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /WZ_TuneZ2star_8TeV_pythia6_tauola/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER	
-#datasetpath		= /DYJetsToLL_M-50_TuneZ2Star_8TeV-madgraph-tarball/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /GJets_HT-200To400_8TeV-madgraph/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /GJets_HT-400ToInf_8TeV-madgraph/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-
-#datasetpath		= /QCD_Pt_20_30_BCtoE_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /QCD_Pt_30_80_BCtoE_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /QCD_Pt_80_170_BCtoE_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-datasetpath 		= /QCD_Pt_170_250_BCtoE_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /QCD_Pt_250_350_BCtoE_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /QCD_Pt_350_BCtoE_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-
-#datasetpath		= /QCD_Pt_20_30_EMEnriched_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /QCD_Pt_30_80_EMEnriched_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath 		= /QCD_Pt_80_170_EMEnriched_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /QCD_Pt_170_250_EMEnriched_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /QCD_Pt_250_350_EMEnriched_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
-#datasetpath		= /QCD_Pt_350_EMEnriched_TuneZ2star_8TeV_pythia6/mario-Summer12-stop-step1-synced-4abb869c2c9729b82d5a6bb08525e8d2/USER
+#datasetpath		= /SingleElectron/mario-Summer12-SingleTop-first-jul13-runA-v1-9476e6c01f0636717be2e9d2519307ba/USER
+#datasetpath		= /SingleElectron/mario-Summer12-SingleTop-first-jul13-runB-v1-9476e6c01f0636717be2e9d2519307ba/USER
+#datasetpath		= /SingleElectron/mario-Summer12-SingleTop-first-aug06-v1-2c6a66df74a4534e1b9bb81eadd2b5a7/USER
+#datasetpath		= /SingleElectron/mario-Summer12-SingleTop-first-aug24-v1-fd84e88dc232bd5c40623753ae2283a0/USER
+#datasetpath		= /SingleElectron/mario-Summer12-SingleTop-first-dec11-v1-4ef805dbd93c7eab196b92d9e7120655/USER
+#datasetpath		= /SingleElectron/mario-Summer12-SingleTop-first-promptC-v1-34f684f8fd7559214eaa339ea4880e5f/USER
+datasetpath		= /SingleElectron/mario-Summer12-SingleTop-first-promptD-v1-34f684f8fd7559214eaa339ea4880e5f/USER
 
 dbs_url                 = https://cmsdbsprod.cern.ch:8443/cms_dbs_ph_analysis_02_writer/servlet/DBSServlet
 output_file              = optHistograms.root

@@ -30,6 +30,8 @@
 
 #include "AnalysisCode/AnalysisDataFormats/interface/TopJetPair.h"
 #include "AnalysisCode/AnalysisDataFormats/interface/TopJetPairFwd.h"
+#include "AnalysisCode/AnalysisDataFormats/interface/Neutrino.h"
+#include "AnalysisCode/AnalysisDataFormats/interface/NeutrinoFwd.h"
 #include "DataFormats/Candidate/interface/CandidateFwd.h" 
 #include "DataFormats/Candidate/interface/Candidate.h" 
 #include "DataFormats/PatCandidates/interface/Electron.h"
@@ -119,6 +121,13 @@ SingleTopOptimization::analyze(const edm::Event& iEvent, const edm::EventSetup& 
    // Top-jet pair objects
    Handle<TopJetPairCollection> topjets;
    iEvent.getByLabel("topJetPairs",topjets);
+
+   Handle<NeutrinoCollection> nus;
+   iEvent.getByLabel("neutrinos",nus);
+
+   cout<<"neutrino eta 1 = "<<topjets->begin()->p4nu().Eta() <<endl;
+   cout<<"neutrino eta 2 = "<<nus->begin()->P4Nu().Eta() <<endl;
+
 
    // pat electrons
    Handle<pat::ElectronCollection> gEl;
