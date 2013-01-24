@@ -8,6 +8,9 @@ stfilt = cms.EDFilter('SingleTopFilter',
     met             = cms.InputTag('patMETs'),
     bTagger         = cms.string("combinedSecondaryVertexMVABJetTags"),
     bTagCut         = cms.double(0.679),
+    leadJetPt       = cms.double(40),
+    mtW             = cms.double(0),
+    metCut          = cms.double(45),
     debug           = cms.bool(True),
     selection       = cms.string("sync")
 )
