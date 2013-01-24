@@ -133,7 +133,8 @@ class TopJetPairAlgorithm
       }
 
       if( !TMath::RootsCubic(coef1,z1,z2,z3) ){ //three real roots
-	edm::LogWarning ("compNuP4") << "THREE REAL SOLUTIONS: z1 = "<< z1 << ", z2 = "<< z2 << ", z3 = "<< z3 << ". Choose minimal Delta_pT(nu, MET).";
+	if( debug_ )
+	  edm::LogWarning ("compNuP4") << "THREE REAL SOLUTIONS: z1 = "<< z1 << ", z2 = "<< z2 << ", z3 = "<< z3 << ". Choose minimal Delta_pT(nu, MET).";
 	double px1, py1, px2, py2, px3, py3, delta1, delta2, delta3;
 	
 	px1 = ( square( z1 ) - square( mW )) / ( 4*lep.px() );

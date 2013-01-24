@@ -29,7 +29,8 @@ class NeutrinoAlgorithm
   
   void computeNeutrino(Neutrino&, const edm::Ptr<reco::Candidate>&, const edm::Ptr<pat::MET>&);
 
-  int verbosity_;
+  int debug_;
+  int nuComputation_;
 
   double compMt(const reco::Candidate::LorentzVector& lepton,double metPx, double metPy)
   {
@@ -62,6 +63,120 @@ class NeutrinoAlgorithm
   {
     return x*x;
   }
+
+  reco::Candidate::LorentzVector compNuP4(const reco::Candidate::LorentzVector& lep, const reco::Candidate::LorentzVector& met)
+    {
+      //extract z component of a neutrino by fixing the W mass to PDG value                                                                                                                                                             
+      double pxL = lep.px();
+      double pyL = lep.py();
+      double pzL = lep.pz();
+      double pTL = lep.pt();
+      double El = lep.energy();
+      double mW = 80.385;
+      reco::Candidate::LorentzVector p4nu = met;
+      double px=met.px(); double py=met.py(); 
+      double pz=0;
+
+      double L = square(mW)/2 + (pxL*met.px() + pyL*met.py());
+      double D = L*L - square(pTL)*square(met.pt());
+
+      if( nuComputation_ != 1 && nuComputation_ !=2 )
+	edm::LogWarning ("compNuP4") << "Valid nuComputation methods are: 1 -- always use cubic equation with M_W mass constraint; 2 -- use cubic equation only if pz from (p4nu + p4el)->M() = MW is imaginary. Neurino reconstruction algorithm is not applied and p4nu = p4met is used";
+
+      //------------------ if pz (nu) is real p3(nu) = (MET, pz)-------------------------------
+      if( ( D > 0 || D==0 ) && nuComputation_ == 2 ){ 
+	if(debug_)
+	  std::cout<< "Real z, compute new pz"<<std::endl; 
+	double pz1 = 0, pz2 = 0;
+	pz1 = L*pzL/square(pTL) + El/square(pTL)*TMath::Sqrt(D);
+	pz2 = L*pzL/square(pTL) - El/square(pTL)*TMath::Sqrt(D);
+	if ( abs(pz1) < abs(pz2) ) //choose the solution of smaller absolute value
+	  pz = pz1;
+	else
+	  pz = pz2;
+      }
+
+      //---------------imaginary solution of pz -> set D=0, find pz and modify px, py to satisfy mW = PDG-----------------
+      if( D < 0 || nuComputation_ == 1 ){ 
+	if( debug_ )
+	  std::cout<<"Imaginary z, find px, py, pz"<<std::endl;
+           
+	double a = square(lep.pt());
+	double b = 3*mW*lep.pt()*lep.py();
+	double c = square(mW)*( square(lep.pt()) + 2*square(lep.py()) ) - 4*pow(lep.px(),2)*( met.px()*lep.px() + met.py()*lep.py() );
+	double d = mW*lep.pt()*( square(mW)*lep.py() - 4*met.py()*square(lep.px()) );
+
+	const double coef1[4] = {d,c,b,a};
+	double z1 = 0, z2 = 0, z3=0; //initialize solutions to cubic equation
+      
+	//---------------------Solve cubic equation for y = a(x) + sqrt(b(x))--------------------------------
+	//Solving cubic equation for y = a(x) - sqrt(b(x)): TMath::RootsCubic({-d,c,-b,a},z1,z2,z3) gives equivalent px, py;
+      
+	TMath::RootsCubic(coef1,z1,z2,z3); //default one real and 2 imagnary roots, use only real solution
+	px = ( square( z1 ) - square( mW )) / ( 4*lep.px() );
+	py = ( square( mW )*lep.py() + 2*lep.px()*lep.py()*px + mW*lep.pt()*z1 ) / ( 2*square( lep.px() ) );
+
+	if(debug_){
+	  std::cout<<"one real solution"<<std::endl;
+	  std::cout<<"z1 = "<< z1 <<std::endl;
+	  std::cout<<"px = "<< px <<", py = "<< py <<std::endl;
+	}
+
+	if( !TMath::RootsCubic(coef1,z1,z2,z3) ){ //three real roots
+	  edm::LogWarning ("compNuP4") << "THREE REAL SOLUTIONS: z1 = "<< z1 << ", z2 = "<< z2 << ", z3 = "<< z3 << ". Choose minimal Delta_pT(nu, MET).";
+	  double px1, py1, px2, py2, px3, py3, delta1, delta2, delta3;
+
+	  px1 = ( square( z1 ) - square( mW )) / ( 4*lep.px() );
+	  py1 = ( square( mW )*lep.py() + 2*lep.px()*lep.py()*px1 + mW*lep.pt()*z1 ) / ( 2*square( lep.px() ) );
+	  delta1 = TMath::Sqrt( square( px1 - met.px() ) + square( py1 - met.py() ) );
+
+	  px2 = ( square( z2 ) - square( mW )) / ( 4*lep.px() );
+	  py2 = ( square( mW )*lep.py() + 2*lep.px()*lep.py()*px2 + mW*lep.pt()*z2 ) / ( 2*square( lep.px() ) );
+	  delta2 = TMath::Sqrt( square( px2 - met.px() ) + square( py2 - met.py() ) );
+
+	  px3 = ( square( z3 ) - square( mW )) / ( 4*lep.px() );
+	  py3 = ( square( mW )*lep.py() + 2*lep.px()*lep.py()*px3 + mW*lep.pt()*z3 ) / ( 2*square( lep.px() ) );
+	  delta3 = TMath::Sqrt( square( px3 - met.px() ) + square( py3 - met.py() ) );
+
+
+	  if( delta1 < delta2 && delta1 < delta3){
+	    px = px1;
+	    py = py1;
+	    if(debug_)
+	      std::cout<<"Minimal delta1"<<std::endl;
+	  }
+	  if( delta2 < delta3 && delta2 < delta1){
+	    px = px2;
+	    py = py2;
+	    if(debug_)
+	      std::cout<<"Minimal delta2"<<std::endl;
+	  }
+	  if( delta3 < delta2 && delta3 < delta1 ){
+	    px = px3;
+	    py = py3;
+	    if(debug_)
+	      std::cout<<"Minimal delta3"<<std::endl;
+	  }
+	  if( abs(delta1-delta2) < 0.001 || abs(delta2-delta3) < 0.001 || abs(delta1-delta3) < 0.001 )
+	    edm::LogWarning ("compNuP4") << "Multiple minimal solutions" << ", delta1 = "<<delta1<<", delta2 = "<<delta2<<", delta3 = "<<delta3;  
+	  if(debug_){
+	    std::cout<<"delta1 = "<<delta1<<", delta2 = "<<delta2<<", delta3 = "<<delta3<<std::endl;
+	    std::cout<<"px = "<<px<<", py = "<<py<<std::endl;
+	  }
+	}
+	double L_new = square(mW)/2 + (pxL*px + pyL*py);
+	pz = L_new*pzL/square(pTL);
+      }
+
+      //-------------------------fill neutrino 4-vector----------------------------------
+      p4nu.SetPx(px);
+      p4nu.SetPy(py);
+      p4nu.SetPz(pz);
+      p4nu.SetE(TMath::Sqrt( px*px + py*py + pz*pz) );
+
+
+      return p4nu;
+    }
 
 };
 

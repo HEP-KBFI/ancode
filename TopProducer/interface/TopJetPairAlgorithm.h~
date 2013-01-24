@@ -152,23 +152,27 @@ class TopJetPairAlgorithm
 	if( delta1 < delta2 && delta1 < delta3){
 	  px = px1;
 	  py = py1;
-	  std::cout<<"Minimal delta1"<<std::endl;
+	  if(debug_)
+	    std::cout<<"Minimal delta1"<<std::endl;
 	}
 	if( delta2 < delta3 && delta2 < delta1){
 	  px = px2;
 	  py = py2;
-	  std::cout<<"Minimal delta2"<<std::endl;
+	  if(debug_)
+	    std::cout<<"Minimal delta2"<<std::endl;
 	}
 	if( delta3 < delta2 && delta3 < delta1 ){
 	  px = px3;
 	  py = py3;
-	  std::cout<<"Minimal delta3"<<std::endl;
+	  if(debug_)
+	    std::cout<<"Minimal delta3"<<std::endl;
 	}
 	if( abs(delta1-delta2) < 0.001 || abs(delta2-delta3) < 0.001 || abs(delta1-delta3) < 0.001 )
 	  edm::LogWarning ("compNuP4") << "Multiple minimal solutions" << ", delta1 = "<<delta1<<", delta2 = "<<delta2<<", delta3 = "<<delta3;	  
-
-	std::cout<<"delta1 = "<<delta1<<", delta2 = "<<delta2<<", delta3 = "<<delta3<<std::endl;
-	std::cout<<"px = "<<px<<", py = "<<py<<std::endl;
+	if(debug_){
+	  std::cout<<"delta1 = "<<delta1<<", delta2 = "<<delta2<<", delta3 = "<<delta3<<std::endl;
+	  std::cout<<"px = "<<px<<", py = "<<py<<std::endl;
+	}
       }
       double L_new = square(mW)/2 + (pxL*px + pyL*py);
       pz = L_new*pzL/square(pTL);

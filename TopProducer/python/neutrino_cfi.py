@@ -7,10 +7,11 @@ import FWCore.ParameterSet.Config as cms
 #--------------------------------------------------------------------------------
 
 neutrinos = cms.EDProducer("NeutrinoProducer",
-                          srcMET = cms.InputTag('patMETs'),
-                          srcLepton = cms.InputTag('leptons','goodLeptons'),
-                          debug = cms.untracked.int32(1)
-                          )
+                           srcMET = cms.InputTag('patMETs'),
+                           srcLepton = cms.InputTag('leptons','goodLeptons'),
+                           debug = cms.untracked.int32(1),
+                           nuComputation = cms.untracked.int32(1)  # 1 - always modify full 4vector with cubic solution. 2 - modify full 4vector only in case of imaginary solution of pz
+                           )
 
 selectedW = cms.EDFilter("NeutrinoSelector",
                          src = cms.InputTag("neutrinos"),
@@ -19,5 +20,5 @@ selectedW = cms.EDFilter("NeutrinoSelector",
                          )
 
 
-produceNeutrino = cms.Sequence(neutrinos)
+produceNeutrinos = cms.Sequence(neutrinos)
 selectW = cms.Sequence(selectedW)

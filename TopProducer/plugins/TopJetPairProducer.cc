@@ -56,9 +56,9 @@ void TopJetPairProducer::produce(edm::Event& evt, const edm::EventSetup& es)
   }
 
   //-------Check whether there are more than one top candidates in the event---------//
-  if ( (bjetCollection->size() != 0 && leptonCollection->size() != 0 && ljetCollection->size() != 0) && (bjetCollection->size() > 1 || leptonCollection->size() > 1 || ljetCollection->size() > 1) )
-    edm::LogWarning ("produce")
-      << "Found " << bjetCollection->size() << " bjets, " << leptonCollection->size() << " leptons and " << ljetCollection->size() << " light jets. " << bjetCollection->size()*leptonCollection->size()*ljetCollection->size() << " top + jet pair candidates are reconstructed.";
+  //if (  (bjetCollection->size() != 0 && leptonCollection->size() != 0 && ljetCollection->size() != 0) && (bjetCollection->size() > 1 || leptonCollection->size() > 1 || ljetCollection->size() > 1)  )
+  //  edm::LogWarning ("produce")
+  //    << "Found " << bjetCollection->size() << " bjets, " << leptonCollection->size() << " leptons and " << ljetCollection->size() << " light jets. " << bjetCollection->size()*leptonCollection->size()*ljetCollection->size() << " top + jet pair candidates are reconstructed.";
 
 
   std::auto_ptr<TopJetPairCollection> topJetPairCollection(new TopJetPairCollection());
